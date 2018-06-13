@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>重点项目-监控列表</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <link rel="stylesheet" href="Content/mui.min.css">
+    <style>
+        body{
+            background: #fff;
+        }
+        .mui-table-view{
+            margin-top:0px !important;
+        }
+		.error{
+			background: #fff;
+			text-align: center;
+			padding-top:10%;
+			color:#555;
+		}
+    </style>
+</head>
+
+<body>
+    <div class="mui-content">
+			<ul class="mui-table-view">
+				<!--<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						Item 1
+					</a>
+				</li>-->
+			</ul>
+			<div class="error"></div>
+		</div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script src="lgs/mui.min.js"></script>
+    <script>
+		$(function(){
+			var newid = window.location.search.split("=",2);
+			$.ajax({
+				url: cfg.host + 'ProjectMonitor/get',
+				type: 'get',
+				data: {
+					Id: newid[1]
+				},
+				success: function (data) {
+					if(data){
+						if(data.MonitorInfo.length!=0){
+							for(var i=0;i<data.MonitorInfo.length;i++){
+								$(".mui-table-view").append(
+									'<li class="mui-table-view-cell">'+
+										'<a class="mui-navigate-right" href="new-majorProject-detail.html?id='+data.MonitorInfo[i].Url+'">'+data.MonitorInfo[i].Name+'</a>'+
+									'</li>'
+								);
+							};
+							$(".top_line").css("display","block");
+						}else{
+							$(".error").html('<div>暂无数据！</div>')
+						};
+					};
+					
+				}
+			});
+		});
+    </script>
+</body>
+
+</html>

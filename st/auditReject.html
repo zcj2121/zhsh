@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">驳回</span>
+    </div>
+    <div class="panel-body">
+        <form name="addNewsForm" class="form-horizontal" ng-submit="subFunc">
+            <div class="ng-scope container-fluid" ui-view="">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">驳回意见<span style="color:red">*</span></label>
+                        <div class="col-sm-5">
+                            <textarea  id="Opinion" class="form-control" rows="10" ng-model="model.Opinion" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-default" ng-disabled="addNewsForm.$invalid" ng-click="Refues()">驳回</button>
+                            <a ng-click="back() " class="btn btn-default">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

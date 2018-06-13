@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">预览{{model.TypeName}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" ng-click="back() " style="margin-top:-5px;">
+                返回
+            </a>
+        </div>
+    </div>
+    
+    <div class="panel-body">
+        <form name="addNewsForm" class="form-horizontal" ng-submit="subFunc">
+            <div class="ng-scope container-fluid" ui-view="">
+                <div class="row">
+                    <div class="col-md-12  " style="min-height:500px;">
+                        <h2 class="title text-center" style="margin-top:20px" data-value="">{{model.Title}}</h2>
+                        <div style="margin:20px 0;overflow:hidden;text-align: center;">
+                            <div class="col-md-6 col-sm-6 text-right">作者：<span class="user">作者</span></div>
+                            <div class="time col-md-6 col-sm-6 text-left" data-value="">{{model.PushDay|date}}</div>
+                        </div>
+                        <div style=" margin:0 auto;margin:20px 0;overflow:hidden;text-align: center;">
+                            <div class="time col-md-12 col-sm-12" ng-show="model.HeadImgUrl != null"><img ng-src="{{model.HeadImgUrl}}" alt=""></div>
+                            <div class="time col-md-12 col-sm-12" ng-show="model.HeadImgUrl == null && model.Type==0"><img ng-src="../Upload/news.png" alt=""></div>
+                            <div class="time col-md-12 col-sm-12" ng-show="model.HeadImgUrl == null && model.Type==1"><img ng-src="../Upload/notice.png" alt=""></div>
+                            <div class="time col-md-12 col-sm-12" ng-show="model.HeadImgUrl == null && model.Type==2"><img ng-src="../Upload/activity.png" alt=""></div>
+                            <div class="time col-md-12 col-sm-12" ng-show="model.HeadImgUrl == null && model.Type==3"><img ng-src="../Upload/message.png" alt=""></div>
+                        </div>
+                        <div class="form-group pic-img" id="videoHtml" style="text-align: center;"></div>
+                        <div class="contener" style="min-height:300px;font-size:18px; text-indent:2em" data-value="">
+                            <div class="form-group">
+                                {{model.Content}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" ng-click="queryFunc()" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-search"></i> 查询
+            </a>
+            <a class="btn btn-default btn-sm bs-btn-alert" data-click="del" data-msg="确认批量撤销?" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-remove"></i> 批量撤销
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form-inline form-horizontal" role="form">
+            <div class="form-group col-lg-4">
+                <label class="control-label col-lg-4 text-left text-nowrap">推送日期</label>
+                <div class="col-lg-8">
+                    <input type="text" date class="form-control" ng-model="query.pushDay" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th class="text-center"><input type="checkbox" ng-model="checked"></th>
+                <th>排序号</th>
+                <th>板块名称</th>
+                <th>标题</th>                
+                <th>时间</th>
+                <th>状态</th>
+                <th>推送状态</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td class="text-center"><input type="checkbox" ng-checked="checked" data-id="{{item.Id}}" /> </td>
+                <td class="text-center">{{item.Order}}</td>
+                <td>{{item.Type|set:['新闻政务','文明方正','通知公告','推广消息']}}</td>
+                <td>{{item.Title}}</td>                
+                <td>{{item.PushDay|date}}</td>
+                <td>{{item.Statu|set:['待提交','待审核','通过','驳回','已发布']}}</td>
+                <td class="text-center">{{item.IsPush|check}}</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-sm btn-default bs-btn-alert" data-url="{{cfg.host+ 'Content/Delete/'+ item.Id}}" data-msg="确认撤销么?">撤销</a>
+                        <a class="btn btn-sm btn-default" href="#/publishNum/{{item.Id}}">设置排序号</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pager count="{{data.Count}}" index="{{query.index}}" action="go(index,size)"></pager>

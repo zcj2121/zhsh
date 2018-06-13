@@ -1,0 +1,291 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0, user-scalable=no, width=device-width" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>新闻政务</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.container {
+            padding-bottom: 60px;
+        }
+        p {
+            text-indent: 0 !important;
+        }
+        img {
+            width: 100%;
+            margin: 10px 0;
+        }
+        div.content {
+            margin: 0 20px;
+        }
+        div.content h1 {
+            margin: 16px 0 13px 0;
+            font-size: 18px;
+            color: #000000;
+        }
+        div.content span.row {
+            display: block;
+            font-size: 0;
+        }
+        div.content span.row p {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 11px;
+            color: #000000;
+        }
+        div.content span.row p.time {
+            margin: 10px 0 10px 10px;
+        }
+        div.content p.text {
+            font-size: 15px;
+            line-height: 20px;
+            text-indent: 2em;
+            color: #000000;
+        }
+        ul.comment li+li {
+            margin: 10px 0;
+        }
+        ul.comment span.text {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 14px;
+            line-height: 22px;
+            color: #0d56a0;
+        }
+        ul.comment span.icon {
+            display: inline-block;
+            vertical-align: top;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        ul.comment p {
+            font-size: 14px;
+            color: #333333;
+            line-height: 18px;
+            margin: 5px 0;
+            padding-left: 25px;
+        }
+        ul.comment .comment-time {
+            font-size: 12px;
+            color: #999999;
+            padding-left: 25px;
+        }
+        div.write-review {
+            font-size: 0;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0;
+            background-color: #f3f3f3;
+            border-top: 1px solid #cccccc;
+        }
+        .area {
+            display: inline-block;
+            vertical-align: top;
+            width: 80%;
+        }
+        textarea {
+            resize: none;
+            outline: none;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            padding: 5px;
+            box-sizing: border-box;
+            width: 95%;
+            height: 30px;
+        }
+        button.comment-btn {
+            display: inline-block;
+            vertical-align: top;
+            width: 20%;
+            min-width: 50px;
+            font-size: 12px;
+            color: #333333;
+            padding: 5px;
+            text-align: center;
+            white-space: nowrap;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            height: 30px;
+        }
+        div.more {
+            text-align: center;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+        div.more button {
+            font-size: 12px;
+            color: #666666;
+            border: 1px solid #999999;
+            border-radius: 5px;
+            padding: 5px 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="head">
+            <a class="out" href="index.html"><span class="right">首页</span></a>
+        </div>-->
+        <div class="content"></div>
+        <ul class="comment"></ul>
+        <div class="more" style="display: none;">
+            <button type="button">点击查看更多评论</button>
+        </div>
+    </div>
+    <div class="write-review">
+        <div class="area">
+            <textarea name="comment" rows="1" placeholder="写评论..."></textarea>
+        </div>
+        <button type="button" class="comment-btn">发表</button>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        var pageSize = 10;  //每页记录数
+        var pageIndex = 1;// 当前页数
+        var hasNextPage = true;  //有无下一页
+        var newid = window.location.search.split("=",2);//获取id
+        function loadListData(){
+            $.ajax({
+                url: cfg.host + 'comment/GetList',
+                type: 'post',
+                data: {
+                    Index: pageIndex,
+                    Size: pageSize,
+                    ObjId: newid[1]
+                },
+                success:function(data) {
+                    var currentDataLength = data.Data.length;
+                    var currentCount = data.Index * data.Size;
+                    if(data.PageSize!=undefined){
+                        pageSize = data.PageSize;
+                    }
+                    pageIndex = pageIndex + 1;
+                    $(".below-comment").append("<ul class='comment'></ul>");
+                    for(var i in data.Data){
+                        var da = data.Data[i];
+                        if(currentDataLength > 0){
+                            $("ul.comment").css({
+                                'margin' : '0 20px',
+                                'padding' : '15px 0',
+                                'border-top' : '1px solid #cccccc',
+                                'border-bottom' : '1px solid #cccccc'
+                            });
+                            $("ul.comment").append("<li><div class='top'><span class='icon'><img style='margin: 0;' src='Images/we/comment_icon.png'></span>" +
+                                    "<span class='text'>"+getName(da.CreatorName)+"</span></div>" +
+                                    "<p>"+da.Content+"</p>" +
+                                    "<div class='comment-time'>"+getTime(da.CreateTime)+"</div></li>");
+                        }
+                    }
+                    $("div.more").show();
+                    if(currentDataLength < pageSize){//如果本次传回来的数据总长度小于pageSize,则不再执行下次请求
+                        hasNextPage = false;
+                    }
+                    if(data.Count <= currentCount){
+                        $("div.more").hide();
+                    }
+                },
+                error : function() {
+                    alert("加载失败,请重试!")
+                }
+            });
+        }
+        function getName(obj) {
+            var name = "";
+            if(obj==null){
+                name = "****";
+            }else{
+                name = obj;
+            }
+            return name;
+        }
+        function getTime(obj) {
+            var time = '';
+            if(obj!=null){
+                var year = obj.substr(0,10);
+                var second = obj.substr(11,18);
+                time = year + "&nbsp;" + second;
+            }
+            return time;
+        }
+        $(function(){
+            loadListData();
+            $("div.more button").bind("click",function () {
+                $("div.more").hide();
+                if(hasNextPage){
+                    loadListData();
+                }
+            });
+            $.ajax({
+                url: cfg.host + 'PortalWeb/GetContent',
+                type: 'get',
+                data: {
+                    Id: newid[1]
+                },
+                success:function(data) {
+                    var imgUrl = cfg.imgUrl;
+                    if((data.VideoUrl) != null && (data.VideoUrl) != ''){
+                        var strUrl = data.VideoUrl;
+                        var partten = /\/upload/g;
+                        if(partten.test(strUrl)){
+                            $("div.content").append("<h1>"+data.Title+"</h1><span class='row'>" +
+                                    "<p class='author'></p><p class='time'>"+data.PushDay.substr(0,10)+"</p></span>" +
+                                    "<div class='video'>" +
+                                    "<video style='width: 100%;' src='"+data.VideoUrl+"' controls='controls'>您的设备不支持播放该视频</video>" +
+                                    "</div>"+
+                                    "<p class='text'>"+data.Content+"</p>");
+                        }else{
+                            $("div.content").append("<h1>"+data.Title+"</h1><span class='row'>" +
+                                    "<p class='author'></p><p class='time'>"+data.PushDay.substr(0,10)+"</p></span>" +
+                                    "<div class='video' style='text-align: center;'>" +data.VideoUrl +"</div><p class='text'>"+data.Content+"</p>");
+                        }
+                    }else{
+                        $("div.content").append("<h1>"+data.Title+"</h1><span class='row'>" +
+                                "<p class='author'></p><p class='time'>"+data.PushDay.substr(0,10)+"</p></span>" +
+                                "<p class='text'>"+data.Content+"</p>");
+                    }
+
+                }
+            });
+            $("textarea[name=comment]").bind("focus",function () {
+                $.ajax({
+                    url: cfg.host + 'WeiXin/GetUserInfo',
+                    type: 'get',
+                    success: function (data) {
+                        if(data == null){
+                            location.href  = "we_personal_wx.html";
+                        }else{
+                            $("button.comment-btn").bind("click",function () {
+                                $(this).attr("disabled","disabled");
+                                var commentVal = $("textarea[name=comment]").val();
+                                $.ajax({
+                                    url: cfg.host + "comment/add",
+                                    type: "post",
+                                    data:{
+                                        ObjId: newid[1],
+                                        Content: commentVal
+                                    },
+                                    success: function () {
+                                        alert("评论成功！");
+                                        if(confirm){
+                                            window.location.reload();
+                                        }
+                                    }
+                                })
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>黑龙江方正县智慧生活微门户</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <link rel="stylesheet" href="Content/swiper.css">
+    <style>
+        body{
+            background:#f0f0f0;
+        }
+        div.container {
+            padding-bottom: 53px;
+            box-sizing: border-box;
+            background:#f0f0f0;
+        }
+        div.container img {
+            display: block;
+            width: 100%;
+        }
+        div.banner {
+            height: 200px;
+            overflow: hidden;
+        }
+        /*div.banner span.shadow {*/
+        /*display: block;*/
+        /*width: 100%;*/
+        /*height: 35px;*/
+        /*position: absolute;*/
+        /*bottom: 0;*/
+        /*background-color: rgba(0,0,0,0.5);*/
+        /*color: #ffffff;*/
+        /*font-size: 20px;*/
+        /*line-height: 35px;*/
+        /*font-weight: 500;*/
+        /*text-align: center;*/
+        /*}*/
+        div.notice {
+            margin: 0 20px;
+        }
+        div.nav {
+
+            margin:20px;
+            margin-top: 8px;
+        }
+        div.nav div.row {
+            display: table;
+            width: 100%;
+
+        }
+
+        div.nav div.row a {
+            font-size: 11px;
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        div.nav div.row a.not {
+            color: #d8d8d8;
+            cursor: default;
+        }
+        div.nav div.row span.name {
+            display: block;
+            height: 100px;
+            margin:4%;
+        }
+        div.nav div.row span.name:before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100px;
+            background-size: 32px 32px;
+            background-repeat: no-repeat;
+            background-position: 50% 40%;
+            margin-bottom: -30px;
+        }
+        div.row span.name.news::before {
+            background-image: url("Images/we/Newss.png");
+        }
+        div.row span.name.inform::before {
+            background-image: url("Images/we/Informs.png");
+        }
+
+        div.row span.name.constructor::before {
+            background-image: url("Images/we/Dang.png");
+        }
+        div.row span.name.live::before {
+            background-image: url("Images/we/Life.png");
+        }
+        div.row span.name.city::before {
+            background-image: url("Images/we/Citys.png");
+        }
+        div.row span.name.employer::before {
+            background-image: url("Images/we/Paple.png");
+        }
+        div.row span.name.train::before {
+            background-image: url("Images/we/Work.png");
+        }
+        div.row span.name.view::before {
+            background-image: url("Images/we/Fank.png");
+        }
+        div.foot_nav{
+            height:36px;
+            background:#fff;
+            text-align:center;
+            line-height:36px;
+            font-size:12px;
+        }
+        div.foot {
+            width: 100%;
+            height: 53px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+        div.foot ul li {
+            display: block;
+        }
+        div.foot ul a {
+            font-size: 10px;
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+        div.foot ul a.active {
+            color: #000000;
+        }
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 25px;
+            background-size: 25px 25px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 5px 0;
+        }
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+        .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+            position: absolute;
+            bottom: 10px;
+            left: 45%;
+            z-index: 100;
+        }
+        /*div.container span.head-pic {*/
+        /*width: 100%;*/
+        /*height: auto;*/
+        /*background: url("Images/we/shangdaohang.png") no-repeat center center;*/
+        /*background-size: 100% 100%;*/
+        /*padding-bottom: 13.75%;*/
+        /*z-index: 1000;；；*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<img src="Images/we/shangdaohang.png" alt="tupian">-->
+    <div class="banner">
+        <div class="swiper-container" id="recommendSwiper">
+            <div class="swiper-wrapper">
+                <!--<div class="swiper-slide">-->
+                <!--<a href="javascript:void(0);">-->
+                <!--<img src="Images/we/banner1.png" alt="banner">-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--<div class="swiper-slide">-->
+                <!--<a href="javascript:void(0);">-->
+                <!--<img src="Images/we/banner2.png" alt="banner">-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--<div class="swiper-slide">-->
+                <!--<a href="javascript:void(0);">-->
+                <!--<img src="Images/we/banner3.png" alt="banner">-->
+                <!--</a>-->
+                <!--</div>-->
+            </div>
+            <div class="pagination"></div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="row" id="wecontrl">
+            <a href="we_news_list.html"><span class="name news" style="background:#d87570;">新闻时务</span></a>
+            <a href="we_inform_wx.html"><span class="name inform" style="background:#bbd1c4;">通知预警</span></a>
+            <!--<a href="we_activity_zcj.html"><span class="name activity" style="background:#febf02;">文明方正</span></a>-->
+        </div>
+        <div class="row">
+            <a href="http://218.8.87.64:3080/"><span class="name constructor" style="background:#bc4040;">党建专题</span></a>
+            <a href="http://m.100msh.com/?index=1"><span class="name live" style="background:#6f9c97;">生活周边</span></a>
+            <a href="we_city_zcj.html"><span class="name city" style="background:#ff8b00;">智慧城市</span></a>
+        </div>
+        <div class="row">
+            <a href="we_service_zcj.html"><span class="name employer" style="background:#d87570;">便民服务</span></a>
+            <a href="we_train.html"><span class="name train" style="background:#bbd1c4;">用工培训</span></a>
+            <a href="we_view_wx.html"><span class="name view" style="background:#febf02;">意见反馈</span></a>
+        </div>
+    </div>
+    <div class="foot_nav" id="foot_nav">
+
+    </div>
+    <div class="foot">
+        <ul>
+            <a href="index.html"><li class="index active">首页</li></a>
+            <a href="we_search_wx.html"><li class="search">查询</li></a>
+            <a href="we_personal_wx.html"><li class="personal">我的</li></a>
+        </ul>
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/swiper.jquery.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    function Browser() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    $(function(){
+        if(Browser()){
+            var footDate = new Date();
+            var footYear = footDate.getFullYear();
+            $("#foot_nav").html("©"+footYear+" 方正县信息中心 版权所有");
+            $.ajax({
+                url: cfg.host + 'WeiXin/GetUserInfo',
+                type: 'get',
+                success: function (data) {
+                    if(data == null){
+                        location.href  = "we_personal_wx.html";
+                    }else{
+                        $.ajax({
+                            url: cfg.host + 'PortalWeb/GetImgList',
+                            type: 'get',
+                            success: function (data) {
+                                var imgUrl = cfg.imgUrl;
+                                if(data.length == 0){
+                                    $("div.swiper-wrapper").append("<div class='swiper-slide'><a href='javascript:void(0);'>" +
+                                            "<img src='Images/we/banner1.png' alt='banner'></a></div>");
+
+                                }else if(data.length == 1){
+                                    $("div.swiper-wrapper").append("<div class='swiper-slide'><a href='javascript:void(0);'>" +
+                                            "<img src='" +data[0].ImgUrl + "' alt='banner'></a></div>");
+                                }else {
+                                    for(var i in data){
+                                        $("div.swiper-wrapper").append("<div class='swiper-slide'><a href='javascript:void(0);'>" +
+                                                "<img src='" +data[i].ImgUrl + "' alt='banner'></a></div>");
+                                    }
+                                    var mySwiper = new Swiper('#recommendSwiper',{
+                                        pagination: '.pagination',
+                                        preloadImages: true,
+                                        updateOnImagesReady: true,
+                                        autoplayDisableOnInteraction : false,
+                                        loop: true,
+                                        autoplay: 6000,
+                                        effect: 'fade'
+                                    });
+                                }
+                            },
+                            error : function() {
+                                alert("加载失败,请重试!")
+                            }
+                        });
+                        $.get(cfg.host+'Contrl/GetMainMenu',function (data) {
+                            $("#wecontrl").append("<a href='we_activity_zcj.html?id="+data[0].Id+"'><span class='name activity' style='background:#febf02;'>"+data[0].Name+"</span></a>");
+                            $('div.row span.name.activity').append("<style>span.name.activity::before{background-image: url("+data[0].FileUrl+");}</style>");
+                        });
+                    }
+                }
+            });
+        }else{
+            $.ajax({
+                url: cfg.host + 'PortalWeb/GetImgList',
+                type: 'get',
+                success: function (data) {
+                    var imgUrl = cfg.imgUrl;
+                    if(data.length == 0){
+                        $("div.swiper-wrapper").append("<div class='swiper-slide'><a href='javascript:void(0);'>" +
+                                "<img src='Images/we/banner1.png' alt='banner'></a></div>");
+
+                    }else if(data.length == 1){
+                        $("div.swiper-wrapper").append("<div class='swiper-slide'><a href='javascript:void(0);'>" +
+                                "<img src='" +data[0].ImgUrl + "' alt='banner'></a></div>");
+                    }else {
+                        for(var i in data){
+                            $("div.swiper-wrapper").append("<div class='swiper-slide'><a href='javascript:void(0);'>" +
+                                    "<img src='"+data[i].ImgUrl + "' alt='banner'></a></div>");
+                        }
+                        var mySwiper = new Swiper('#recommendSwiper',{
+                            pagination: '.pagination',
+                            preloadImages: true,
+                            updateOnImagesReady: true,
+                            autoplayDisableOnInteraction : false,
+                            loop: true,
+                            autoplay: 6000,
+                            effect: 'fade'
+                        });
+                    }
+                },
+                error : function() {
+                    alert("加载失败,请重试!")
+                }
+            });
+            $.get(cfg.host+'Contrl/GetMainMenu',function (data) {
+                $("#wecontrl").append("<a href='we_activity_zcj.html?id="+data[0].Id+"'><span class='name activity' style='background:#febf02;'>"+data[0].Name+"</span></a>");
+                $('div.row span.name.activity').append("<style>span.name.activity::before{background-image: url("+data[0].FileUrl+");}</style>");
+            });
+        }
+    });
+</script>
+</body>
+</html>

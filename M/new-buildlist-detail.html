@@ -1,0 +1,144 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        html {
+            font-size: 62.5%;
+            width: 100%;
+        }
+
+        body {
+            font-size: 1.5rem;
+        }
+        div.content{
+            padding:1% 0;
+        }
+        div.content div.title {
+            border-bottom: 1px dashed #cccccc;
+            font-size: 0;
+            margin:0 2%;
+            font-size:1.5rem;
+            clear:both;
+            overflow: hidden;
+            line-height: 2.5rem;
+        }
+        .title-left{
+            float: left;
+            width:35%;
+        }
+        .title-right{
+            float: left;
+            width:65%;
+            color:#555;
+        }
+        #FilePath img:first-child{
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <a class="out" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <div class="content">
+        <div class='title'>
+           <span class="title-left">上报类型：</span><span class="title-right" id="Title"></span>
+        </div>
+        <div class='title'>
+           <span class="title-left">定位地址：</span><span class="title-right" id="Place"></span>
+        </div>
+        <div class='title'>
+           <span class="title-left">详细地址：</span><span class="title-right" id="Address"></span>
+        </div>
+        <div class='title'>
+           <span class="title-left">事件描述：</span><span class="title-right" id="Content"></span>
+        </div>
+        <div class='title'>
+           <span class="title-left">上传图片：</span>
+           <span class="title-right" id="FilePath">
+               <!--<img src="Images/1.jpg" style="width:90%;">-->
+           </span>
+        </div>
+        <div class='title'>
+           <span class="title-left">联系电话：</span><span class="title-right" id="Phone"></span>
+        </div>
+        <div class='title'>
+           <span class="title-left">上报时间：</span><span class="title-right" id="CreateTime"></span>
+        </div>
+        <div class='title'>
+           <span class="title-left">处理状态：</span><span class="title-right" id="State"></span>
+        </div>
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //获取url中的参数
+        function GetQueryString(name){
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if(r!=null)return  unescape(r[2]); return null;
+        };
+        var id = GetQueryString("id");
+        var type = GetQueryString("type");
+        var datal;
+        if(type==1){
+            window.document.title="城建城管提交详情";
+            datal = 'CityManage/get';
+        }else if(type==2){
+            window.document.title="社会管理提交详情";
+            datal = 'SocietyManage/get';
+        }else if(type==3){
+            window.document.title="安全生产提交详情";
+            datal = 'CityManage/get';
+        }else if(type==4){
+	    
+window.document.title="文明方正提交详情";
+
+            datal = 'SecurityManage/get';
+};
+        
+        $.ajax({
+            url: cfg.host + datal,
+            type: 'get',
+            data: {
+                Id: id
+            },
+            success:function(data) {
+                if(data){
+                    $("#Title").html(data.Title?data.Title:'无'); 
+                    $("#Place").html(data.Place?data.Place:'无'); 
+                    $("#Address").html(data.Address?data.Address:'无'); 
+                    $("#Content").html(data.Content?data.Content:'无'); 
+                    if(data.FilePath){
+                        var files = data.FilePath;
+                        for(var i=0;i<files.length;i++){
+                            $("#FilePath").append('<img src="'+files[i]+'" style="width:90%;">')
+                        };
+                    }else{
+                        $("#FilePath").html('无');
+                    };
+                    $("#Phone").html(data.Phone?data.Phone:'无'); 
+                    $("#CreateTime").html(data.CreateTime?data.CreateTime.substr(0,10):'无'); 
+                    if(data.State=="0"){
+                        $("#State").html("未处理"); 
+                    }else if(data.State=="1"){
+                        $("#State").html("处理中"); 
+                    }else if(data.State=="2"){
+                        $("#State").html("已处理"); 
+                    }
+                };
+            }
+        });
+    });
+</script>
+</body>
+</html>

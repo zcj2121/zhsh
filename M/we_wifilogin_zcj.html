@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>黑龙江方正县智慧生活免费WLAN</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.header {
+            height: 50px;
+            font-size: 15px;
+            line-height: 50px;
+            color: #000000;
+            text-align: center;
+        }
+        img {
+            width: 100%;
+        }
+        div.wifi {
+            position: absolute;
+            left: 40%;
+            top: 45%;
+        }
+        button {
+            width: 80px;
+            height: 30px;
+            display: block;
+            margin: 0 auto;
+            background-color: #0c74ed;
+            border-radius: 5px;
+            font-size: 12px;
+            line-height: 30px;
+            color: #ffffff;
+            text-align: center;
+        }
+        div.read {
+            font-size: 9px;
+            margin-top: 10px;
+        }
+        div.wifi a {
+            color: #00aaee;
+            font-size: 9px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body style="">
+    <div class="container">
+        <div class="header">
+            <div class="nav">
+                黑龙江方正县智慧生活免费WLAN
+            </div>
+        </div>
+        <img src="Images/we/wifibg.png" alt="背景">
+        <div class="wifi">
+            <button type="button">连接网络</button>
+            <div class="read">
+                <input type="checkbox" checked="checked">已阅读<a href="we_declaration_wx.html">免责声明</a>
+            </div>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        $("div.wifi button").bind("click",function(){
+            $("div.wifi div.read input").each(function(){
+                if(this.checked){
+                    window.location.href = "index.html";
+                }else{
+                    return;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

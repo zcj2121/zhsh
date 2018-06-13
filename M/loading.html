@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>loading</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        body{
+            /*background:url('../Images/we/4444444.png');*/
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.ajax({
+                url: cfg.host + 'PortalPic/GetTypeList',
+                type: 'get',
+                data: {
+                    Type: 2,
+                    IsActived: true
+                },
+                success: function (data) {
+                    var sverurl = data[0].ImgUrl;
+                    var cvrurl = "http://smart.neverc.cn/life";
+                    $("body").css({"background":"url("+sverurl+")  0% 0% / 100% 100% no-repeat"});
+                    // setTimeout(function(){window.location="transition.html";},5000);
+                    setTimeout(function(){window.location="index.html";},5000);
+                },
+                error : function() {
+                    // setTimeout(function(){window.location="transition.html";},5000);
+                    setTimeout(function(){window.location="index.html";},5000);
+                }
+            })
+            
+        })
+    </script>
+</body>
+</html>

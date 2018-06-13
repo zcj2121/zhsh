@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>黑龙江方正县智慧生活微门户</title>
+    <style type="text/css">
+        /*字体*/
+
+        body {
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        
+        a:hover{
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+        a:active{
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        }
+        a{
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height:100%;
+        }
+
+        body {
+            font-size: 1.6rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        div.wap {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+        header{
+            width:100%;
+            background-image: url("Images/newwe/user-topbg.png");
+            background-size: 100% 100%;
+            text-align: center;
+            overflow: hidden;
+        }
+        header .header-img{
+            width:20%;
+            margin:0 auto;
+            padding-top:20px;
+        }
+        header .header-img img{
+            width: 69px;
+            height:69px;
+            border-radius:50%;
+        }
+        header span{
+            margin-bottom: 26px;
+            display: block;
+        }
+        div.foot {
+            font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+
+        div.foot ul li {
+            display: block;
+        }
+
+        div.foot ul a {
+
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+
+        div.foot ul a.active {
+            color: #000000;
+        }
+
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+        section{
+            margin-top:3%;
+        }
+        section ul li{
+            border-bottom:1px solid #eee;
+            padding:0 4%;
+            line-height: 3.5rem;
+        }
+        section ul li a{
+            overflow: hidden;
+            display: block;
+        }
+        section ul li span.url-right{
+            float: right;
+            line-height: 3.5rem;
+            width:8px;
+            height:1.5rem;
+            padding-top: 1.1rem;
+        }
+        section ul li span.url-right span{
+            display: block;
+            background-image: url("Images/we/jiantou_right.png");
+            background-size: 100% 100%;
+            width: 8px;
+            height: 16px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="wap">
+        <header>
+            <!--<div class="header-img">
+                <img src="Images/newwe/user-header.png" alt="">
+            </div>
+            <span>追风筝的人</span>-->
+        </header>
+        <section>
+            <ul>
+                <li>
+                    <a href="new-buildlist.html?id=1">
+                        <span>城建城管</span>
+                        <span class="url-right"><span></span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="new-buildlist.html?id=2">
+                        <span>社会管理</span>
+                        <span class="url-right"><span></span></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="new-buildlist.html?id=3">
+                        <span>安全生产</span>
+                        <span class="url-right"><span></span></span>
+                    </a>
+                </li>
+		<li>
+                    <a href="new-buildlist.html?id=4">
+                        <span>文明方正</span>
+                        <span class="url-right"><span></span></span>
+                    </a>
+                </li>
+              
+                <li>
+                    <a href="we_view_wx.html">
+                        <span>意见反馈</span>
+                        <span class="url-right"><span></span></span>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="health_add.html">
+                        <span>全民健康</span>
+                        <span class="url-right"><span></span></span>
+                    </a>
+                </li>-->
+            </ul>
+        </section>
+    </div>
+    <div class="foot">
+        <ul>
+            <a href="index.html">
+                <li class="index active">首页</li>
+            </a>
+            <a href="we_search_wx.html">
+                <li class="search">查询</li>
+            </a>
+            <a href="new-user.html">
+                <li class="personal">我的</li>
+            </a>
+        </ul>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script>
+    $(function () {
+            $.ajax({
+                url: cfg.host + 'WeiXin/GetUserInfo',
+                type: 'get',
+                success: function (data) {
+                    if (data == null) {
+                        var url = cfg.host + "weixin/Login";
+                        $.get(url)
+                            .then(function(rst) {
+                                location.href = rst;
+                            });
+                    }else{
+                        if(data.Headimgurl == null){
+                            $("header").append(
+                                '<div class="header-img">'+
+                                    '<img src="Images/newwe/user-header.png" style="border-radius:50%;" alt="">'+
+                                '</div>'+
+                                '<span>'+data.NickName+'</span>'
+                            );
+                        }else{
+                            $("header").append(
+                                '<div class="header-img">'+
+                                    '<img src="'+data.Headimgurl+'" style="border-radius:50%;" alt="">'+
+                                '</div>'+
+                                '<span>'+data.NickName+'</span>'
+                            );
+                        }
+                    }
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

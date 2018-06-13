@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>黑龙江方正县智慧生活微门户</title>
+    <style type="text/css">
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+        }
+
+        body {
+            font-size: 1.6rem;
+            width: 100%;
+            height: 100%;
+            background:#f3f3f3;
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+
+        div.wapone {
+            position: fixed;
+			top: 0;
+			left: 100%;
+            width: 92%;
+            height: 100%;
+            margin:4%;
+            padding-bottom: 53px;
+            margin-top: 1%;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+        .wapone ul li{
+            font-size:1.4rem;
+            display: block;
+            width:32.66666%;
+            float: left;
+            text-align: center;
+            margin-top:1%;
+            background:#ffffff;
+            line-height:3rem;
+        }
+        .wapone .list-push{
+            width:100%;
+            padding: 2%;
+            overflow: hidden;
+        }
+        .wapone .list-push .bt-next{
+            width:96%;
+            height:22px;
+            padding:6px 0;
+            margin-top:4%;
+            background:#f18530;
+            color:#fff;
+            font-size:1.6rem;
+            display: inline-block;
+            margin-bottom: 0;
+            border: 1px solid #f18530;
+            border-radius: 4px;
+            line-height: 1.42857143;
+            text-align: center;
+        }
+        .wapone .question-list{
+            padding:2%;
+            overflow: hidden;
+        }
+        .wapone .question-list textarea{
+            width:96%;
+            border:none;
+            resize:none;
+            border:1px solid #ddd;
+            border-radius: 2px;
+            padding:2%;
+            font-size:1.6rem;
+        }
+        .wapone .question-title{
+            margin-left:2px;
+            padding:2.5% 0;
+        }
+        .wapone .question-map{
+            width:100%;
+            height:260px;
+            background:#fff;
+            border:1px solid #ddd;
+            border-radius: 2px;
+        }
+        .wapone .anchorBL {
+			display: none;
+		}
+
+        .wapone div.head {
+            width: 100%;
+            height: 44px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            text-align: right;
+            border-bottom:1px solid #f18530 !important;
+            overflow: hidden;
+            font-size: 1.6rem;
+            background: #fff;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <!--<div class="head" >
+        <a class="out" href="index.html" style="text-align: right;float: right;line-height: 44px;"><span class="right">首页</span></a>
+    </div>-->
+    <div class="wapone">
+        <div class="question-list">
+            <div class="question-title">问题描述</div>
+            <textarea name="" id="" rows="6" placeholder="请填写问题描述"></textarea>
+            <div class="question-title">地址描述</div>
+            <textarea name="" id="" rows="3" placeholder="请填写地址描述"></textarea>
+            <div class="question-title">地图定位</div>
+            <div class="question-map" id="allmap"></div>
+        </div>
+        <div class="list-push">
+            <a href="new-combuild-mg.html" class="btn bt-next">下一步</a>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=4GLXHMc6X098CWkrOYycL3bRrsAaFHQo"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script> 
+	<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script> 
+    <script src="lgs/we_common.js"></script>
+    <script>
+    $(function(){
+				var map = new BMap.Map("allmap");
+				map.setCurrentCity("方正县");
+				map.enableScrollWheelZoom(true);
+                map.addControl(new BMap.ScaleControl());
+				var gc = new BMap.Geocoder();
+				var top_left_navigation = new BMap.NavigationControl({
+					anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+					offset: new BMap.Size(5, 5)
+				}); 
+				map.addControl(top_left_navigation);
+				var point = new BMap.Point(128.84219, 45.84401);
+				map.centerAndZoom(point, 15);	
+                var binimg = new BMap.Icon(
+						"Images/map/zhi.png",
+							new BMap.Size(40,40))
+                var marker = new BMap.Marker(point,{icon:binimg});  
+                map.addOverlay(marker);  
+                map.addEventListener("dragend", function(){ 
+                    map.clearOverlays();
+                    var center = map.getCenter();      
+                    point = new BMap.Point(center.lng, center.lat);
+                    var marker = new BMap.Marker(point,{icon:binimg});   
+                    map.addOverlay(marker); 
+                }); 
+
+
+	})
+    </script>
+</body>
+
+</html>

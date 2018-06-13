@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>企业用人职位招聘</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+
+        div.container {
+        }
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        div.container ul {
+            width: 100%;
+        }
+        div.container ul li {
+            border-bottom: 1px solid #bfbfbf;
+            padding: 10px 19px;
+        }
+        div.container ul li a {
+            display: block;
+            font-size: 14px;
+            line-height: 18px;
+            color: #333;
+            position: relative;
+        }
+        div.container ul li .left {
+            margin-right: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        div.container ul li .right {
+            width: 100px;
+            position: absolute;
+            right: 10px;
+            top: 0;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head" >
+        <span style="float: left;line-height: 45px;color:#f18530;">新闻速递</span>
+        <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+    </div>-->
+    <ul data-list>
+        <!--<li>
+            <a href="employee_detail.html">
+                <div class="left">
+                    标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题
+                </div>
+                <div class="right">
+                    2016-10-20
+                </div>
+            </a>
+        </li>-->
+    </ul>
+    <div class="foot list" style="display: none;">
+        正在努力加载...
+    </div>
+    <div class="tips list" style="display: none;">
+        亲,已经到底喽~
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    var pageSize = 15;  //每页记录数
+    var pageIndex = 1;// 当前页数
+    var hasNextPage = true;  //有无下一页
+    var isLoadingData = false;  //是否加载中
+    function loadListData(){
+        $.ajax({
+            url: cfg.host + 'DemandInfo/EempList',
+            type: 'post',
+            data: {
+                Index: pageIndex,
+                Size: pageSize
+            },
+            success:function(data) {
+                hideLoadingTips();
+                var currentDataLength = data.Data.length;
+                if(data.PageSize!=undefined){
+                    pageSize = data.PageSize;
+                };
+                pageIndex = pageIndex + 1;
+                if(currentDataLength < pageSize){//如果本次传回来的数据总长度小于pageSize,则不再执行下次请求
+                    hasNextPage = false;
+                };
+                if(currentDataLength!=0){
+                    for(var i in data.Data){
+                        var da = data.Data[i];
+                        $("ul[data-list]").append("<li><a href='employee_detail.html?id="+da.Id+"'>" +
+                                "<div class='left'>"+da.Title+"</div>" +
+                                "<div class='right'>"+da.CommitTime.substr(0,10)+"</div>" +
+                                "</a></li>");
+                    };
+                }else{
+                    $("ul").html('<div style="text-align:center;margin-top:20%;">暂无数据！</div>')
+                };
+            },
+            error : function() {
+                hideLoadingTips();
+                $("ul").html('<div style="text-align:center;margin-top:20%;">数据加载失败！</div>')
+            }
+        });
+    }
+    $(function(){
+        $("div.foot,div.tips").hide();
+        loadListData();
+        $(document).bind("scroll",function(){
+            var scrollTop = $(document).scrollTop();
+            var height = $(document).height()-$(window).height();
+            if((scrollTop >= (height-30))&&(!isLoadingData)){
+                if(hasNextPage){
+                    showLoadingTips();
+                    loadListData();
+
+                }else{
+                    $("div.tips").show();
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

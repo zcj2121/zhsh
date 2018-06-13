@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>黑龙江方正县智慧生活免费WLAN</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.container {
+            font-size: 0;
+        }
+        img {
+            width: 100%;
+        }
+        div.wifi {
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 50%;
+        }
+        div.erweima {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto;
+        }
+        button.network {
+            display: block;
+            width: 140px;
+            height: 20px;
+            font-size: 12px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 20px;
+            border: 1px solid #ffffff;
+            border-radius: 3px;
+            margin: 15px auto;
+        }
+        div.read {
+            width: 140px;
+            margin: 0 auto;
+            font-size: 10px;
+            line-height: 12px;
+            color: #000000;
+        }
+        div.read input {
+            height: 12px;
+            margin-right: 5px;
+        }
+        div.read a {
+            font-size: 10px;
+            color: #ffffff;
+            line-height: 12px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Images/we/login_back.png">
+        <div class="wifi">
+            <div class="erweima">
+                <img src="Images/we/erweima.png" alt="二维码">
+            </div>
+            <button class="network" type="button">关注公众号并立即连网</button>
+            <div class="read">
+                <input class="check" type="checkbox" checked="checked">已阅读<a href="we_declaration_wx.html">免责声明</a>
+            </div>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("button.network").bind("click",function(){
+                $("input.check").each(function(){
+                    if(this.checked){
+                        window.location.href = "index.html";
+                    }else{
+                        alert("请阅读免责声明!");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

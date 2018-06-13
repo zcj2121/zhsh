@@ -1,0 +1,200 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>地域文化</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.container{
+            padding-bottom: 53px;
+        }
+        div.container ul {
+            width: 100%;
+        }
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        div.container ul li {
+            border-bottom: 1px solid #bfbfbf;
+            padding: 10px 19px;
+        }
+        div.container ul li span.left {
+            width: 100px;
+            height: 75px;
+            overflow: hidden;
+            float: left;
+        }
+        div.container ul li span.left img {
+            width: 100%;
+            height: auto;
+        }
+        div.container ul li span.right {
+            margin-left: 110px;
+            display: block;
+            height: 75px;
+            overflow: hidden;
+        }
+        ul li span.right h2 {
+            font-size: 14px;
+            font-weight: normal;
+            color: #000000;
+            height: 50px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        ul li span.right span.below {
+            display: table;
+            width: 100%;
+            margin: 10px 0;
+        }
+        span.below p {
+            display: table-cell;
+            width: 50%;
+            font-size: 11px;
+            color: #000000;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        span.below p.author {
+            text-align: left;
+        }
+        span.below p.time {
+            text-align: right;
+        }
+
+        div.footer {
+            width: 100%;
+            height: 53px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+        div.footer ul {
+            display: table;
+            width: 100%;
+        }
+        div.footer ul li {
+            display: block;
+            border-bottom: none;
+            padding: 0px 0px;
+        }
+        div.footer ul a {
+            font-size: 10px;
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+        div.footer ul a.active {
+            color: #000000;
+        }
+        div.footer ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 25px;
+            background-size: 25px 25px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 5px 0;
+        }
+        div.footer ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.footer ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.footer ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+        div.footer ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+        div.footer ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+        div.footer ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="head" >
+            <span style="float: left;line-height: 45px;color:#f18530;">地域文化</span>
+            <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+        </div>-->
+        <ul data-list></ul>
+        <div class="foot list" style="display: none;">
+            正在努力加载...
+        </div>
+        <div class="tips list" style="display: none;">
+            亲,已经到底喽~
+        </div>
+        <!--<div class="footer">
+        <ul>
+            <a href="index.html"><li class="index active">首页</li></a>
+            <a href="we_search_wx.html"><li class="search">查询</li></a>
+            <a href="we_personal_wx.html"><li class="personal">我的</li></a>
+        </ul>
+    </div>-->
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        var pageSize = 15;  //每页记录数
+        var pageIndex = 1;// 当前页数
+        var hasNextPage = true;  //有无下一页
+        var isLoadingData = false;  //是否加载中
+        $.ajax({
+            url: cfg.host + 'PortalWeb/GetContentList',
+            type: 'post',
+            data: {
+                PageIndex: pageIndex,
+                PageSize: pageSize,
+                KindId: 18,
+                Type: 2
+            },
+            success:function(data) {
+                hideLoadingTips();
+                var currentDataLength = data.Data.length;
+                if(data.PageSize!=undefined){
+                    pageSize = data.PageSize;
+                }
+                
+                pageIndex = pageIndex + 1;
+                for(var i in data.Data){
+                    var da = data.Data[i];
+                    var sverimg;
+                    if(data.Data !=null){
+                        if(da.HeadImgUrl){
+                            sverimg =da.HeadImgUrl
+                        }else{
+                            sverimg = "Images/we/activity_xuanchuan.jpg";
+                        };
+                        $("ul[data-list]").append("<li><a href='we_detail_activity_wx.html?id="+da.Id+"'>" +
+                            "<span class='left'><img src='"+sverimg+"' alt='图片'></span>" +
+                            "<span class='right'><h2>"+da.Title+"</h2><span class='below'>" +
+                            "<p class='author'></p><p class='time'>"+da.PushDay.substr(0,10)+"</p>" +
+                            "</span></span></a></li>");
+                    };
+                    
+                    
+                };
+                if(currentDataLength < pageSize){//如果本次传回来的数据总长度小于pageSize,则不再执行下次请求
+                    hasNextPage = false;
+                }
+            },
+            error : function() {
+                hideLoadingTips();
+                alert("加载失败,请重试!")
+            }
+        });
+
+    </script>
+</body>
+</html>

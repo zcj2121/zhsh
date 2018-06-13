@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全民健康</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        a:hover{
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+        a:active{
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        }
+        a{
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        .list a {
+            display: block;
+            font-size: 16px;
+            color: #333;
+            line-height: 20px;
+            position: relative;
+            padding: 10px 0;
+            border-bottom: 1px solid #dfdfdf;
+        }
+        .time {
+            display: inline-block;
+            vertical-align: middle;
+            padding-left: 5px;
+            width: 85%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .time:before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 5px;
+            height: 5px;
+            background-color: #5f5f5f;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+        .time:after {
+            content: '';
+            width: 6px;
+            height: 9px;
+            background: url("Images/we/jiantou_right.png") no-repeat center /6px 9px;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        .cerror{
+            text-align: center;
+            padding-top:30px;
+            color:#666;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <!--<div class="cerror">暂无数据！</div>-->
+        <!--<li>
+            <a href="new-healthDetail.html">
+                <span class="time">2016-04-06 2016-04-06 2016-04-06 2016-04-06 2016-04-06 2016-04-06</span>
+            </a>
+        </li>
+        <li>
+            <a href="new-healthDetail.html">
+                <span class="time">2016-04-06</span>
+            </a>
+        </li>
+        <li>
+            <a href="new-healthDetail.html">
+                <span class="time">2016-04-06</span>
+            </a>
+        </li>
+        <li>
+            <a href="new-healthDetail.html">
+                <span class="time">2016-04-06</span>
+            </a>
+        </li>-->
+    </ul>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script>
+        $(function(){
+            function GetQueryString(name){
+                var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if(r!=null)return  unescape(r[2]); return null;
+            };
+            var bh = GetQueryString('bh');
+            $.ajax({
+                url: 'http://zhsh.hrbfz.gov.cn:8001/home/GetList',
+                type: 'get',
+                data:{
+                    bh: bh
+                },
+                success: function (data) {
+                    if(data.data){
+                        for(var i=0;i<data.data.length;i++){
+                            $(".list").append(
+                                '<li>'+
+                                    '<a href="new-healthDetail.html?bh=' + data.data[i].BH + '&time=' + data.data[i].TJRQ + '">' +
+                                        '<span class="time">'+data.data[i].TJRQ+' 体检表</span>'+
+                                    '</a>'+
+                                '</li>'
+                            );
+                        };
+                    }else{
+                        $(".list").append('<div class="cerror">暂无数据！</div>');
+                    };
+                    if (data.data.length == 0) {
+                        $(".list").append('<div class="cerror">暂无数据！</div>');
+                    }
+                },
+                error: function(){
+                    $(".list").append('<div class="cerror">数据加载失败！</div>');
+                }
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+    </div>
+    <div class="panel-body">
+        <form name="addDicMainForm" class="form-horizontal" ng-submit="subFunc()">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">名称<span style="color:red">*</span></label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{model.Name}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="kind" class="col-sm-2 control-label">图片</label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    <img ng-src="{{model.ImgUrl}}" style="width:300px;float:left;margin:5px;" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">是否有公众号</label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{item.IsHavWeChat|check:['有','无']}}
+                </div>
+            </div>
+            <div class="form-group" ng-if="divshowM">
+                <label for="title" class="col-sm-2 control-label">描述<span style="color:red">*</span></label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{model.Remark}}
+                </div>
+            </div>
+            <div class="form-group" ng-if="divshowU">
+                <label for="title" class="col-sm-2 control-label">链接<span style="color:red">*</span></label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{model.Url}}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-disabled="addDicMainForm.$invalid" ng-click="save()">保存</button>
+                    <a ng-click="back()" class="btn btn-default">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

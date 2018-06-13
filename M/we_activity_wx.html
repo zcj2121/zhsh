@@ -1,0 +1,242 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>文明方正</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.container {
+            overflow: hidden;
+        }
+        div.container ul {
+            width: 100%;
+        }
+
+        div.container ul li {
+            border-bottom: 1px solid #bfbfbf;
+            padding: 10px 19px;
+        }
+        div.container ul li span.left {
+            width: 100px;
+            height: 75px;
+            overflow: hidden;
+            float: left;
+        }
+        div.container ul li span.left img {
+            width: 100%;
+            height: auto;
+        }
+        div.container ul li span.right {
+            margin-left: 110px;
+            display: block;
+            height: 75px;
+            overflow: hidden;
+        }
+        ul li span.right h2 {
+            font-size: 14px;
+            font-weight: normal;
+            color: #000000;
+            height: 50px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        ul li span.right span.below {
+            display: table;
+            width: 100%;
+            margin: 10px 0;
+        }
+        span.below p {
+            display: table-cell;
+            width: 50%;
+            font-size: 11px;
+            color: #000000;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        span.below p.author {
+            text-align: left;
+        }
+        span.below p.time {
+            text-align: right;
+        }
+        div.foot {
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #d8d8d8;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 50px;
+            color: #000000;
+            text-align: center;
+        }
+        div.scroll {
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+        div.head div.scroll ol {
+            white-space: nowrap;
+        }
+        div.head a.right {
+            width: 45px;
+            position: absolute;
+            right: 10px;
+            top: 0;
+        }
+        div.container div.head {
+            padding: 0;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <div class="scroll">
+            <ol></ol>
+        </div>
+        <a class="right" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <div class="list">
+        <ul data-list></ul>
+    </div>
+    <div class="foot list" style="display: none;">
+        正在努力加载中...
+    </div>
+    <div class="tips list" style="display: none;">
+        亲,已经到底喽~
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    var pageSize = 8;  //每页记录数
+    var pageIndex = 1;// 当前页数
+    var hasNextPage = true;  //有无下一页
+    var isLoadingData = false;  //是否加载中
+    var currentSelectType = 6;  //当前选择类型
+    //var isShowBottomTips = false; //是否显示已到底部提示
+    function loadImages(pic,id) {
+        var imgUrl = cfg.imgUrl;
+        var image = "Images/we/activity_de.png";
+        if(pic==null) {
+            if(id == 6){
+                image = "Images/we/activity_huodong.jpg";
+            }else if(id == 7){
+                image = "Images/we/activity_xuanchuan.jpg";
+            }else if(id == 8){
+                image = "Images/we/activity_de.png";
+            }
+        }else{
+            image = imgUrl+pic;
+        }
+        return image;
+    }
+    function loadListData(isAppend){
+
+        var ulType = $("ul[data-list]");
+        if(isAppend){
+            pageIndex = pageIndex + 1;
+        }else{
+            ulType.empty();
+            pageIndex = 1;
+        }
+        $.ajax({
+            url: cfg.host + 'PortalWeb/GetContentList',
+            type: 'post',
+            data: {
+                PageIndex: pageIndex,
+                PageSize: pageSize,
+                KindId: currentSelectType,
+                Type: 2
+            },
+            success:function(data) {
+                hideLoadingTips();
+                var currentDataLength = data.Data.length;
+                if(data.PageSize!=undefined){
+                    pageSize = data.PageSize;
+                }
+                for(var i in data.Data){
+                    var da = data.Data[i];
+                    ulType.append("<li><a href='we_detail_activity_wx.html?id="+da.Id+"'>" +
+                            "<span class='left'><img src='"+loadImages(da.HeadImgUrl,da.KindId)+"' alt='图片'></span>" +
+                            "<span class='right'><h2>"+da.Title+"</h2><span class='below'>" +
+                            "<p class='author'></p><p class='time'>"+da.PushDay.substr(0,10)+"</p>" +
+                            "</span></span></a></li>");
+                }
+                //                    if(!isAppend && (currentDataLength<pageSize)){
+                //                        isShowBottomTips = false;
+                //                    }else{
+                //                        isShowBottomTips = true;
+                //                    }
+                if(currentDataLength < pageSize){//如果本次传回来的数据总长度小于pageSize,则不再执行下次请求
+                    hasNextPage = false;
+                }else{
+                    hasNextPage = true;
+                }
+            },
+            error : function() {
+                hideLoadingTips();
+                alert("加载失败,请重试!")
+            }
+        });
+    }
+    $(function(){
+        var windowWidth = $(window).width();
+        var outWidth = $("div.head a.out").width();
+        var rightWidth = $("div.head a.right").width();
+        var scrollWidth = Number(windowWidth - (outWidth + rightWidth) - 20);
+        $("div.head div.scroll").css("width",scrollWidth);
+        $(window).resize(function(){
+            var windowWidth = $(window).width();
+            var outWidth = $("div.head a.out").width();
+            var rightWidth = $("div.head a.right").width();
+            var scrollWidth = Number(windowWidth - (outWidth + rightWidth) - 20);
+            $("div.head div.scroll").css("width",scrollWidth);
+        });
+
+        $("div.foot,div.tips").hide();
+        loadListData(false);
+        $.ajax({
+            url: cfg.host + 'dic/getsub',
+            type: 'get',
+            data: {
+                code: 'Activity'
+            },
+            success: function(data){
+                for(i in data){
+                    var da = data[i];
+                    $("div.head ol").append("<li data-value='"+i+"'><a>"+da.Name+"</a></li>");
+                }
+            }
+        });
+        $("div.head ol").delegate("li","click",function(){
+            $("div.foot,div.tips").hide();
+            var self = $(this);
+            var valueOl = self.attr("data-value");
+            var typeList = $("div.list ul[data-type='"+valueOl+"']");
+            typeList.removeClass("nodis").siblings("div.list ul").addClass("nodis");
+            currentSelectType = Number(valueOl) + 6;
+            loadListData(false);
+        });
+        $(document).bind("scroll",function(){
+            var scrollTop = $(document).scrollTop();
+            var height = $(document).height()-$(window).height();
+            if((scrollTop >= (height-30))&&(!isLoadingData)){
+                if(hasNextPage){
+                    showLoadingTips();
+                    loadListData(true);
+                }else{
+                    $("div.tips").show();
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

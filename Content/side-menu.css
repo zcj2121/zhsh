@@ -1,0 +1,50 @@
+﻿.menu {
+    margin-top: 85px;
+    position: fixed;
+    height: 100%;
+    width: 190px;
+    overflow: hidden;
+}
+
+.content {
+    margin-top: 100px;
+    position: absolute;
+    left: 190px;
+    right: 0;
+    overflow: hidden;
+    z-index: -2;
+    margin-bottom:45px;
+}
+
+.side-nav {
+    position: relative;
+    display: block;
+    width: 207px;
+    float: left;
+    background-color: #f2f2f2;
+    padding-top: 0;
+    border-right: 1px solid #ccc;
+    height:100%;
+    overflow-y:scroll
+}
+
+.side-nav:before {
+    content: "";
+    display: block;
+    width: 190px;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    background-color: #f2f2f2;
+}
+
+.nav-child {
+    padding-left: 20px;
+}
+ul#side-menu {
+    padding-bottom: 100px;
+}
+
+ul#side-menu li a.active {
+    background-color: #BFBFBF;
+}

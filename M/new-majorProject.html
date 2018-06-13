@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>重点项目</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <link href="Content/bootstrap.css" rel="stylesheet">
+    <link href="Content/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        /*字体*/
+
+        body {
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+        }
+
+        body {
+            font-size: 1.6rem;
+            width: 100%;
+            height: 100%;
+            background: #f3f3f3;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+
+        div.wap {
+            width: 92%;
+            height: 92%;
+            margin: 4%;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:active {
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        .wap ul li {
+            font-size: 1.4rem;
+            display: block;
+            width: 32.66666%;
+            float: left;
+            text-align: center;
+            margin-top: 1%;
+            background: #ffffff;
+            line-height: 3rem;
+        }
+
+        .wap .build-list ul {
+            border-left: 2px solid #59bae1;
+            overflow: hidden;
+            margin: 2%;
+        }
+        .wap .build-list ul a{
+            display: block;
+        }
+        .wap .build-list ul li:nth-child(3n+2) {
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+
+        .wap .build-list ul li:nth-child(1),
+        .build-list ul li:nth-child(2),
+        .build-list ul li:nth-child(3) {
+            margin-top: 0px;
+        }
+
+        .wap .build-list img {
+            width: 20px;
+            height: 20px;
+            vertical-align: sub;
+        }
+
+        .wap .build-list span {
+            margin-left: 4px;
+            color: #75b9de;
+        }
+
+        .wap .build-list ul.list-two {
+            border-left: 2px solid #96c873;
+            overflow: hidden;
+            margin: 2%;
+        }
+
+        .wap .build-list ul.list-three {
+            border-left: 2px solid #f57363;
+            overflow: hidden;
+            margin: 2%;
+        }
+
+        .wap .build-list span.span-com {
+            color: #98c57a;
+        }
+
+        .wap .build-list span.span-sec {
+            color: #f57363;
+        }
+
+        .wap .list-push {
+            overflow: hidden;
+            width: 100%;
+            padding: 2%;
+        }
+
+        .wap .list-push .file-preview {
+            background: #fff;
+        }
+
+        .wap .list-push .bt-next {
+            width: 100%;
+            height: 36px;
+            padding: 6px 0;
+            margin-top: 4%;
+            background: #f18530;
+            color: #fff;
+            font-size: 1.6rem;
+            display: inline-block;
+            margin-bottom: 4%;
+            border: 1px solid #f18530;
+            border-radius: 4px;
+            line-height: 1.42857143;
+            text-align: center;
+        }
+
+        .wap .list-push span.span-title {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .wap div.head {
+            width: 100%;
+            height: 44px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            text-align: right;
+            border-bottom: 1px solid #f18530 !important;
+            overflow: hidden;
+            font-size: 1.6rem;
+            background: #fff;
+        }
+
+        .wap .color-f18530 {
+            color: #f18530;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <!--<div class="head" >
+        <a class="out" href="index.html" style="text-align: right;float: right;line-height: 44px;"><span class="right">首页</span></a>
+    </div>-->
+    <div class="wap">
+
+        <!--<div class="build-list">
+            <div>
+                <img src="Images/newwe/build1.png" alt=""><span>城市管理</span>
+            </div>
+            <ul class="list-one build-list-ul" id="type1">
+                <li>
+                    <input type="radio" style="display:none;" id="radio1" name="radio"><label id="" for="radio1">设施破坏</label>
+                </li>
+            </ul>
+        </div>-->
+       
+    </div>
+  
+ 
+
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/fileinput.js" type="text/javascript"></script>
+    <script src="lgs/zh.js"></script>
+    <script src="lgs/bootstrap.js" type="text/javascript"></script>
+    <script src="lgs/we_common.js"></script>
+    <script>
+    $(function(){
+        $.ajax({
+            url: cfg.host + 'ProjectMonitor/query',
+            type: 'post',
+            data:{
+                Index:1,
+                Size:1000,
+                Name:null
+            },
+            success: function (data) {
+                if(data){
+                    if(data.Data.length!=0){
+                        var da =  data.Data;
+                        for(var i=0;i<da.length;i++){
+                            $(".wap").append(
+                                '<div class="build-list">'+
+                                    '<div>'+
+                                        '<img src="Images/newwe/build1.png" alt=""><span>'+da[i].Name+'</span>'+
+                                    '</div>'+
+                                    '<ul class="list-one build-list-ul" id="id'+da[i].Id+'"></ul>'+
+                                '</div>'
+                            );
+                            if(da[i].MonitorInfo){
+                                for(var j =0;j<da[i].MonitorInfo.length;j++){
+                                    $("#id"+da[i].Id).append(
+                                        '<li>'+
+                                            '<a href="new-majorProject-detail.html?id='+da[i].MonitorInfo[j].Url+'">'+
+                                            '<span type="radio" style="display:none;" id="radio1" name="radio"></span><label id="" for="radio1">'+da[i].MonitorInfo[j].Name+'</label>'+
+                                            '</a>'+
+                                        '</li>'
+                                    );
+                                };
+                            }else{
+                                $("#id"+da[i].Id).append(
+                                    '<div style="text-align:center;color:#555;">暂无数据！</div>'
+                                );
+                            };      
+                        };
+                        $(".top_line").css("display","block");
+                    }else{
+                        $(".wap").html('<div style="text-align:center;color:#555;">暂无数据！</div>');
+                    };
+                };
+                
+            }
+        });
+    });
+
+    </script>
+</body>
+
+</html>

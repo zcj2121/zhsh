@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>黑龙江方正县智慧生活微门户</title>
+    <style type="text/css">
+        /*字体*/
+
+        body {
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-size: 1.5rem;
+            width: 100%;
+            height: 100%;
+            background-image: url("Images/index-bg.png");
+            background-size: 100% 100%;
+        }
+
+        div.container {
+            width: 100%;
+            height: 100%;
+            padding-bottom: 53px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .clearfix:after {
+            display: block;
+            overflow: hidden;
+            clear: both;
+            height: 0;
+            visibility: hidden;
+            content: ".";
+        }
+
+        .tabCon {
+            width: 100%;
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+        }
+
+        .tablist {
+            float: left;
+            display: inline;
+            width: 30.3%;
+            margin: 0 1.5%;
+            overflow: hidden;
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 6px;
+            background-color:rgba(255,255,255,.5);
+            border-radius: 1.5rem;
+        }
+
+        .tablist .icon {
+            width: 60%;
+            margin: 0 20%;
+            overflow: hidden;
+            margin-top: 5%;
+        }
+
+        .tablist .icon img {
+            width: 100%;
+            display: block;
+        }
+
+        .tablist p {
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
+        @media (min-width: 360px) {
+            .tablist {
+                font-size: 16px;
+            }
+        }
+
+        div.foot {
+            font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+
+        div.foot ul li {
+            display: block;
+        }
+
+        div.foot ul a {
+
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+
+        div.foot ul a.active {
+            color: #000000;
+        }
+
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="tabCon clearfix">
+            <div class="clearfix">
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/news.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">新闻时务</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/tongzhi.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">通知预警</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/fangzheng.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">文明方正</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/zhengwu.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">政务矩阵</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/gonjian.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">全民共建</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/gong.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">供需对接</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/peixun.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">技能培训</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/zhaoping.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">人员招聘</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/bianmin.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">便民链接</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/fenxi.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">数据分析</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/xiangmu.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">重点项目</a></p>
+                </div>
+            </div>
+   
+        </div>
+    </div>
+    <div class="foot">
+        <ul>
+            <a href="index.html">
+                <li class="index active">首页</li>
+            </a>
+            <a href="we_search_wx.html">
+                <li class="search">查询</li>
+            </a>
+            <a href="we_personal_wx.html">
+                <li class="personal">我的</li>
+            </a>
+        </ul>
+    </div>
+</body>
+
+</html>

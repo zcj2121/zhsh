@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>用工培训</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        html{
+            font-size: 62.5%;
+        }
+        body{
+            font-size: 1.5rem;
+        }
+        body,div.container {
+            background-color: #fff;
+        }
+        div.container ul.outside {
+            width: 100%;
+            font-size: 0;
+            margin-top: 10px;
+        }
+        div.container ul.outside li {
+            display: inline-block;
+            width: 50%;
+            height: 50px;
+            vertical-align: top;
+            box-sizing: border-box;
+            margin: 15px 0;
+        }
+        ul.outside li a {
+            display: block;
+            font-size: 16px;
+            line-height: 50px;
+            color: #333;
+            text-align: center;
+            border-radius: 5px;
+            white-space: nowrap;
+            width: 70%;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+        }
+        ul.outside li a:hover{
+            background-color: #f18530;
+            opacity: 1;
+            border: none;
+            color: #fff;
+        }
+        div.box span.title {
+            display: block;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+            border-left: 4px solid #20b1ff;
+            margin: 20px 0 10px 20px;
+            padding-left: 10px;
+        }
+        div.foot {
+            font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+        div.foot ul li {
+            display: block;
+        }
+        div.foot ul a {
+
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+        div.foot ul a.active {
+            color: #000000;
+        }
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head" >
+        <span style="float: left;line-height: 45px;color:#f18530;">用工培训</span>
+        <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+    </div>-->
+    <div class="beaer">
+        <div class="box">
+            <span class="title">热门培训分类</span>
+            <ul class="outside"></ul>
+        </div>
+    </div>
+</div>
+<!--<div class="foot">
+    <ul>
+        <a href="index.html"><li class="index active">首页</li></a>
+        <a href="we_search_wx.html"><li class="search">查询</li></a>
+        <a href="we_personal_wx.html"><li class="personal">我的</li></a>
+    </ul>
+</div>-->
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var cceheight = $('.container').height()-45;
+        $('.beaer').css("height", cceheight);
+        $.ajax({
+            url: cfg.host +'dic/getsub',
+            type: 'get',
+            data: {
+                code: 'Trains'
+            },
+            success: function (data) {
+                $("ul.outside").empty();
+                for(var i in data) {
+                    $("ul.outside").append("<li><a href='we_list_train.html?id="+data[i].Id+"'>"+data[i].Name+"</a></li>");
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+    </div>
+    <div class="panel-body">
+        <form name="addDicMainForm" class="form-horizontal" ng-submit="subFunc()">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">标题</label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{model.title}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">事件描述</label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{model.content}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">地址</label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{model.address}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">联系电话</label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    {{model.phone}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="kind" class="col-sm-2 control-label">图片</label>
+                <div class="col-sm-5" style="margin-top:5px;" ng-show="model.path">
+                    <img ng-src="{{'http://cg.zhfz.org.cn/'+'party/upload/'+pic}}" style="width:300px;float:left;margin:5px;" />
+                </div>
+                <div class="col-sm-5" ng-show="model.path==null||model.path==''" style="margin-top:5px;">
+                    无
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a ng-click="back()" class="btn btn-default">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

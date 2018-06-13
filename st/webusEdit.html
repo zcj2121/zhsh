@@ -1,0 +1,64 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+    </div>
+    <div class="panel-body">
+        <form name="addDicMainForm" class="form-horizontal" ng-submit="subFunc()">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">线路名称<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.Name" id="Name" placeholder="请输入线路名称" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">描述<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.Remark" placeholder="请输入描述" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">公交类型<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="busType" required>
+                        <option value="">请选择</option>
+                        <option value="1">城内公交</option>
+                        <option value="0">城乡公交</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">首车时间<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <select class="form-control" style="width:100px !important;float:left;" id="firhour" ng-model="firhour" ng-options="hour for hour in hours track by hour">
+                        <option value="">请选择</option>
+                    </select>
+                    <span style="float: left;display: block; line-height: 32px;padding:0 6px;">时</span>
+                    <select class="form-control" style="width:100px !important;float:left;" id="firmin" ng-model="firmin" ng-options="min for min in mins track by min">
+                        <option value="">请选择</option>
+                    </select>
+                    <span style="float: left;display: block; line-height: 32px;padding:0 6px;">分</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">末车时间<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <select class="form-control" style="width:100px !important;float:left;" id="befhour" ng-model="befhour" ng-options="hour for hour in hours track by hour">
+                        <option value="">请选择</option>
+                    </select>
+                    <span style="float: left;display: block; line-height: 32px;padding:0 6px;">时</span>
+                    <select class="form-control" style="width:100px !important;float:left;" id="befmin" ng-model="befmin" ng-options="min for min in mins track by min">
+                        <option value="">请选择</option>
+                    </select>
+                    <span style="float: left;display: block; line-height: 32px;padding:0 6px;">分</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-disabled="addDicMainForm.$invalid" ng-click="save()">保存</button>
+                    <a ng-click="back()" class="btn btn-default">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

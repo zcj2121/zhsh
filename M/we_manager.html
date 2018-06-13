@@ -1,0 +1,274 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>全民城管</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <link href="Content/bootstrap.css" rel="stylesheet">
+    <link href="Content/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+    <style>
+        div.form {
+            padding: 10px 20px;
+        }
+        div.form-group {
+            padding: 8px 5px;
+            margin: 10px 0;
+            font-size: 0;
+            background-color: #ededed;
+            border-top: 1px solid #cccccc;
+            border-radius: 3px 3px 0 0;
+        }
+        div.form-group span.name {
+            display: inline-block;
+            vertical-align: top;
+            width: 20%;
+            white-space: nowrap;
+        }
+        div.form-group span {
+            display: block;
+            font-size: 14px;
+            color: #333333;
+        }
+        div.form-group input {
+            display: inline-block;
+            vertical-align: top;
+            background-color: #ededed;
+            border: none;
+            outline: none;
+            width: 80%;
+            color: #666666;
+            font-size: 14px;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+        div.form-group textarea {
+            width: 100%;
+            resize: none;
+            border: none;
+            outline: none;
+            background-color: #ededed;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666666;
+            line-height: 18px;
+            word-break: break-all;
+        }
+        div.form-group div.onload {
+            margin-top: 10px;
+        }
+        div.map {
+            height: 270px;
+            font-size: 0;
+        }
+        div.map input {
+            display: inline-block;
+            vertical-align: top;
+            color: #333333;
+            font-size: 14px;
+            border: 1px solid #333333;
+            border-radius: 3px;
+            box-sizing: border-box;
+            margin: 10px 0;
+            padding: 2px 5px;
+        }
+        div.map input.map-inp {
+            width: 50%;
+        }
+        div.map input.map-btn {
+            width: 100px;
+            margin-left: 30px;
+            white-space: nowrap;
+        }
+        div.onload button {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 14px;
+            color: #333333;
+            padding: 3px 6px;
+            border: 1px solid #333333;
+            border-radius: 3px;
+        }
+        button.sub {
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+            text-align: center;
+            border: none;
+            background-color: #00aaee;
+            border-radius: 3px;
+            font-size: 16px;
+            color: #ffffff;
+            padding: 5px 10px;
+        }
+        .anchorBL {
+            display:none;
+        }
+        .BMap_pop {
+            display:none;
+        }
+        .BMap_shadow img {
+            display: none
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <a class="out" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <div class="form">
+        <div class="form-group">
+            <span class="name">标<span style="display:inline-block;padding-left: 2em;"></span>题:</span>
+            <input type="text" id="title" placeholder="请输入标题">
+        </div>
+        <div class="form-group">
+            <span class="name">联系电话:</span>
+            <input type="text" id="phone" placeholder="请输入联系电话">
+        </div>
+        <div class="form-group">
+            <span>问题描述:</span>
+            <textarea id="remark" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <span>地址描述:</span>
+            <textarea id="addremark" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <span>地图定位:</span>
+            <div class="map">
+                <input class="map-inp" id="where" name="where" type="text" placeholder="请输入地址关键字" style="">
+                <input class="map-btn" type="button" value="地图上找" onClick="sear(document.getElementById('where').value);" />
+                <div style="width:100%;height:200px;" id="conta"></div>
+                <input class="map-inp" id="lonlat" name="where" type="text" disabled style="width: 100%;">
+                <input type="hidden" id="xValue">
+                <input type="hidden" id="yValue">
+            </div>
+        </div>
+        <!--<div class="form-group">-->
+        <!--<span>上传图片:</span>-->
+        <!--<div class="onload">-->
+        <!--<input class="img" type="file">-->
+        <!--<button type="button">上传</button>-->
+        <!--</div>-->
+        <!--</div>-->
+        <form enctype="multipart/form-data">
+            <div class="form-group">
+                <span>上传图片:</span>
+                <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false">
+            </div>
+        </form>
+        <button class="sub" type="submit">提交</button>
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/fileinput.js" type="text/javascript"></script>
+<script src="lgs/zh.js"></script>
+<script src="lgs/bootstrap.js" type="text/javascript"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $.get(cfg.host+'WeiXin/GetUserInfo',function (data) {
+        if(data == null){
+            location.href  = "we_personal_wx.html";
+        }
+    });
+    var map = new BMap.Map("conta");
+    map.setDefaultCursor("crosshair");
+    map.enableScrollWheelZoom();
+    var point = new BMap.Point(128.84219, 45.84401);
+    map.centerAndZoom(point, 13);
+    var gc = new BMap.Geocoder();
+    map.addControl(new BMap.NavigationControl());
+    map.addControl(new BMap.OverviewMapControl());
+    map.addControl(new BMap.ScaleControl());
+    map.addControl(new BMap.CopyrightControl());
+    var marker = new BMap.Marker(point);
+    map.addOverlay(marker);
+    marker.enableDragging();
+    marker.addEventListener("dragend",function(e){
+        gc.getLocation(e.point, function(rs){
+            showLocationInfo(e.point, rs);
+        });
+    });
+    function showLocationInfo(pt, rs){
+        var addComp = rs.addressComponents;
+        var addr = "位置：" + addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber + "<br/>";
+        addr += "纬度: " + pt.lat + ", " + "经度：" + pt.lng;
+        document.getElementById("lonlat").value ="位置：" + addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + addComp.streetNumber +"," +"经度：" + (pt.lng-0.0148) + ", " + "纬度：" + (pt.lat-0.0077);
+    }
+    map.addEventListener("click", function(e){//地图单击事件
+        gc.getLocation(e.point, function(rs){
+            showLocationInfo(e.point, rs);
+        });
+        document.getElementById("xValue").value = e.point.lng-0.0148;
+        document.getElementById("yValue").value = e.point.lat-0.0077;
+    });
+
+    var traffic = new BMap.TrafficLayer();
+    // 将图层添加到地图上
+    map.addTileLayer(traffic);
+    function iploac(result){//根据IP设置地图中心
+        var cityName = result.name;
+        //map.setCenter(cityName);
+    }
+    var myCity = new BMap.LocalCity();
+    myCity.get(iploac);
+    function sear(result){//地图搜索
+        var local = new BMap.LocalSearch(map, {
+            renderOptions:{map: map}
+        });
+        local.search(result);
+    }
+
+    $("#file-1").fileinput({
+        language: 'zh',
+        uploadUrl: '/life/ImgUpCompressHandler.ashx', // you must set a valid URL here else you will get an error
+        allowedFileExtensions : ['jpg', 'png','JPG'],
+        overwriteInitial: false,
+        maxFileSize: 0,
+        maxFilesNum: 10,
+        uploadAsync: false,
+        allowedFileTypes: ['image'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    var rst;
+    $("#file-1").on('filebatchuploadsuccess', function (evt, data) {
+        rst = data.response;
+    });
+    $("button.sub").bind("click",function () {
+        var postData = {};
+        postData.Title = $("#title").val();
+        postData.Phone = $("#phone").val();
+        postData.Content = $("#remark").val();
+        postData.Address = $("#addremark").val();
+        postData.Place = $("#lonlat").val();
+        postData.X_Value = $("#xValue").val();
+        postData.Y_Value = $("#yValue").val();
+        postData.FileIds = rst;
+        var dataMobile = /^1\d{10}$/;
+        var dataEmail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+        if($("#title").val() == "" && $("#phone").val() == ""){
+            alert("为了方便我们联系您,请输入联系电话及标题");
+            return false;
+        }else if(!dataMobile.test($("#phone").val())){
+            alert("请输入正确的11位手机号码!");
+            return false;
+        }
+        $.ajax({
+            url: cfg.host + 'citymanage/create',
+            type: 'post',
+            data: postData,
+            success: function () {
+                location.href = "we_wait_wx.html?id=1";
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" ng-click="back() " style="margin-top:-5px;">
+                返回
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form name="addNewsForm" class="form-horizontal" ng-submit="subFunc">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">视频标题</label>
+                <div class="col-sm-5" style="margin-top:6px;">
+                    {{model.Name}}
+                </div>
+            </div>
+            <div class="form-group" ng-show="model.FileInfoPath!=null">
+                <label class="col-sm-2 control-label">视频预览</label>
+                <div class="col-sm-5" style="margin-top:6px;">
+                    <video ng-src='{{model.FileInfoPath}}' controls='controls' style='width: 100%;'>您的浏览器由于版本过低,不支持该视频播放。</video>
+                </div>
+            </div>
+            <div class="form-group" ng-show="model.SrcHtml!=null">
+                <label class="col-sm-2 control-label">视频预览</label>
+                <div class="col-sm-5" style="margin-top:6px;" id="videoHtml">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">视频描述</label>
+                <div id="textContent" class="col-sm-5" style="margin-top:6px;">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

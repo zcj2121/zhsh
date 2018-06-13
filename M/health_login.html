@@ -1,0 +1,196 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全民健康-用户绑定</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        a:hover {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:active {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 400;
+            color: #555;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        form {
+            margin-top: 15px;
+        }
+
+        .form-group {
+            margin: 15px auto;
+            width: 80%;
+            overflow: hidden;
+            padding: 5px 0;
+        }
+
+            .form-group:not(:last-child) {
+                border-bottom: 1px solid #ccc;
+            }
+
+            .form-group span {
+                display: inline-block;
+                vertical-align: middle;
+                width: 20px;
+                height: 20px;
+            }
+
+            .form-group .icon_logo {
+                background: url("Images/health/icon_logo.png") no-repeat center /20px 20px;
+            }
+
+            .form-group .icon_idcard {
+                background: url("Images/health/icon_idcard.png") no-repeat center /20px 20px;
+            }
+
+            .form-group .icon_set {
+                background: url("Images/health/icon_set.png") no-repeat center /20px 20px;
+            }
+
+            .form-group input {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 14px;
+                line-height: 20px;
+                color: #333;
+                border: none;
+            }
+
+                .form-group input::-webkit-input-placeholder { /* WebKit browsers */
+                    color: #ccc;
+                }
+
+                .form-group input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                    color: #ccc;
+                }
+
+                .form-group input::-moz-placeholder { /* Mozilla Firefox 19+ */
+                    color: #ccc;
+                }
+
+                .form-group input:-ms-input-placeholder { /* Internet Explorer 10+ */
+                    color: #ccc;
+                }
+
+            .form-group .login_btn {
+                width: 100%;
+                background-color: #f18530;
+                font-size: 16px;
+                color: #fff;
+                line-height: 40px;
+                border-radius: 3px;
+                margin-top: 15px;
+            }
+
+            .form-group .icon_left {
+                float: left;
+            }
+
+            .form-group select {
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 14px;
+                line-height: 22px;
+                height: 22px;
+                color: #333;
+                border: none;
+                width: 92%;
+                float: left;
+            }
+
+        .error {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h4>用户绑定</h4>
+    <form action="">
+        <div class="form-group">
+            <span class="icon_logo"></span>
+            <input type="text" id="name" placeholder="姓名">
+        </div>
+        <div class="form-group">
+            <span class="icon_idcard"></span>
+            <input type="text" id="idCard" placeholder="身份证">
+        </div>
+        <div class="form-group">
+            <span class="icon_set icon_left"></span>
+            <select id="testSelect">
+                <option value="0">个人</option>
+                <option value="1">家人</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="button" class="login_btn">绑定</button>
+        </div>
+
+    </form>
+    <div class="error">
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script>
+        $(function () {
+            $(".login_btn").click(function () {
+                var type = $('#testSelect option:selected').val();
+                var idcard = $('#idCard').val();
+                var name = $('#name').val();
+                var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+                if (!name) {
+                    $(".error").html('<div style="color:red;font-size:14px;">请输入姓名！</div>');
+                    return false;
+                } else if (reg.test(idcard) === false) {
+                    $(".error").html('<div style="color:red;font-size:14px;">请输入正确的身份证号！</div>');
+                    return false;
+                };
+                $.ajax({
+                    url: cfg.host + 'NationalHealth/Add',
+                    type: 'post',
+                    data: {
+                        Type: type,
+                        IDCard: idcard,
+                        Name: name
+                    },
+                    success: function (data) {
+                        if(data=="ok"){
+                            $(".error").html('<div style="color:green;font-size:14px;">绑定成功，跳转中...</div>');
+                            window.setTimeout(function () {
+                                window.location.href = 'health_add.html';
+                            }, 1500);
+                        }else{
+                            $(".error").html(data);
+                        };
+                        
+                    },
+                    error: function () {
+                        $(".error").html('<div style="color:red;font-size:14px;">请求失败，请重试！</div>')
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

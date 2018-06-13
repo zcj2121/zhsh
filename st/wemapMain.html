@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" ng-click="queryFunc()" style="margin-top:-5px;display:none;">
+                <i class="glyphicon glyphicon-search"></i>
+                查询
+            </a>
+            <a class="btn btn-default btn-sm"  href="{{'#/wemapMainAdd/'}}{{MainId}}/{{MainName}}" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-plus"></i>
+                新增班次
+            </a>
+            <a class="btn btn-default btn-sm" ng-click="back()" style="margin-top:-5px;">
+                返回
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th class="text-center">排序</th>
+                <th>始发站</th>
+                <th>终点站</th>
+                <th>发车时间</th>
+                <th>车牌号</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td class="text-center">{{$index+1}}</td>
+                <td>{{item.Station}}</td>
+                <td>{{item.Terminus}}</td>
+                <td>{{item.Time}}</td>
+                <td>{{item.Number}}</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">		 
+                        <a class="btn btn-sm btn-default" href="{{'#/wemapMainEdit/'+item.Id}}">修改</a>
+                        <!--<a class="btn btn-sm btn-default bs-btn-alert" data-msg="确认{{item.IsDeleted|check:['启用','禁用']}}么?" data-url="{{cfg.host +'dic/DelMain/'+ item.Id}}">{{item.IsDeleted|check:['启用','禁用']}}</a>-->
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pager count="{{data.Count}}" index="{{query.index}}" action="go(index,size)"></pager>

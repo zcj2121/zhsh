@@ -1,0 +1,250 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>内容搜索</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        a:hover{
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+        a:active{
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        }
+        a{
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        *{
+            padding:0;
+            margin:0;
+        }
+        html{
+            font-size: 62.5%;
+            width:100%;
+            height:100%;
+        }
+        body{
+            font-size: 1.5rem;
+            width:100%;
+            height:100%;
+
+        }
+        div.container {
+            padding-bottom: 50px;
+            box-sizing: border-box;
+        }
+        div.container ul.searchbox {
+            width: 100%;
+        }
+        div.container ul.searchbox li {
+            border-top: 1px solid #bfbfbf;
+            padding: 0 19px;
+        }
+        div.container div.search {
+            padding: 10px 19px;
+            margin-top: 10px;
+            font-size: 0;
+            text-align: center;
+        }
+        div.container div.search input.inp {
+            display: inline-block;
+            vertical-align: top;
+            padding-left: 5px;
+            width: 70%;
+            min-width: 130px;
+            height: 40px;
+            font-size: 12px;
+            color: #000000;
+            box-sizing: border-box;
+            border: 1px solid #bfbfbf;
+            border-radius: 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        div.container div.search button {
+            width: 50px;
+            height: 40px;
+            background-color: #ffffff;
+            border: 1px solid #bfbfbf;
+            border-left: none;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 12px;
+            color: #000000;
+            box-sizing: border-box;
+        }
+        ul.searchbox li h2 {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 18px;
+            color: #000000;
+            margin: 18px 0;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+        ul.searchbox li div.below {
+            display: table;
+            width: 100%;
+            margin: 10px 0;
+        }
+        ul.searchbox li div.below p {
+            display: table-cell;
+            width: 50%;
+            font-size: 16px;
+            line-height: 18px;
+            color: #000000;
+            word-break: break-all;
+            word-wrap: break-word;
+            margin-bottom: 28px;
+        }
+        ul.searchbox li div.below p.type {
+            text-align: right;
+        }
+        div.footer {
+            font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+        div.footer ul {
+            display: table;
+            width: 100%;
+        }
+        div.footer ul li {
+            display: block;
+        }
+        div.footer ul a {
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+        div.footer ul a.active {
+            color: #000000;
+        }
+        div.footer ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+        div.footer ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.footer ul li.index.active:before {
+            background-image: url("Images/we/blue_index.png");
+        }
+        div.footer ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+        div.footer ul li.search.active:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+        div.footer ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+        div.footer ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="head">
+            <span style="float: left;line-height: 45px;color:#f18530;">查询</span>
+            <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+        </div>-->
+        <div class="search">
+            <input class="inp" type="text" id="searchInput" placeholder="请输入需要搜索的标题">
+            <button id="searchBtn" type="submit">查询</button>
+        </div>
+        <ul class="searchbox" data-list></ul>
+        <div class="footer">
+            <ul>
+                <a href="index.html"><li class="index">首页</li></a>
+                <a href="we_search_wx.html"><li class="search active" >查询</li></a>
+                <a href="new-user.html"><li class="personal">我的</li></a>
+            </ul>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        var pageSize = 15;  //每页记录数
+        var pageIndex = 1;// 当前页数
+        var hasNextPage = true;  //有无下一页
+        var isLoadingData = false;  //是否加载中
+        function transType(type,typeNum){
+            if(typeNum==0){
+                if (type == 0) {
+                    return 'news';
+                } else if (type == 1) {
+                    return 'inform';
+                } else if (type == 2) {
+                    return 'actmin';
+                }
+            }else{
+                if (type == 0) {
+                    return '新闻政务';
+                } else if (type == 1) {
+                    return '通知公告';
+                } else if (type == 2) {
+                    return '文明方正';
+                }
+            }
+        }
+        function loadListData(){
+            $.ajax({
+                url: cfg.host + 'PortalWeb/QueryContent',
+                type: 'get',
+                data: {
+                    title: $("#searchInput").val()
+                },
+                success:function(data) {
+                    $("ul[data-list]").empty();
+                    if(data.length!=0){
+                        for(var i in data){
+                            var da = data[i];
+                            $("ul[data-list]").append("<a href='we_detail_"+transType(da.Type,0)+"_wx.html?id="+da.Id+"'><li>" +
+                                    "<h2>"+da.Title+"</h2>" +
+                                    "<div class='below'>"+
+                                    "<p>"+da.PushDay.substr(0,10)+"</p>" +
+                                    "<p class='type'>"+transType(da.Type)+"</p>" +
+                                    "</div></li></a>");
+                        }
+                    }else{
+                        $("ul[data-list]").append("<li style='text-align: center;padding-top: 10px;'>对不起,没有您要查询的数据!</li>");
+                    }
+                },
+                error : function() {
+                    alert("加载失败,请重试!")
+                }
+            });
+        }
+        $(function(){
+            $("div.foot,div.tips").hide();
+            $("#searchBtn").bind("click",function(){
+                loadListData();
+            });
+        });
+    </script>
+</body>
+</html>

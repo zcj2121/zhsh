@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>需求公告</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        img {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        div.content {
+            padding: 0 19px;
+        }
+        div.content h1 {
+            margin: 16px 0 13px 0;
+            font-size: 18px;
+            color: #000000;
+        }
+        div.content span.row {
+            display: block;
+            font-size: 0;
+        }
+        div.content span.row p {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 11px;
+            color: #000000;
+        }
+        div.content span.row p.time {
+            margin: 10px 0 10px 10px;
+        }
+        div.content p.text {
+            margin-top: 20px;
+            font-size: 15px;
+            line-height: 20px;
+            text-indent: 2em;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <a class="out" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <div class="content"></div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var newid = window.location.search.split("=",2);
+        $.ajax({
+            url: cfg.host + 'DemandInfo/Get',
+            type: 'get',
+            data: {
+                Id: newid[1]
+            },
+            success:function(data) {
+                    $("div.content").append("<h1>"+data.Title+"</h1><span class='row'>" +
+                            "<p class='author'></p><p class='time'>"+data.CommitTime.substr(0,10)+"</p></span>" +
+                            "<p class='text'>"+data.Content+"</p>");
+            }
+        });
+    });
+</script>
+</body>
+</html>

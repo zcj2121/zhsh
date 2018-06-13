@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>用工培训</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+    html {
+            font-size: 62.5%;
+            width: 100%;
+            height:100%;
+        }
+
+        body {
+            font-size: 1.6rem;
+            width: 100%;
+            height: 100%;
+        }
+        a {
+            display: block;
+        }
+        div.container {
+            padding-bottom: 53px;
+        }
+        .container .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        div.box div.title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 20px;
+            padding: 10px 0;
+        }
+        div.box ul.video li {
+            padding: 0 10px;
+            list-style: disc inside;
+        }
+        div.box ul.video li:not(:first-child) {
+            margin: 10px 0;
+        }
+        div.box ul.video li a {
+            display: block;
+            padding: 0 20px;
+        }
+        div.box ul.video li a p {
+            margin: 10px 5px;
+            font-size: 14px;
+            line-height: 16px;
+            color: #333333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+         div.foot {
+           font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+        div.foot ul li {
+            display: block;
+        }
+        div.foot ul a {
+             color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+        div.foot ul a.active {
+            color: #000000;
+        }
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="head">
+            <a class="out" href="index.html"><span class="right">首页</span></a>
+        </div>-->
+        <div class="box">
+            <div class="title">相关视频</div>
+            <ul id="video" class="video"></ul>
+        </div>
+        <!--<div class="foot">
+            <ul>
+                <a href="index.html"><li class="index active">首页</li></a>
+                <a href="we_search_wx.html"><li class="search">查询</li></a>
+                <a href="we_personal_wx.html"><li class="personal">我的</li></a>
+            </ul>
+        </div>-->
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var newid = window.location.search.split("=",2);
+            $.ajax({
+                url: cfg.host + 'Video/GetDto',
+                type: 'get',
+                data: {
+                    id: newid[1]
+                },
+                success: function (data) {
+                    $("#video").empty();
+                    if(data.length>0){
+                        for(var i in data){
+                            $("#video").append("<li>" +
+                                    "<a href='we_detail_train.html?id="+data[i].Id+"'>" +
+                                    "<p>"+data[i].Name+"</p></a></li>");
+                        }
+                    }else{
+                        $("#video").append("<li style='margin-top:30px;text-align: center;list-style: none;'>暂无相关视频</li>");
+                    }
+
+                }
+            })
+        });
+    </script>
+</body>
+</html>

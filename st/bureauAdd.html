@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+    </div>
+    <div class="panel-body">
+        <form name="addNewsForm" class="form-horizontal" ng-submit="subFunc">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">标题<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.Title" id="title" placeholder="请输入标题" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 control-label">内容<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <div editor  ng-model="model.Content" required></div>
+                </div>
+            </div>
+            <div class="form-group pic-img">
+                <label class=" col-sm-2 control-label">封面上传</label>
+                <div class="col-sm-5">
+                    <input type="file" class="form-control file" ng-model="model.FileId" allow-file-exts="exts"  data-show-preview="true">
+                </div>
+            </div>
+            <div class="form-group pic-img">
+                <label for="kind" class="col-sm-2 control-label"><span style="color:red">*</span></label>
+                <div class="col-sm-5" style="color: red;margin-top: 5px;">
+                    请上传视频或输入正确的视频地址
+                </div>
+            </div>
+            <div class="form-group pic-img">
+                <label class=" col-sm-2 control-label">视频上传</label>
+                <div class="col-sm-5">
+                    <input type="file" class="form-control file" ng-model="model.VideoId" allow-file-exts="extler">
+                </div>
+            </div>
+            <div class="form-group pic-img">
+                <label class="col-sm-2 control-label">视频地址</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.VideoUrl" placeholder="请输入视频地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">排序<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" ng-model="model.Order" id="Code" placeholder="请输入排序" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-disabled="addNewsForm.$invalid" ng-click="save()">保存</button>
+                    <a ng-click="back() " class="btn btn-default">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

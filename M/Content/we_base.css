@@ -1,0 +1,215 @@
+div.container div.head {
+    width: 100%;
+    height: 45px;
+    padding: 0 25px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #bfbfbf;
+    text-align: right;
+}
+div.container div.head a.out {
+    display: inline-block;
+    white-space: nowrap;
+}
+div.container div.head ol {
+    display: table;
+    width: 100%;
+    list-style: none;
+}
+div.container div.head ol li {
+    list-style: none;
+    display: table-cell;
+    padding: 0 10px;
+    text-align: center;
+}
+div.container div.head ol li a {
+    font-size: 15px;
+    line-height: 45px;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+}
+div.container div.head span.left {
+    text-align: left;
+    display: block;
+    width: 11px;
+    height: 16px;
+    background: url("../Images/we/return.png") no-repeat center left /11px 16px;
+}
+div.container div.head span.right {
+    text-align: right;
+    display: block;
+    font-size: 16px;
+    line-height: 45px;
+    color: #000000;
+    font-weight: 500;;
+}
+button.more {
+    width: 100%;
+    height: 50px;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*z-index: 10;*/
+    background-color: #d8d8d8;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #000000;
+    text-align: center;
+}
+div.foot.list {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    background-color: #d8d8d8;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #000000;
+    text-align: center;
+}
+div.tips.list {
+    width: 100%;
+    height: 50px;
+    background-color: #d8d8d8;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #000000;
+    text-align: center;
+}
+/*字体*/
+body{
+    font-family: "微软雅黑","黑体", "heiti";
+    color: #000000;
+}
+/*字体*/
+
+/*去除默认样式*/
+html, body, input, button, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, textarea, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+html, body {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+html {
+    height: 100%;
+    overflow: auto;
+}
+
+body {
+    height: 100%;
+    background-color: #ffffff;
+    cursor: default;
+}
+
+button, a {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    outline:none;
+    drop_click_dash: expression(this.onFocus=this.blur());
+    -moz-outline-style: none; /* FF */
+}
+
+a:focus{
+    text-decoration: none;
+    outline:none;
+    cursor: pointer;
+    -moz-outline-style: none; /* FF */
+    outline: none;
+}
+
+a:link {
+    text-decoration: none;
+    outline:none;
+    drop_click_dash: expression(this.onFocus=this.blur());
+    -moz-outline-style: none; /* FF */
+}
+
+a:visited {
+    text-decoration: none;
+    outline:none;
+    drop_click_dash: expression(this.onFocus=this.blur());
+    -moz-outline-style: none; /* FF */
+}
+
+a:hover {
+    text-decoration: none;
+    outline:none;
+    drop_click_dash: expression(this.onFocus=this.blur());
+    -moz-outline-style: none; /* FF */
+}
+
+a:active {
+    text-decoration: none;
+    outline:none;
+    drop_click_dash: expression(this.onFocus=this.blur());
+    -moz-outline-style: none; /* FF */
+}
+
+button,
+a,
+input[type="button"],
+input[type="text"] {
+    tap-highlight-color: rgba(0,0,0,0);
+    -moz-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.tap-highlight:active {
+    background: none !important;
+    background-color: #f8f8f8 !important;
+}
+
+button:active,
+a:active,
+input[type="button"]:active {
+    opacity: 0.1;
+}
+
+li {
+    list-style: none;
+}
+
+.table-cell {
+    display: table-cell;
+    width: 100%;
+}
+
+.nodis {
+    display: none !important;
+}
+
+.novis {
+    visibility: hidden !important;
+}
+/*去除默认样式*/

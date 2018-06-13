@@ -1,0 +1,167 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>个人中心</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        div.container {
+            padding-bottom: 50px;
+            box-sizing: border-box;
+        }
+        div.logo {
+            text-align: center;
+            padding-top: 19px;
+            background: url("Images/we/per_back.png") no-repeat center;
+            background-size: cover;
+        }
+        div.logo img {
+            width: 69px;
+            height: 69px;
+            border: 1px solid #bfbfbf;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        div.logo p.logotext {
+            font-size: 10px;
+            color: #000000;
+            padding-bottom: 13px;
+        }
+        ul.nav {
+            width: 100%;
+            margin-top: 15px;
+        }
+        ul.nav li {
+            margin-left: 10px;
+            border-bottom: 1px solid #cccccc;
+        }
+        ul.nav li a {
+            font-size: 14px;
+            color: #333333;
+            display: block;
+            padding: 10px 0;
+            position: relative;
+        }
+        ul li a span {
+            display: block;
+            width: 6px;
+            height: 10px;
+            background: url("Images/we/jiantou_right.png") no-repeat center;
+            background-size: contain;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        div.foot {
+            width: 100%;
+            height: 53px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+        div.foot ul li {
+            display: block;
+        }
+        div.foot ul a {
+            font-size: 10px;
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+        div.foot ul a.active {
+            color: #000000;
+        }
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 25px;
+            background-size: 25px 25px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 5px 0;
+        }
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/blue_index.png");
+        }
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="head">
+            <span style="float: left;line-height: 45px;color:#f18530;">个人中心</span>
+            <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+        </div>-->
+        <div id="logo" class="logo">
+            <img src='Images/we/headLogo.png' /><p class='logotext'>123123</p>
+        </div>
+        <ul class="nav">
+            <li><a href="we_personal_news.html">新闻政务<span class="right"></span></a></li>
+            <li><a href="we_personal_activity.html">文明方正<span class="right"></span></a></li>
+            <li><a href="we_personal_manager.html">全民城管<span class="right"></span></a></li>
+            <li><a href="we_personal_view.html">意见反馈<span class="right"></span></a></li>
+        </ul>
+        <div class="foot">
+            <ul>
+                <a href="index.html"><li class="index">首页</li></a>
+                <a href="we_search_wx.html"><li class="search">查询</li></a>
+                <a href="we_personal_wx.html"><li class="personal active">我的</li></a>
+            </ul>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        // $(function () {
+        //     $.ajax({
+        //         url: cfg.host + 'WeiXin/GetUserInfo',
+        //         type: 'get',
+        //         success: function (data) {
+        //             var imgUrl = cfg.imgUrl;
+        //             if (data == null) {
+        //                 var url = cfg.host + "weixin/Login";
+        //                 $.get(url)
+        //                     .then(function(rst) {
+        //                         location.href = rst;
+        //                     });
+        //             }else{
+        //                 if(data.Headimgurl == null){
+        //                     $("#logo").append("<img src='Images/we/headLogo.png' /><p class='logotext'>"+data.NickName+"</p>");
+        //                 }else{
+        //                     $("#logo").append("<img src='"+data.Headimgurl+"' /><p class='logotext'>"+data.NickName+"</p>");
+        //                 }
+        //             }
+        //         }
+        //     });
+        // })
+    </script>
+</body>
+</html>

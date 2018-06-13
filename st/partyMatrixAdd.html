@@ -1,0 +1,51 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+    </div>
+    <div class="panel-body">
+        <form name="addDicMainForm" class="form-horizontal" ng-submit="subFunc()">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">名称<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.Name" id="Name" placeholder="请输入名称" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">图片<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="file" class="form-control file" ng-model="model.FileId" allow-file-exts="exts"  data-show-preview="true">
+                </div>
+            </div>
+            <div class="form-group pic-img">
+                <label for="kind" class="col-sm-2 control-label"><span style="color:red">*</span></label>
+                <div class="col-sm-5" style="color: red;margin-top: 5px;">
+                    建议上传图片不小于100*100，图片比例为1:1
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">是否有公众号</label>
+                <div class="col-sm-5" style="margin-top:5px;">
+                    <input type="checkbox" id="radioStation" name="radio" ng-model="model.IsHavWeChat" class="padd-lable-input" style="vertical-align: top;">
+                </div>
+            </div>
+            <div class="form-group" ng-if="divshowM">
+                <label for="title" class="col-sm-2 control-label">描述<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <textarea class="form-control" ng-model="model.Remark" placeholder="请输入描述" rows="5" required></textarea>
+                </div>
+            </div>
+            <div class="form-group" ng-if="divshowU">
+                <label for="title" class="col-sm-2 control-label">链接<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.Url" placeholder="请输入描述" data-show-preview="true" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-disabled="addDicMainForm.$invalid" ng-click="save()">保存</button>
+                    <a ng-click="back()" class="btn btn-default">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

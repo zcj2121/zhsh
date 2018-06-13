@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>新闻速递</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.container {
+            padding-bottom: 30px;
+        }
+        p {
+            text-indent: 0 !important;
+        }
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        img {
+            width: 100%;
+            margin: 10px 0;
+        }
+        div.content {
+            margin: 0 20px;
+            line-height: 30px;
+        }
+        div.content .title{
+            font-weight: 600
+        }
+        div.content .time{
+            font-size:0.9rem;
+            text-align: center;
+            color:#333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="title"></div>
+            <div class="time"></div>
+            <div class="con"></div>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        var newid = window.location.search.split("=",2);//获取id
+        $.ajax({
+                url: 'http://113.9.157.2:11009/zhongxinguoan_fangzhengxianzhengfuwangzhan/?iw-apikey=123&iw-cmd=shengneiyaowenxiangqing',
+                type: 'get',
+                data: {
+                    xqid: newid[1]
+                },
+                success:function(data) {
+                    if(data){
+                        var da = data.data;
+                        for(var i=0;i<da.length;i++){
+                            $(".title").html(da[0].title);
+                            $(".time").html(da[0].date);
+                            $(".con").html(da[0].content);
+                        };
+                    }; 
+                },
+                error : function() {
+                    alert("加载失败,请重试!")
+                }
+            });
+    </script>
+</body>
+</html>

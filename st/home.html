@@ -1,0 +1,47 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">今日发送队列</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" style="margin-top:-5px;" ng-click="push()">
+                <i class="glyphicon glyphicon-plus"></i>
+                推送
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th class="text-center"><input type="checkbox" ng-model="checked" ></th>
+                <th>板块名称</th>
+                <th>标题</th>
+                <th>类型</th>
+                <th>日期</th>
+                <th>状态</th>
+                <th>推送状态</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td class="text-center"><input type="checkbox" ng-checked="checked" data-id="{{item.Id}}"></td>
+                <td>{{item.Type|set:['新闻政务','通知公告','文明方正','推广消息']}}</td>
+                <td>{{item.Title}}</td>
+                <td>{{item.KindName}}</td>
+                <td>{{item.PushDay|date}}</td>
+                <td>{{item.Statu|set:['待提交','待审核','通过','驳回','已发布']}}</td>
+                <td>{{item.IsPush|check:['已推送','待推送']}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pager count="{{data.Count}}" index="{{query.index}}" action="go(index,size)"></pager>
+<div class="panel panel-default" style="margin-top:10px;">
+    <div class="panel-heading">
+        <span class="h4">数据统计</span>
+    </div>
+    <div class="table-responsive" style="min-height:500px;margin-top:25px;">
+            <div class="col-lg-12 text-center">
+                <div id="main" style="height:300px"></div>
+            </div>
+            <div class="col-lg-12 text-center">
+                <div id="pieBin" style="height:300px"></div>
+            </div>
+        </div>
+</div>

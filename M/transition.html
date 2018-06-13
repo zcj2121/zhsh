@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>黑龙江方正县智慧生活微门户</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <link rel="stylesheet" href="Content/swiper.css">
+    <style>
+    @media only screen and (min-width:320px) {
+			body {
+				font-size: 11.5px!important
+			}
+			.viewport {
+				max-width: 320px
+			}
+		}
+
+		@media only screen and (min-width:360px) {
+			body {
+				font-size: 12.5px!important
+			}
+			.viewport {
+				max-width: 360px
+			}
+		}
+
+		@media only screen and (min-width:480px) {
+			body {
+				font-size: 16px!important
+			}
+			.viewport {
+				max-width: 480px
+			}
+		}
+    html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-size: 1.5rem;
+            width: 100%;
+            height: 100%;
+        }
+        ul li{
+            list-style:none;
+        }
+        div.container img {
+            display: block;
+            width: 100%;
+        }
+        div.banner {
+            overflow: hidden;
+        }
+        div.notice {
+            margin: 0 20px;
+        }
+        div.notice a {
+            margin-top:6px;
+            display: block;
+            width: 100%;
+        }
+        div.nav {
+            width: 96%;
+            margin:0 auto;
+            margin-top:10px;
+            
+        }
+        ul.nav-row{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap:wrap;
+            align-content: space-between
+        }
+        .nav-row li{
+            /*float:left;*/
+            width:47%;
+            margin-top:3%;
+        }
+        /*div.nav div.row {
+            display: table;
+            width: 100%;
+
+        }*/
+        .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+            position: absolute;
+            bottom: 10px;
+            left: 45%;
+            z-index: 100;
+        }
+        .ban-nav{
+            width: 94%;
+            margin:0 auto;
+            margin-top:4%;
+        }
+        .bannav-title{
+            clear:both;
+            overflow: hidden;
+        }
+        .bannav-top-lt{
+            float:left;
+            border-left:#09c 4px solid;
+        }
+        .bannav-top-rt{
+            float:right;
+        }
+        .bannav-bottom{
+            margin-top:4%;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner">
+        <div class="swiper-container" id="recommendSwiper">
+            <div class="swiper-wrapper">
+                <!--<div class="swiper-slide">
+                    <a href="javascript:void(0);">
+                        <img src="Images/lb_layout_one.jpg" alt="banner">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0);">
+                        <img  src="Images/lb_layout_two.jpg" alt="banner">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:void(0);">
+                        <img  src="Images/lb_layout_three.jpg" alt="banner">
+                    </a>
+                </div>-->
+            </div>
+            <div class="pagination"></div>
+        </div>
+    </div>
+    <!--<div class="ban-nav">
+        <div class="bannav-title">
+            <div class="bannav-top-lt">
+                更多资讯尽在
+            </div>
+            <div class="bannav-top-rt">
+                ——— 统领广告
+            </div>
+        </div>
+        <div class="bannav-bottom">广告发布联系电话：0451-57103555  &nbsp;&nbsp;15714508888</div>
+    </div>-->
+    <div class="ban-nav">
+        <div class="bannav-title">
+            <div class="bannav-top-lt">
+                更多资讯尽在
+            </div>
+            <div class="bannav-top-rt">
+                ——— 方正县智慧生活公众号
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <ul class="nav-row">
+            <!--<li><a href="#"><img src="Images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="Images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="Images/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="Images/2.jpg" alt=""></a></li>-->
+        </ul>
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/swiper.jquery.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //轮播
+        $.ajax({
+            url: cfg.host + 'PortalPic/GetTypeList',
+            type: 'get',
+            data: {
+                Type: 0,
+                IsActived: true
+            },
+            success: function (data) {
+                var cvrurl = "http://smart.neverc.cn/life";
+                if(data.length == 0){
+                    $("div.swiper-wrapper").append("<div class='swiper-slide'><a href='javascript:void(0);'>" +
+                            "<img src='Images/we/banner1.png' alt='banner'></a></div>");
+                }else if(data.length == 1){
+                    $("div.swiper-wrapper").append("<div class='swiper-slide'><a href="+data[0].TargetUrl+">" +
+                            "<img src='" + data[0].ImgUrl + "' alt='banner'></a></div>");
+                }else {
+                    for(var i in data){
+                        $("div.swiper-wrapper").append("<div class='swiper-slide'><a href="+data[i].TargetUrl+">" +
+                                "<img src='" + data[i].ImgUrl + "' alt='banner'></a></div>");
+                    }
+                    var mySwiper = new Swiper('#recommendSwiper',{
+                        pagination: '.pagination',
+                        preloadImages: true,
+                        updateOnImagesReady: true,
+                        autoplayDisableOnInteraction : false,
+                        loop: true,
+                        autoplay: 3000,
+                        effect: 'fade'
+                    });
+                }
+            },
+        });
+        //轮播
+
+        //展示
+        $.ajax({
+            url: cfg.host + 'PortalPic/GetTypeList',
+            type: 'get',
+            data: {
+                Type: 1,
+                IsActived: true
+            },
+            success: function (data) {
+                var datalength = data.length;
+                var cvrurl = "http://smart.neverc.cn/life";
+                if(data){
+                    for(var i =0; i<datalength;i++){
+                        $(".nav-row").append("<li><a href="+data[i].TargetUrl+"><img src="+data[i].ImgUrl+"></a></li>")
+                    };
+                }; 
+            },
+        });
+        //展示
+    });
+    // setTimeout(function(){window.location="index.html";},5000);
+</script>
+</body>
+</html>

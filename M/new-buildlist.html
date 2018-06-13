@@ -1,0 +1,154 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        ul li {
+            border-bottom: 1px solid #cccccc;
+        }
+        ul li a {
+            display: block;
+            padding: 20px;
+            font-size: 0;
+        }
+        ul h4 {
+            font-size: 16px;
+            color: #333333;
+            font-weight: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        ul p {
+            font-size: 14px;
+            color: #333333;
+            text-align: right;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <span style="float: left;line-height: 45px;color:#f18530;">个人中心</span>
+        <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+    </div>-->
+    <ul data-list></ul>
+    <div class="foot list" style="display: none;">
+        正在努力加载...
+    </div>
+    <div class="tips list" style="display: none;">
+        亲,已经到底喽~
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    function getReply(statu) {
+        var reply;
+        if(statu==0) {
+            reply = "未处理"
+        }else if(statu==1) {
+            reply = '处理中';
+        }else if(statu==2){
+            reply = "处理完成"
+        }
+        return reply;
+    };
+    var Size = 15;  //每页记录数
+    var Index = 1;// 当前页数
+    var hasNextPage = true;  //有无下一页
+    var isLoadingData = false;  //是否加载中
+    var newid = window.location.search.split("=",2);
+    var idder = newid[1];
+    var datal;
+    if(idder==1){
+        window.document.title="城建城管提交记录";
+        datal = 'CityManage/QueryPerList';
+    }else if(idder==2){
+        window.document.title="社会管理提交记录";
+        datal = 'SocietyManage/QueryList';
+    }else if(idder==3){
+        window.document.title="安全生产提交记录";
+        datal = 'CityManage/QuerySecurityList';
+    }else if(idder==4){
+window.document.title="文明方正提交记录";
+	
+datal = 'SecurityManage/QueryPerList';
+    
+};
+    function loadListData(){
+        $.ajax({
+            url: cfg.host + datal,
+            type: 'post',
+            data: {
+                Index: Index,
+                Size: Size
+            },
+            success:function(data) {
+                hideLoadingTips();
+                var currentDataLength = data.Data.length;
+                if(data.Size!=undefined){
+                    Size = data.Size;
+                }
+                Index = Index + 1;
+                for(var i in data.Data){
+                    var da = data.Data[i];
+                    $("ul[data-list]").append("<li><a href='new-buildlist-detail.html?id="+da.Id+"&type="+idder+"'>" +
+                            "<h4>"+da.Title+"</h4>" +
+                            "<p>"+getReply(da.State)+"</p>" +
+                            "</a></li>");
+                }
+                if(currentDataLength < Size){//如果本次传回来的数据总长度小于pageSize,则不再执行下次请求
+                    hasNextPage = false;
+                }
+            },
+            error : function() {
+                hideLoadingTips();
+                alert("加载失败,请重试!")
+            }
+        });
+    }
+    loadListData()
+    // $(function(){
+    //     $("div.foot,div.tips").hide();
+    //     $.ajax({
+    //         url: cfg.host + 'WeiXin/GetUserInfo',
+    //         type: 'get',
+    //         success: function (data) {
+    //             if (data == null) {
+    //                 var url = cfg.host + "weixin/Login";
+    //                 $.get(url)
+    //                         .then(function(rst) {
+    //                             location.href = rst;
+    //                         });
+    //             }else{
+    //                 loadListData();
+    //                 $(document).bind("scroll",function(){
+    //                     var scrollTop = $(document).scrollTop();
+    //                     var height = $(document).height()-$(window).height();
+    //                     if((scrollTop >= (height-30))&&(!isLoadingData)){
+    //                         if(hasNextPage){
+    //                             showLoadingTips();
+    //                             loadListData();
+
+    //                         }else{
+    //                             $("div.tips").show();
+    //                         }
+    //                     }
+    //                 });
+    //             }
+    //         }
+    //     });
+    // });
+</script>
+</body>
+</html>

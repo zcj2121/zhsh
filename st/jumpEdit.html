@@ -1,0 +1,55 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+    </div>
+    <div class="panel-body">
+        <form name="addNewsForm" class="form-horizontal" ng-submit="subFunc">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">标题<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.Title" id="title" placeholder="请输入标题" required>
+                </div>
+            </div>
+            <div class="form-group pic-img">
+                <label class=" col-sm-2 control-label">上传图片</label>
+                <div class="col-lg-5">
+                    <input type="file" class="form-control file" ng-model="suver.FileId" allow-file-exts="extler" data-show-preview="true">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-lg-5">
+                    <span style="color:red"><span>* </span>建议上传“展示图”宽高比为：1：1，图片大小不得小于 300像素×300像素。上传“轮播图”宽高比为：2：1，图片大小不得小于 600像素x300像素。 </span>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label for="title" class="col-sm-2 control-label">跳转链接<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="model.TargetUrl" id="title" placeholder="请输跳转链接" required>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label for="kind" class="col-sm-2 control-label">分类<span style="color:red">*</span></label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="kinType" required>
+                        <option value="">请选择</option>
+                        <option value="1">轮播图</option>
+                        <option value="2">按钮图</option>
+                    </select>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label class="col-lg-2 control-label">是否显示</label>
+                <div class="col-lg-3" style="padding-top:6px;">
+                    <input type="checkbox" />
+                </div>
+            </div>-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default" ng-disabled="addNewsForm.$invalid" ng-click="save()">保存</button>
+                    <a ng-click="back() " class="btn btn-default">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>意见反馈</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        div.container div.head {
+            border-bottom:2px solid #f18530 !important;
+        }
+        div.container ul {
+            width: 100%;
+            margin-top: 10px;
+        }
+        div.container ul li {
+            padding: 10px 19px;
+            font-size: 16px;
+            color: #000000;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        ul li input.phone {
+            width: 100%;
+            height: 40px;
+            font-size: 14px;
+            color: #000000;
+            border: 1px solid #bfbfbf;
+            padding-left: 10px;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+        ul li textarea {
+            width: 100%;
+            min-height: 200px;
+            border: 1px solid #bfbfbf;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            font-size: 14px;
+            color: #000000;
+            background-color: #ffffff;
+            padding: 5px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        span.tips {
+            padding: 12px 19px;
+            display: block;
+            font-size: 15px;
+            color: #000000;
+            line-height: 18px;
+        }
+        div.sub {
+            width: 100%;
+            padding: 0 19px;
+            box-sizing: border-box;
+        }
+        button.btn {
+            width: 100%;
+            height: 40px;
+            display: block;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #ffffff;
+            text-align: center;
+            background-color: #00aaee;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        ul li.kind {
+            display: table;
+            width: 100%;
+        }
+        ul li.kind span {
+            display: table-cell;
+            text-align: left;
+            width: 50%;
+            font-size: 14px;
+            color: #000000;
+        }
+        ul li.kind span.right {
+            text-align: right;
+            width: 50%;
+        }
+        ul li.kind select {
+            width: 100%;
+        }
+        .con-err{
+            text-align: center;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div class="head">
+            <span style="float: left;line-height: 45px;color:#f18530;">意见反馈</span>
+            <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+        </div>-->
+        <ul>
+            <li class="kind">
+                <span>请选择留言分类:</span>
+                <span class="right"><select></select></span>
+            </li>
+            <li class="search">
+                <textarea placeholder="请输入您的宝贵意见"></textarea>
+            </li>
+            <li>
+                <input class="phone" type="text" placeholder="请输入您的联系电话(必填)">
+            </li>
+        </ul>
+        <span class="tips">您的联系方式有助于我们沟通和解决问题,仅工作人员可见.</span>
+        <div class="sub">
+            <button class="btn" type="submit">提交</button>
+        </div>
+        <div class="con-err">
+            <a href="we_personal_view.html">查看提交记录</a>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $.ajax({
+                url: cfg.host + 'WeiXin/GetUserInfo',
+                type: 'get',
+                success: function (data) {
+                    if(data == null){
+                        location.href  = "we_personal_wx.html";
+                    }else{
+                        $.ajax({
+                            url: cfg.host + 'dic/getsub',
+                            type: 'get',
+                            data: {
+                                code: 'Feedback'
+                            },
+                            success: function(data){
+                                for(i in data){
+                                    var da = data[i];
+                                    $("li.kind select").append("<option value='"+da.Id+"'>"+da.Name+"</option>");
+                                }
+                            },
+                            error: function(){
+                                alert("页面出错!");
+                            }
+                        });
+                        $("div.sub button.btn").bind("click",function(){
+                            var phone = $("ul li input.phone").val();
+                            var kind = $("li.kind select option:selected").val();
+                            var content = $("li.search textarea").val();
+                            var dataMobile = /^1\d{10}$/;
+                            if(phone == ''){
+                                alert("请输入手机号码，以便我们工作人员联系您！");
+                                return false;
+                            }else if(!dataMobile.test(phone)){
+                                alert("请输入正确的11位手机号码!");
+                                return false;
+                            }
+                            $.ajax({
+                                url: cfg.host + 'feedback/addfeedback',
+                                type: 'post',
+                                data: {
+                                    kindId: kind,
+                                    Contact: phone,
+                                    Content: content,
+                                    SendId: '',
+                                    Title: ''
+                                },
+                                success: function(data){
+                                    window.location.href='we_wait_wx.html';
+                                },
+                                error: function(){
+                                    alert("提交失败!")
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

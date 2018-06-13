@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>提交成功</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.container {
+            width: 100%;
+            text-align: center;
+        }
+        img {
+            width: 80px;
+            height: 80px;
+            margin-top: 40%;
+        }
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="Images/we/subcomplete.png" alt="提交完成">
+        <p>提交完成</p>
+        <p>3秒钟后自动跳转</p>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            function pageJump() {
+                var newid = window.location.search.split("=",2);
+                if(newid[1]==1){
+                    window.location.href = 'we_personal_manager.html';
+                }else {
+                    window.location.href = 'we_personal_view.html';
+                }
+            }
+            setTimeout(pageJump,3000);
+        });
+    </script>
+</body>
+</html>

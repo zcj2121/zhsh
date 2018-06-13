@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>全民城管</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.form {
+            padding: 10px 20px;
+        }
+        div.form-group {
+            padding: 8px 5px;
+            margin: 10px 0;
+            font-size: 0;
+            background-color: #ededed;
+            border-top: 1px solid #cccccc;
+            border-radius: 3px 3px 0 0;
+        }
+
+        div.form-group span {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 14px;
+            color: #333333;
+        }
+        div.form-group span.name {
+            display: inline-block;
+            vertical-align: top;
+            width: 20%;
+            white-space: nowrap;
+        }
+        div.form-group span.content {
+            width: 80%;
+            white-space: nowrap;
+        }
+        div.detail {
+            min-height: 50px;
+            margin-top: 10px;
+            word-break: break-all;
+            font-size: 14px;
+            line-height: 18px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <a class="out" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <div class="form">
+        <div class="form-group">
+            <span class="name">标<span style="display:inline-block;padding-left: 2em;"></span>题:</span>
+            <span id="title" class="content"></span>
+        </div>
+        <div class="form-group">
+            <span class="name">联系电话:</span>
+            <span id="phone" class="content"></span>
+        </div>
+        <div class="form-group">
+            <span>问题描述:</span>
+            <div id="remark" class="detail">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <span>地址描述:</span>
+            <div id="addremark" class="detail">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <span>地址定位:</span>
+            <div id="place" class="detail">
+                北京市朝阳区望京公园附近
+            </div>
+        </div>
+        <div class="form-group">
+            <span>现场图片:</span>
+            <div id="img" class="detail">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var newid = window.location.search.split("=",2);
+        var imgUrl = cfg.imgUrl;
+        $.ajax({
+            url: cfg.host + 'citymanage/get',
+            type: 'get',
+            data: {
+                Id: newid[1]
+            },
+            success:function(data) {
+                $("#title").html(data.Title);
+                $("#phone").html(data.Phone);
+                $("#remark").html(data.Content);
+                $("#addremark").html(data.Address);
+                $("#place").html(data.Place);
+                for(var i in data.FilePath){
+                    var da = data.FilePath[i];
+                    $("#img").append("<img style='width: 100%;' src='"+imgUrl+da+"'>");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>意见反馈</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.content div.title {
+            margin: 10px 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #cccccc;
+            font-size: 0;
+        }
+        div.content div.title h4 {
+            font-size: 16px;
+            color: #00aaee;
+            font-weight: normal;
+            line-height: 20px;
+            word-break: break-all;
+        }
+        div.content div.title p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333333;
+            text-align: right;
+        }
+        p.reply_info {
+            padding: 0 20px;
+            font-size: 14px;
+            line-height: 16px;
+            color: #333333;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <a class="out" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <div class="content">
+
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var newid = window.location.search.split("=",2);
+        $.ajax({
+            url: cfg.host + 'Feedback/Get',
+            type: 'get',
+            data: {
+                Id: newid[1]
+            },
+            success:function(data) {
+                if(data.ReplyContent==null){
+                    $("div.content").append("<div class='title'><h4>"+data.Content+"</h4><p>"+data.CreateTime.substr(0,10)+"</p></div><p class='reply_info'></p>");
+                }else{
+                    $("div.content").append("<div class='title'><h4>"+data.Content+"</h4><p>"+data.CreateTime.substr(0,10)+"</p></div><p class='reply_info'>"+data.ReplyContent+"</p>");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

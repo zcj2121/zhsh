@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <!--<a class="btn btn-default btn-sm" ui-sref="wecontrolAdd" style="display:none;">
+                <i class="glyphicon glyphicon-plus"></i>
+                新增
+            </a>
+            <a class="btn btn-default btn-sm" ng-click="queryFunc()" style="display: none;">
+                查询
+            </a>
+        </div>-->
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th>名称</th>
+                <th>图片</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td>{{item.Name}}</td>
+                <td><img style="width: 100px;" ng-src="{{item.FileUrl}}"></td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-sm btn-default" href="{{'#/wecontrolEdit/'+item.Id}}">修改</a>
+                        <a class="btn btn-sm btn-default" href="{{'#/wecontrolsub/'+item.Id}}">管理</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>详情</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+    body{
+        overflow: hidden;
+    overflow-y: scroll;
+    }
+        div.container {
+            padding-bottom: 30px;
+        }
+        p {
+            text-indent: 0 !important;
+        }
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        img {
+            width: 100%;
+            margin: 10px 0;
+        }
+        div.content {
+            margin: 0 20px;
+            line-height: 30px;
+        }
+        div.content .title{
+            font-weight: 600;
+            text-align: center;
+            margin-top: 2%;
+        }
+        div.content .time{
+            font-size:0.9rem;
+            text-align: center;
+            color:#333;
+        }
+        .con img{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="title"></div>
+            <div class="time"></div>
+            <div class="conpic"></div>
+            <div class="con"></div>
+        </div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        var id = Geturl("id");
+        $.ajax({
+                url: cfg.host+'GetFZWeb/GetArticleDetail',
+                type: 'get',
+                data: {
+                    ArticleId: id
+                },
+                success:function(data) {
+                    if(data){
+                        var da = data;
+                        $(".title").html(da.Title);
+                            $(".time").html(da.ReleaseDate.substr(0,10));
+                            if(da.TitlePicture){
+                                $(".conpic").html('<img src="http://www.hrbfz.gov.cn/'+(da.TitlePicture).replace("~/","")+'" alt="'+da.Title+'">');
+                            };
+                            $(".con").html(da.Content);
+                    }; 
+                },
+                error : function() {
+                    alert("加载失败,请重试!")
+                }
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>黑龙江方正县智慧生活微门户</title>
+    <style>
+        /*字体*/
+
+        body {
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+            outline: none;
+            drop_click_dash: expression(this.onFocus=this.blur());
+            -moz-outline-style: none;
+            /* FF */
+        }
+
+        a:focus {
+            text-decoration: none;
+            outline: none;
+            cursor: pointer;
+            -moz-outline-style: none;
+            /* FF */
+            outline: none;
+        }
+
+        a:link {
+            text-decoration: none;
+            outline: none;
+            drop_click_dash: expression(this.onFocus=this.blur());
+            -moz-outline-style: none;
+            /* FF */
+        }
+
+        a:visited {
+            text-decoration: none;
+            outline: none;
+            drop_click_dash: expression(this.onFocus=this.blur());
+            -moz-outline-style: none;
+            /* FF */
+        }
+
+        a:hover {
+            text-decoration: none;
+            outline: none;
+            drop_click_dash: expression(this.onFocus=this.blur());
+            -moz-outline-style: none;
+            /* FF */
+        }
+
+        a:active {
+            text-decoration: none;
+            outline: none;
+            drop_click_dash: expression(this.onFocus=this.blur());
+            -moz-outline-style: none;
+            /* FF */
+        }
+
+        a:hover {
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:active {
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-size: 1.5rem;
+            width: 100%;
+            height: 100%;
+            background-image: url("Images/index-bg.jpg");
+            background-size: 100% 100%;
+        }
+
+        div.container {
+            width: 100%;
+            padding-bottom: 53px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+        }
+
+        div.container img {
+            display: block;
+            width: 100%;
+        }
+
+        div.nav {
+            padding: 20px;
+        }
+
+        div.nav div.row {
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        div.nav div.row a {
+            color: #fff;
+            float: left;
+            width: 33%;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        div.nav div.row a.not {
+            color: #d8d8d8;
+        }
+
+        div.nav div.row span.name {
+            display: block;
+            height: 20%;
+            min-height: 100px;
+            margin: 4%;
+            background-color: rgba(255, 255, 255, .5);
+            border-radius: 1.5rem;
+            /*font-size: 1.5rem;*/
+            color: #000000;
+        }
+
+        div.nav div.row span.name:before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20%;
+            min-height: 100px;
+            background-size: 40px 40px;
+            background-repeat: no-repeat;
+            background-position: 50% 40%;
+            margin-bottom: -30px;
+        }
+
+        div.row span.name.news::before {
+            background-image: url("Images/newwe/news.png");
+        }
+
+        div.row span.name.inform::before {
+            background-image: url("Images/newwe/tongzhi.png");
+        }
+
+        div.row span.name.activity::before {
+            background-image: url("Images/newwe/fangzheng.png");
+        }
+
+        div.row span.name.constructor::before {
+            background-image: url("Images/newwe/zhengwu.png");
+        }
+
+        div.row span.name.live::before {
+            background-image: url("Images/newwe/gonjian.png");
+        }
+
+        div.row span.name.city::before {
+            background-image: url("Images/newwe/gong.png");
+        }
+
+        div.row span.name.employer::before {
+            background-image: url("Images/newwe/peixun.png");
+        }
+
+        div.row span.name.train::before {
+            background-image: url("Images/newwe/zhaoping.png");
+        }
+
+        div.row span.name.view::before {
+            background-image: url("Images/newwe/bianmin.png");
+        }
+
+        div.row span.name.fenxi::before {
+            background-image: url("Images/newwe/fenxi.png");
+        }
+
+        div.row span.name.xiangmu::before {
+            background-image: url("Images/newwe/xiangmu.png");
+        }
+
+        div.foot {
+            font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+
+        div.foot ul li {
+            display: block;
+        }
+
+        div.foot ul a {
+
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+
+        div.foot ul a.active {
+            color: #000000;
+        }
+
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+        .icp-bei{
+                background-color: rgba(255, 255, 255, .5);
+    text-align: center;
+    font-size: 1.2rem;
+    color:#000;
+    position: fixed;
+            bottom: 49px;
+            width: 100%;
+            line-height:1.6rem;
+        }
+	#zhezmMap{
+            position:absolute;
+            background-color:rgba(0,0,0,0.3); 
+            height:100%;
+            width:100%;
+            text-align: center;
+            display: block;
+        }
+        #zhezmMap img{
+            margin-top:46%;
+        }
+	#zhezmMap div{
+            color:#fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <div class="row">
+                <a href="we_news_list.html"><span class="name news">新闻时务</span></a>
+                <a href="we_inform_wx.html"><span class="name inform">通知预警</span></a>
+                <a href="we_activity_zcj.html"><span class="name activity">文明方正</span></a>
+            </div>
+            <div class="row">
+                <a href="new-matrix.html"><span class="name constructor">政务矩阵</span></a>
+                <a href="new-combuild.html"><span class="name live">全民共建</span></a>
+                <a href="supply.html"><span class="name city">供需对接</span></a>
+            </div>
+            <div class="row">
+                <a href="transition.html"><span class="name employer">促销信息</span></a>
+                <a href="employee.html"><span class="name train">人才招聘</span></a>
+                <a href="health_add.html"><span class="name view">全民健康</span></a>
+            </div>
+            <div class="row isshow" style="margin-left: 17%;display:none;">
+                <a href="http://113.9.157.2:8081/analystrunner/ffd7584a-5750-4e28-9e4a-4bdd36b0d88a"><span class="name fenxi">数据分析</span></a>
+                <a href="new-majorProject.html"><span class="name xiangmu">重点项目</span></a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="icp-bei">方正县信息中心 黑ICP备 17009199号</div>
+    <div class="foot">
+        <ul>
+            <a href="index.html">
+                <li class="index active">首页</li>
+            </a>
+            <a href="we_search_wx.html">
+                <li class="search">查询</li>
+            </a>
+            <a href="new-user.html">
+                <li class="personal">我的</li>
+            </a>
+        </ul>
+    </div>
+	<div id="zhezmMap">
+        <img src="Images/map/logingter.gif" alt="">
+	<div>登陆中,请稍等……</div>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/swiper.jquery.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+    function Browser() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    $(function(){
+        if(Browser()){
+            var footDate = new Date();
+            var footYear = footDate.getFullYear();
+            $("#foot_nav").html("©"+footYear+" 方正县信息中心 版权所有");
+            $.ajax({
+                url: cfg.host + 'WeiXin/GetUserInfo',
+                type: 'get',
+		beforeSend:function(){
+                    $("#zhezmMap").css("display","block")
+                },
+                success: function (data) {
+			$("#zhezmMap").css("display","none");
+                    if(data == null){
+                        location.href  = "new-user.html";
+                    }else{
+                        var isleader = data.IsLeader;
+                        if(isleader==true){
+                            $(".isshow").css("display","block");
+                        }else{
+                            $(".isshow").css("display","none");
+                        };
+                    }
+                }
+            });
+        };
+    });
+</script>
+</body>
+
+</html>

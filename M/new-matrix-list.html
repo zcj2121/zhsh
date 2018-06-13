@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>政务矩阵</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style type="text/css">
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        a:hover{
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+        a:active{
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        }
+        a{
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-size: 1.5rem;
+            width: 100%;
+            height: 100%;
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+
+        div.container {
+            width: 100%;
+            /*height: 100%;*/
+            background: #eee;
+            margin-bottom: 3%;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+
+        div.foot {
+            font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+
+        div.foot ul li {
+            display: block;
+        }
+
+        div.foot ul a {
+
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+
+        div.foot ul a.active {
+            color: #000000;
+        }
+
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+
+        div.con-top {
+            height: 24%;
+            width: 92%;
+            padding: 4%;
+            background: #fff;
+            text-align: center;
+            overflow: hidden;
+            margin-bottom: 0.3rem;
+        }
+
+        div.con-top img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        div.con-top img,
+        div.con-top span {
+            display: inline-block;
+            line-height: 50px;
+            margin-left: 6px;
+            vertical-align: top;
+        }
+
+        div.con-top .title {
+            margin: 6% 0;
+        }
+
+        div.con-detail {
+            text-indent: 2em;
+            text-align: left;
+            word-break: normal;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: -o-ellipsis-lastline;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 2rem;
+            font-size: 1.3rem;
+            color: #555;
+        }
+
+        .con {
+            background: #fff;
+        }
+
+        .con-list {
+            width: 92%;
+            margin: 0% 4%;
+            padding: 4% 0;
+            overflow: hidden;
+            border-bottom: 1px solid #eee;
+        }
+        .con .con-list:last-child{
+            border-bottom: none;
+        }
+        .list-time {
+            color: #555;
+            font-size: 1.2rem;
+            margin: 0.5rem;
+        }
+
+        .con-content {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .con-content .content,
+        .con-content img {
+            float: left;
+        }
+
+        .con-content .content {
+            width: 67%;
+            line-height: 2rem;
+            word-break: normal;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: -o-ellipsis-lastline;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        .con-content img {
+            margin-left: 3%;
+            width: 30%;
+        }
+
+        div.head {
+            width: 100%;
+            height: 44px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            text-align: right;
+            border-bottom:1px solid #f18530 !important;
+            overflow: hidden;
+            font-size: 1.6rem;
+            background: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <!--<div class="head" >
+            <a class="out" href="index.html" style="text-align: right;float: right;line-height: 44px;"><span class="right">首页</span></a>
+        </div>-->
+        <div class="con-top">
+            <!--<div class="title">
+                <img src="Images/newwe/yu.png" alt=""><span>司法局</span>
+            </div>
+            <div class="con-detail">
+                司法局是政府的司法行政机关。受党委与政府领导，规格比法院、检察院略低，是政府宣传管理法律的专业职能部门。 司法局是政府的司法行政机关。受党委与政府领导，规格比法院、检察院略低，是政府宣传管理法律的专业职能部门。
+            </div>-->
+        </div>
+        <div class="con">
+            <!--<div class="con-list">
+                <a href="">
+                    <div class="con-content">
+                        <div class="content">司法局是政府是政府宣传管理法律的专业职能部门。</div>
+                        <img src="Images/newwe/yu.png" alt="">
+                    </div>
+                    <div class="list-time">
+                        2017年6月1日
+                    </div>
+                </a>
+            </div>
+            <div class="con-list">
+                <a href="">
+                    <div class="con-content">
+                        <div class="content">司法局是政府的司法行政机关。受党委与政府领导，规格比法院、检察院略低，是政府宣传管理法律的专业职能部门。</div>
+                        <img src="Images/newwe/yu.png" alt="">
+                    </div>
+                    <div class="list-time">
+                        2017年6月1日
+                    </div>
+                </a>
+            </div>
+            <div class="con-list">
+                <a href="">
+                    <div class="con-content">
+                        <div class="content">司法局是政府的司法行政机关。受党委与政府领导，规格比法院、检察院略低，是政府宣传管理法律的专业职能部门。</div>
+                        <img src="Images/newwe/yu.png" alt="">
+                    </div>
+                    <div class="list-time">
+                        2017年6月1日
+                    </div>
+                </a>
+            </div>
+            <div class="con-list">
+                <a href="">
+                    <div class="con-content">
+                        <div class="content">司法局是政府的司法行政机关。受党委与政府领导，规格比法院、检察院略低，是政府宣传管理法律的专业职能部门。</div>
+                        <img src="Images/newwe/yu.png" alt="">
+                    </div>
+                    <div class="list-time">
+                        2017年6月1日
+                    </div>
+                </a>
+            </div>-->
+        </div>
+    </div>
+    <!--<div class="foot">
+        <ul>
+            <a href="index.html">
+                <li class="index active">首页</li>
+            </a>
+            <a href="we_search_wx.html">
+                <li class="search">查询</li>
+            </a>
+            <a href="we_personal_wx.html">
+                <li class="personal">我的</li>
+            </a>
+        </ul>
+    </div>-->
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script>
+        $(function(){
+            var newid = window.location.search.split("=",2);//获取id
+            var id=newid[1];
+            $.ajax({
+                url: cfg.host + 'Government/Get',
+                type: 'get',
+                data:{
+                    id:id
+                },
+                success: function (data) {
+                    if(data){
+                        $(".con-top").append(
+                            '<div class="title">'+
+                                '<img src="'+data.ImgUrl+'" alt=""><span>'+data.Name+'</span>'+
+                            '</div>'+
+                            '<div class="con-detail">'+data.Remark+'</div>'
+                        )
+                    };
+                }
+            });
+
+            $.ajax({
+                url: cfg.host + 'GovernmentContent/GetContent',
+                type: 'get',
+                data:{
+                    id:id
+                },
+                success: function (data) {
+                    console.log(data);
+                    if(data){
+                        for(var i =0;i<data.length;i++){
+                            $(".con").append(
+                                '<div class="con-list">'+
+                                    '<a href="new-matrix-list.Detail.html?id='+data[i].Id+'">'+
+                                        '<div class="con-content">'+
+                                            '<div class="content">'+data[i].Title+'</div>'+
+                                            '<img src="'+data[i].HeadImgUrl+'" alt="">'+
+                                       '</div>'+
+                                        '<div class="list-time">'+data[i].CreateTime.substr(0,10)+'</div>'+
+                                    '</a>'+
+                                '</div>'
+                            );
+                        };
+                    };
+                }
+            });
+
+        })
+    </script>
+</body>
+
+</html>

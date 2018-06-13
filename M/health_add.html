@@ -1,0 +1,304 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全民健康</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <link rel="stylesheet" href="Content/mui.min.css">
+    <style>
+        a:hover {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:active {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        .head {
+            width: 100%;
+            background-color: #f18530;
+            text-align: right;
+            padding-right: 15px;
+            box-sizing: border-box;
+        }
+
+            .head a {
+                font-size: 16px;
+                color: #fff;
+                line-height: 44px;
+            }
+
+        .bottom {
+            min-height: calc(100% - 44px);
+            background-color: #f3f3f3;
+            overflow-y: scroll;
+        }
+
+        .health_back {
+            width: 170px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bottom .top_line {
+            display: block;
+            height: 20px;
+            border-left: 2px solid #c3cacd;
+            margin-left: 20px;
+            display: none;
+        }
+
+        .list li {
+            padding: 2px 0;
+        }
+
+            .list li:first-child {
+                padding-top: 0;
+            }
+
+        .list .box {
+            border-left: 2px solid #c3cacd;
+            position: relative;
+            margin: 0 20px;
+            padding: 10px 0 10px 16px;
+        }
+
+            .list .box:before {
+                content: '';
+                display: block;
+                width: 10px;
+                height: 10px;
+                background-color: #f3f3f3;
+                border-radius: 50%;
+                position: absolute;
+                left: -8px;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+
+        .list li:nth-child(5n+1) .box:before {
+            border: 2px solid #7cde44;
+        }
+
+        .list li:nth-child(5n+2) .box:before {
+            border: 2px solid #68b9ed;
+        }
+
+        .list li:nth-child(5n+3) .box:before {
+            border: 2px solid #dddb5f;
+        }
+
+        .list li:nth-child(5n+4) .box:before {
+            border: 2px solid #e74569;
+        }
+
+        .list li:nth-child(5n+5) .box:before {
+            border: 2px solid #53d49a;
+        }
+
+        .list .box_right:before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-width: 10px 10px 6px 0;
+            border-style: solid;
+            border-color: transparent #fff transparent transparent;
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        .list .box_right {
+            background-color: #fff;
+            padding-left: 10px;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .list li .btn {
+            font-size: 14px;
+            color: #fff;
+            line-height: 20px;
+            background-color: #68b9ed;
+            padding: 3px 5px;
+            border-radius: 3px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        .list .btn.table_list {
+            display: inline;
+            right: 65px;
+        }
+
+        .list .btn.del_btn {
+            display: inline-block;
+            right: 15px;
+        }
+
+        .list .name {
+            font-size: 14px;
+            color: #333;
+            line-height: 60px;
+        }
+
+        .mui-content-padded {
+            display: none;
+        }
+
+        .list p {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head"><a href="health_login.html">添加</a></div>
+    <!--有数据-->
+    <div class="bottom">
+        <span class="top_line"></span>
+        <ul class="list">
+            <li>
+                <!--<div class="box">
+                    <div class="box_right">
+                        <span class="name">姓名：张小小</span>
+                        <a href="health_list.html" class="btn table_list">体侧表</a>
+                        <button type="button" onclick="del(1)" class="btn del_btn">删除</button>
+                    </div>
+                </div>-->
+            </li>
+        </ul>
+        <!--<div class="mui-content-padded">
+            <ul class="mui-pager">
+                <li id="firLeft">
+                    <a id="fir" href="#">
+                            <span> 上一页 </span>
+                        </a>
+                </li>
+                <li id="befRight">
+                    <a id="bef" href="#">
+                            <span> 下一页 </span>
+                        </a>
+                </li>
+            </ul>
+        </div>-->
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script src="lgs/mui.min.js"></script>
+    <script>
+        $(function () {
+            var windowWidth = $(window).width();
+            var botheight = windowWidth - 44
+            $(".bottom").css("height", botheight)
+
+            $.ajax({
+                url: cfg.host + 'NationalHealth/GetNation',
+                type: 'get',
+                success: function (data) {
+                    if (data) {
+                        if (data.length != 0) {
+                            for (var i = 0; i < data.length; i++) {
+                                $(".list").append('<li>' +
+                                        '<div class="box">' +
+                                            '<div class="box_right">' +
+                                                '<span class="name">' + data[i].Name + '</span>' +
+                                                '<a onclick="run(this)" name="' + data[i].Name + '" id="' + data[i].IDCard + '" class="btn table_list">基本信息表</a>' +
+                                                '<button type="button" onclick="del(' + data[i].Id + ')" class="btn del_btn">删除</button>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</li>');
+                            };
+                            $(".top_line").css("display", "block");
+                        } else {
+                            $(".list").html('<img class="health_back" src="Images/health/health_back.png" alt="您还没有添加过哟～">')
+                        };
+                    };
+
+                },
+                error: function () {
+                    $(".list").html('<img class="health_back" src="Images/health/health_back.png" alt="您还没有添加过哟～">')
+                }
+            });
+        });
+
+        function run(e) {
+            var name = e.name;
+            var id = e.id;
+            var url = "health_user.html";
+            var tobrl = encodeURI(url + "?id=" + id + "&name=" + name);
+            window.location.href = tobrl;
+        };
+
+        function del(da) {
+            var btnArray = ['否', '是'];
+            mui.confirm('是否删除', '', btnArray, function (e) {
+                if (e.index == 1) {
+                    $.ajax({
+                        url: cfg.host + 'NationalHealth/delete',
+                        type: 'get',
+                        data: {
+                            id: da
+                        },
+                        success: function (data) {
+                            window.setTimeout(function () {
+                                window.location.href = 'health_add.html';
+                            }, 500);
+                            mui.toast('删除成功');
+                        },
+                        error: function () {
+                            mui.toast('删除失败');
+                        }
+                    });
+                } else {
+                    // mui.toast('欢迎体验Hello MUI');
+                };
+            });
+        };
+
+
+        // 分页
+        // var pages=1;
+        // $("#bef").click(function(){
+        //     pages+=1;
+        //     if(pages>1){
+        //         $('#firLeft').removeAttr("class");
+        //     };
+        //     if(pages==10){
+        //         $('#befRight').attr("class","mui-disabled");
+        //         return false;
+        //     };
+        // });
+        // $("#fir").click(function(){
+        //     if(pages>1){
+        //         pages-=1;
+        //         $('#firLeft').removeAttr("class");
+        //     };
+        //     if(pages<=1){
+        //         $('#firLeft').attr("class","mui-disabled");
+        //         pages=1;
+        //         return false;
+        //     };
+        //     if(pages<10){
+        //         $('#befRight').removeAttr("class");
+        //     };
+        // });
+    </script>
+</body>
+
+</html>

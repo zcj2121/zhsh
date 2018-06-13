@@ -1,0 +1,82 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" ng-click="queryFunc()" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-search"></i> 查询
+            </a>
+            <a class="btn btn-default btn-sm bs-btn-alert" data-click="del" data-msg="确认批量删除?" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-remove"></i> 批量删除
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form-inline form-horizontal" role="form">
+            <div class="form-group col-sm-6">
+                <label class="control-label col-sm-4 text-left text-nowrap">开始日期</label>
+                <div class="col-sm-8">
+                    <input type="text" date class="form-control" id="Betime" ng-model="query.StartTime" />
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label col-sm-4 text-left text-nowrap">结束日期</label>
+                <div class="col-sm-8">
+                    <input type="text" date class="form-control" ng-model="query.EndTime" />
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label col-sm-4 text-left text-nowrap">类型</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="kind" ng-model="kind" ng-options="kind.Name for kind in kinds">
+                <option value="">请选择</option>
+            </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label col-sm-4 text-left text-nowrap">状态</label>
+                <div class="col-sm-8">
+                    <select class="form-control topc" id="Statu" style="width: 175px;" ng-model="query.IsReply">
+                <option value="">请选择</option>
+                <option value="true">已回复</option>
+                <option value="false">待回复</option>
+            </select>
+                </div>
+            </div>
+            <!--<div class="checkbox col-sm-4">
+                <label class="col-sm-offset-4">
+                    <input type="checkbox" ng-model="query.IsDeleted"> 包括删除
+                </label>
+            </div>-->
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th class="text-center"><input type="checkbox" ng-model="checked"></th>
+                <th>时间</th>
+                <th>分类</th>
+                <th>联系方式</th>
+                <th>反馈内容</th>
+                <th class="text-center">状态</th>
+                <th class="text-center">是否删除</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td class="text-center"><input type="checkbox" ng-checked="checked" data-id="{{item.Id}}" /> </td>
+                <td>{{item.CreateTime|date}}</td>
+                <td>{{item.KindName}}</td>
+                <td>{{item.Contact}}</td>
+                <td>{{item.Content}}</td>
+                <td class="text-center">{{item.IsReply|check:['已回复','待回复']}}</td>
+                <td class="text-center">{{item.IsDel|check}}</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-sm btn-default" ng-show="item.IsReply==false" href="{{'#/feedbackReply/'+item.Id}}">回复</a>
+                        <a class="btn btn-sm btn-default bs-btn-alert" data-url="{{cfg.host+ 'feedback/del/'+ item.Id}}" data-msg="确认{{item.IsDel|check:['恢复','删除']}}么？">{{item.IsDel|check:['恢复','删除']}}</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pager count="{{data.Count}}" index="{{query.index}}" action="go(index,size)"></pager>

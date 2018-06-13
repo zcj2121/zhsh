@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <style type="text/css">
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: "微软雅黑";
+        }
+        a,
+		a:hover,
+		a:visited,
+		a:link,
+		a:active {
+			text-decoration: none;
+			color: #555
+		}
+        #l-map {
+            height: 300px;
+            width: 100%;
+        }
+
+        #r-result,
+        #r-result table {
+            width: 100%;
+        }
+        #r-result .navtrans-view a{
+            display: none;
+        }
+        .anchorBL {
+			display: none;
+		}
+        .BMap_noprint.anchorBL {
+			display: block;
+			bottom: 20px !important;
+			left: 5% !important; 
+		}
+		.BMap_stdMpCtrl.BMap_stdMpType4.BMap_noprint.anchorTR {
+			top: 70% !important;
+			right: 5% !important;
+		}
+        .view-title {
+			padding: 2%;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+			overflow: hidden;
+		}
+
+		.view-title a,
+		.view-title .span {
+			display: block;
+			float: left;
+		}
+        #m-view{
+            position: absolute;
+            top: 7%;
+            right: 5%;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            box-shadow: 1px 1px 1px #888;
+            background: rgba(255,255,255,.8);
+            font-size: 0.6em;
+        }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=4GLXHMc6X098CWkrOYycL3bRrsAaFHQo"></script>
+    <title>驾车导航-拖拽导航</title>
+</head>
+
+<body>
+    <div class="view-title">
+        <a href="we_convenientMap_zcj.html">〈</a><span>拖拽导航</span>
+    </div>
+    <div id="l-map"></div>
+    <div id="r-result"></div>
+    <div id="m-view">按住起点、终点可进行拖拽</div>
+</body>
+
+</html>
+<script type="text/javascript">
+	var map = new BMap.Map("l-map");
+    map.setCurrentCity("方正县"); 
+    map.enableScrollWheelZoom(true);
+    map.addControl(new BMap.ScaleControl());
+    var gc = new BMap.Geocoder();
+    var top_left_navigation = new BMap.NavigationControl({
+        anchor: BMAP_ANCHOR_TOP_RIGHT,
+        offset: new BMap.Size(5, 35)
+    }); 
+    map.addControl(top_left_navigation);
+    var point = new BMap.Point(128.84219, 45.84401);
+
+    map.centerAndZoom(point, 15);
+    var marker = new BMap.Marker(point);   
+    marker.enableDragging();
+    var urlinfo = window.location.href;//获取url 
+    var star = urlinfo.split("?")[1].split("=")[1];//拆分url得到”=”后面的参数 
+    var bef = urlinfo.split("?")[1].split("=")[2];//拆分url得到”=”后面的参数 
+    star = star.substr(0, star.indexOf('&bef'));
+    var starStar;
+    var befBef;
+    if(star&&bef){
+        starStar = decodeURI(star);
+        befBef = decodeURI(bef);
+    }else{
+        starStar = "方正镇人民政府";
+        befBef = "方正县一中"
+    };
+    var geolocationControl = new BMap.GeolocationControl({showAddressBar:true,enableAutoLocation:true});
+			map.addControl(geolocationControl);
+	  var transit = new BMap.DrivingRoute(map, {
+	 	renderOptions: {
+	 		map: map,
+	 		panel: "r-result",
+	 		enableDragging : true 
+	 	},  
+	 });
+	 transit.search(starStar,befBef);
+</script>

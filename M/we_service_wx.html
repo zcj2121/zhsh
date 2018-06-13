@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>便民服务</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        body,div.container {
+            background-color: #ededed;
+        }
+        div.container div.head {
+            background-color: #ffffff;
+        }
+        div.container ul.outside {
+            width: 100%;
+        }
+        div.container ul.outside li {
+            margin: 10px 0;
+            background-color: #ffffff;
+
+        }
+        ul.inside {
+            font-size: 0;
+        }
+        div.container ul.outside li ul.inside li {
+            display: inline-block;
+            margin: 0;
+            text-align: center;
+            width: 49%;
+            height: 50px;
+            vertical-align: top;
+        }
+        ul.inside li:nth-child(1),ul.inside li:nth-child(2){
+            border-bottom: 1px solid #cccccc;
+        }
+        ul.inside li:nth-child(1),ul.inside li:nth-child(3){
+            border-right: 1px solid #cccccc;
+        }
+        ul.inside li a {
+            display: block;
+            font-size: 17px;
+            line-height: 50px;
+            color: #000000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <a class="out" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <ul class="outside"></ul>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $.ajax({
+            url: cfg.host + 'FriendLink/getlist',
+            type: 'get',
+            success:function(data) {
+                var count = Math.ceil(data.length/4);
+                for(var i = 0; i < count; i++){
+                    $("ul.outside").append("<li><ul class='inside' id='inside"+i+"'></ul></li>");
+                    if(4*(i+1) < data.length){
+                        for(var j = i * 4; j < 4*(i+1); j++){
+                            $("#inside"+i).append("<li><a href='"+data[j].Url+"'>"+data[j].Name+"</a></li>");
+                        }
+                    }else{
+                        for(var j = i * 4; j < data.length; j++){
+                            $("#inside"+i).append("<li><a href='"+data[j].Url+"'>"+data[j].Name+"</a></li>");
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

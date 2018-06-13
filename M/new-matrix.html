@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>政务矩阵</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style type="text/css">
+        /*字体*/
+
+        body {
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-size: 1.5rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        div.container {
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+            box-sizing: border-box;
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+            background-image: url("Images/newwe/juzheng-bg.png");
+            background-size: 100% 100%;
+            background-position: 0px 2px;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .clearfix:after {
+            display: block;
+            overflow: hidden;
+            clear: both;
+            height: 0;
+            visibility: hidden;
+            content: ".";
+        }
+
+        .navBar {
+            padding: 10px 0 0 2%;
+            background: url(images/line.png) repeat-x left bottom;
+        }
+
+        .navBar span {
+            width: 34%;
+            float: left;
+            display: inline-block;
+            position: relative;
+            margin-right: -2%;
+            background: url(http://skin.kankanews.com/v5/openservice/images/wxt/nav_bg.png) no-repeat;
+            background-size: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 2.5;
+        }
+
+        .navBar span:nth-child(1) {
+            z-index: 3;
+        }
+
+        .navBar span:nth-child(2) {
+            z-index: 2;
+        }
+
+        .navBar span:nth-child(3) {
+            z-index: 1;
+        }
+
+        .navBar span.cur {
+            z-index: 5;
+            background: url(http://skin.kankanews.com/v5/openservice/images/wxt/navcur_bg.png) no-repeat;
+            background-size: 100%;
+            color: #fff;
+        }
+
+        .tabCon {
+            padding: 5% 3% 0 3%;
+            width: 94%;
+        }
+
+        .tablist {
+            float: left;
+            display: inline;
+            width: 30.3%;
+            margin: 0 1.5%;
+            overflow: hidden;
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .tablist .icon {
+            width: 60%;
+            margin: 0 20%;
+            overflow: hidden;
+        }
+
+        .tablist .icon img {
+            width: 100%;
+            display: block;
+            border-radius: 50%;
+        }
+
+        .tablist p {
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
+        @media (min-width: 360px) {
+            .tablist {
+                font-size: 16px;
+            }
+        }
+
+        div.foot {
+            font-size: 1.3rem;
+            width: 100%;
+            height: 49px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            background-color: #f18530;
+        }
+
+        div.foot ul {
+            display: table;
+            width: 100%;
+        }
+
+        div.foot ul li {
+            display: block;
+        }
+
+        div.foot ul a {
+
+            color: #fff;
+            display: table-cell;
+            width: 33%;
+            text-align: center;
+        }
+
+        div.foot ul a.active {
+            color: #000000;
+        }
+
+        div.foot ul li::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 20px;
+            background-size: 22px 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 0px;
+            margin: 3px 0;
+        }
+
+        div.foot ul li.index:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.index.active:before {
+            background-image: url("Images/we/foot_index.png");
+        }
+
+        div.foot ul li.search:before {
+            background-image: url("Images/we/foot_search.png");
+        }
+
+        div.foot ul li.search.active:before {
+            background-image: url("Images/we/blue_search.png");
+        }
+
+        div.foot ul li.personal:before {
+            background-image: url("Images/we/foot_personal.png");
+        }
+
+        div.foot ul li.personal.active:before {
+            background-image: url("Images/we/blue_personal.png");
+        }
+        div.head {
+            width: 100%;
+            height: 44px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            text-align: right;
+            border-bottom:1px solid #f18530 !important;
+            overflow: hidden;
+            font-size: 1.6rem;
+        }
+        #tableLists{
+            display: flex;
+            flex-wrap:wrap
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="container">
+        <!--<div class="head" >
+            <a class="out" href="index.html" style="text-align: right;float: right;line-height: 44px;"><span class="right">首页</span></a>
+        </div>-->
+        <div class="tabCon clearfix">
+            <div class="clearfix" id="tableLists">
+                <!--<div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/yun.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">安监局</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/yu.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">司法局</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/pen.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">旅游局</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/yun.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">安监局</a></p>
+                </div>
+                <div class="tablist">
+                    <div class="icon">
+                        <a href="we_news_list.html"><img src="Images/newwe/yu.png"></a>
+                    </div>
+                    <p><a href="we_news_list.html">司法局</a></p>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <!--<div class="foot">
+        <ul>
+            <a href="index.html">
+                <li class="index active">首页</li>
+            </a>
+            <a href="we_search_wx.html">
+                <li class="search">查询</li>
+            </a>
+            <a href="we_personal_wx.html">
+                <li class="personal">我的</li>
+            </a>
+        </ul>
+    </div>-->
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/we_common.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                url: cfg.host + 'Government/Query',
+                type: 'post',
+                data:{
+                    Index:1,
+                    Name:null,
+                    Size:1000
+                },
+                success: function (data) {
+                    if(data){
+                        var ser = data.Data;
+                        if(ser.length!=0){
+                            for(var i=0;i<ser.length;i++){
+                                var damin;
+                                if(ser[i].IsHavWeChat==true){
+                                    damin = ser[i].Url;
+                                }else if(ser[i].IsHavWeChat==false){
+                                    damin = 'new-matrix-list.html?id='+ser[i].Id
+                                };
+                                $("#tableLists").append(
+                                    '<div class="tablist">'+
+                                        '<div class="icon">'+
+                                            '<a href="'+damin+'"><img src="'+ser[i].ImgUrl+'"></a>'+
+                                        '</div>'+
+                                        '<p><a href="'+damin+'">'+ser[i].Name+'</a></p>'+
+                                    '</div>'
+                                );
+                            };
+                        }else{
+                            $("#tableLists").html('<div style="text-align:center;margin-top:20%;">暂无数据！</div>')
+                        }
+                    };
+                },
+                error:function (){
+                    $("#tableLists").html('<div style="text-align:center;margin-top:20%;">数据加载失败！</div>')
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

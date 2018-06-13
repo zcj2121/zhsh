@@ -1,0 +1,61 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" ng-click="queryFunc()" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-search"></i>
+                查询
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form-inline form-horizontal" role="form">
+            <div class="form-group col-sm-5">
+                <label class="control-label col-sm-4 text-left">标题</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="title" ng-model="query.title" placeholder="请输入标题">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="control-label col-sm-4 text-left text-nowrap">审核状态</label>
+                <div class="col-sm-8">
+                    <select class="form-control" ng-model="query.state" >
+                        <option value="5">请选择</option>
+                        <option value="0">未审核</option>
+                        <option value="1">已通过</option>
+                        <option value="2">已删除</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th class="text-center"><input type="checkbox" ng-model="checked" /></th>
+                <th>标题</th>
+                <th>事件描述</th>
+                <th>地址</th>
+                <th>联系电话</th>
+                <th>审核状态</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td class="text-center"><input type="checkbox" ng-checked="checked" data-id="{{item.Id}}" /> </td>
+                <td>{{item.title}}</td>
+                <td>{{item.content}}</td>
+                <td>{{item.address}}</td>
+                <td>{{item.phone}}</td>
+                <td>{{item.state|set:['未审核','已通过','已删除']}}</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-sm btn-default" href="{{'#/broadcastDetail/'+item.id}}">查看</a>
+                        <a class="btn btn-sm btn-default bs-btn-alert" ng-show="item.state==0" data-url="{{'party/rs/Securitymanages/update'}}" data-datap="{{item.id}}" data-msg="确认审核通过么?">审核通过</a>
+                        <a class="btn btn-sm btn-default bs-btn-alert" ng-show="item.state!=2" data-url="{{'party/rs/Securitymanages/delete'}}" data-datap="{{item.id}}" data-msg="确认删除么?">删除</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pager count="{{Count}}" index="{{query.pageIndex}}" action="go(index,size)"></pager>

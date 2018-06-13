@@ -1,0 +1,569 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>全民健康</title>
+    <link href="Content/bootstrap.css" rel="stylesheet">
+    <style>
+        /*字体*/
+
+        body {
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+
+        a:hover {
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:active {
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-size: 1rem;
+            width: 100%;
+            height: 100%;
+        }
+
+        div.container {
+            width: 100%;
+            overflow:scroll;
+        }
+
+        table {
+            margin-top: 15px;
+            min-width:800px;
+        }
+        .ver-middle{
+            vertical-align: middle !important;
+        }
+        caption{
+            color:#000;
+            font-size: 1.4rem;
+        }
+        caption div{
+            padding:0 50px;
+            font-weight: 600;
+        }
+        caption h4{
+            padding:20px 0;
+            text-align: center;
+        }
+        table .bot-lg{
+            font-weight: 600;
+        }
+        table{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <section>
+            <table class="table table-bordered">
+                <caption>
+                    <h4>健康体检表</h4>
+                    <div class="pull-left">姓名：<span class="xm"></span></div>
+                    <div class="pull-right">编号：<span class="bh"></span></div>
+                </caption>
+                <tr>
+                    <td class="text-center ver-middle">体检日期</td>
+                    <td colspan="2" class="tjrq"></td>
+                    <td class="text-center ver-middle ">责任医师</td>
+                    <td class="zrys"></td>
+                </tr>
+                <tr class="bot-lg">
+                    <td class="text-center ver-middle">内 容</td>
+                    <td colspan="4" class="text-center ver-middle">检 查 项 目</td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">病状</td>
+                    <td colspan="4" class="zz">无病状</td>
+                </tr>
+                <tr class="table-tr-width text-nowrap">
+                    <td rowspan="8" class="col-xs-2 ver-middle text-center">一般情况</td>
+                    <td class="col-xs-3 text-center ver-middle">体 温(℃)</td>
+                    <td class="col-xs-2" class="ybqktw"></td>
+                    <td class="col-xs-2 text-center ver-middle">脉 率(次/分钟)</td>
+                    <td class="col-xs-3" class="ybqkml"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">呼吸频率(次/分钟)</td>
+                    <td class="ybqkhxpl"></td>
+                    <td class="text-center ver-middle">血 压(mmHg)</td>
+                    <td class="ybqkxy"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">身 高(cm)</td>
+                    <td class="ybqksg"></td>
+                    <td class="text-center ver-middle">体 重(kg)</td>
+                    <td class="ybqktz"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">腰 围(cm)</td>
+                    <td class="ybqkyw"></td>
+                    <td class="text-center ver-middle">体质指数(BMI)</td>
+                    <td class="ybqktzzs"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">老年人健康状态自我评估</td>
+                    <td colspan="3" class="ybqklnrjkztzwpg"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">老年人生活自理能力自我评估</td>
+                    <td colspan="3" class="ybqklnrzlnlzwpg"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">老年人认知功能</td>
+                    <td colspan="3" class="ybqklnrrzgn"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">老年人情感状态</td>
+                    <td colspan="3" class="ybqklnrqgzt"></td>
+                </tr>
+                <tr class="table-tr-width text-nowrap">
+                    <td rowspan="5" class="ver-middle text-center">生活方式</td>
+                    <td class="text-center ver-middle">体育锻炼</td>
+                    <td colspan="3" class="shfstydl"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">饮食习惯</td>
+                    <td colspan="3" class="shfsysxg"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">吸烟情况</td>
+                    <td colspan="3" class="shfsxyqk"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">饮酒情况</td>
+                    <td colspan="3" class="shfsyjqk"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">职业病危害因素接触史</td>
+                    <td colspan="3" class="shfszybwhysjcs"></td>
+                </tr>
+
+                <tr class="table-tr-width text-nowrap">
+                    <td rowspan="4" class="ver-middle text-center">脏器功能</td>
+                    <td class="text-center ver-middle">口 腔</td>
+                    <td colspan="3" class="zqgnkq"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">视 力</td>
+                    <td colspan="3" class="zqgnsl"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">听 力</td>
+                    <td colspan="3" class="zqgntl"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">运动功能</td>
+                    <td colspan="3" class="zqgnydgn"></td>
+                </tr>
+
+                <tr class="table-tr-width text-nowrap">
+                    <td rowspan="13" class="ver-middle text-center">查体</td>
+                    <td class="text-center ver-middle">眼 底</td>
+                    <td colspan="3" class="ctyd"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">皮 肤</td>
+                    <td colspan="3" class="ctpf"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">巩 膜</td>
+                    <td colspan="3" class="ctgm"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">淋巴结</td>
+                    <td colspan="3" class="ctlbj"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">肺</td>
+                    <td colspan="3" class="ctf"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">心 脏</td>
+                    <td colspan="3" class="ctxz"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">腹 部</td>
+                    <td colspan="3" class="ctfb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">下肢水肿</td>
+                    <td colspan="3" class="ctxzsz"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">足背动脉搏动</td>
+                    <td colspan="3" class="ctzbdmbd"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">肛门指诊</td>
+                    <td colspan="3" class="ctgmzz"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">乳 腺</td>
+                    <td colspan="3" class="ctrx"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">妇科</td>
+                    <td colspan="3" class="ctfk"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">其 他</td>
+                    <td colspan="3" class="ctqt"></td>
+                </tr>
+                
+                <tr class="table-tr-width text-nowrap">
+                    <td rowspan="16" class="ver-middle text-center">辅助检查</td>
+                    <td class="text-center ver-middle">血常规</td>
+                    <td colspan="3" class="fzjcxcg"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">尿常规</td>
+                    <td colspan="3" class="fzjcncg"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">空腹血糖</td>
+                    <td colspan="3" class="fzjckfxt"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">心电图</td>
+                    <td colspan="3" class="fzjcxdt"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">尿微量白蛋白</td>
+                    <td colspan="3" class="fzjcnwldb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">大便潜血</td>
+                    <td colspan="3" class="fzjcdbqx"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">糖化血红蛋白</td>
+                    <td colspan="3" class="fzjcthxhdb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">乙型肝炎表面抗原</td>
+                    <td colspan="3" class="fzjcyxgybmky"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">肝功能</td>
+                    <td colspan="3" class="fzjcggn"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">肾功能</td>
+                    <td colspan="3" class="fzjcsgn"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">血 脂</td>
+                    <td colspan="3" class="fzjcxz"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">胸部X线片</td>
+                    <td colspan="3" class="fzjcxbxxp"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">B 超</td>
+                    <td colspan="3" class="fzjcbc"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">宫颈涂片</td>
+                    <td colspan="3" class="fzjcgjtp"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">其 他</td>
+                    <td colspan="3" class="fzjcqt"></td>
+                </tr>
+                
+                <tr>
+                    <td class="text-center ver-middle">中医体质辨识</td>
+                    <td colspan="4" class="zytzbs"></td>
+                </tr>
+
+                <tr class="table-tr-width text-nowrap">
+                    <td rowspan="7" class="ver-middle text-center">现存主要健康问题</td>
+                    <td class="text-center ver-middle">脑血管疾病</td>
+                    <td colspan="3" class="xcwtnxgjb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">肾脏疾病</td>
+                    <td colspan="3" class="xcwtszjb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">心脏疾病</td>
+                    <td colspan="3" class="xcwtxzjb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">血管疾病</td>
+                    <td colspan="3" class="xcwtxgjb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">眼部疾病</td>
+                    <td colspan="3" class="xcwtybjb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">神经系统疾病</td>
+                    <td colspan="3" class="xcwtsjxtjb"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">其他系统疾病</td>
+                    <td colspan="3" class="xcwtqtxtjb"></td>
+                </tr>
+
+                <tr class="table-tr-width text-nowrap">
+                    <td rowspan="2" class="ver-middle text-center">住院治疗情况</td>
+                    <td class="text-center ver-middle">住院史</td>
+                    <td colspan="3" class="zyzlqkzys"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">家庭病床史</td>
+                    <td colspan="3" class="zyzlqkjtbcs"></td>
+                </tr>
+
+
+                <tr>
+                    <td class="text-center ver-middle">主要用药情况</td>
+                    <td colspan="4" class="zyyyqk"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">非免疫规划预防接种史</td>
+                    <td colspan="4" class="fmyghyfjz"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">健康评价</td>
+                    <td colspan="4" class="jkpj"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">健康指导</td>
+                    <td colspan="4" class="jkzd"></td>
+                </tr>
+                <tr>
+                    <td class="text-center ver-middle">危险因素控制</td>
+                    <td colspan="4" class="wxyskz"></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/bootstrap.js" type="text/javascript"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            function GetQueryString(name){
+                var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if(r!=null)return  unescape(r[2]); return null;
+            };
+            var bh = GetQueryString('bh');
+            var time = GetQueryString('time');
+            $.ajax({
+                url: 'http://zhsh.hrbfz.gov.cn:8001/home/GetCheckupInfo',
+                type: 'get',
+                data:{
+                    time: time,
+                    bh: bh
+                },
+                success: function (sur){
+                    if(sur.data[0]){
+                        $("table").css("display","block")
+                        var da = sur.data[0];
+                        $(".xm").html(da.XM);
+                        $(".bh").html(da.BH);
+                        $(".tjrq").html(da.TJRQ);
+                        $(".zrys").html(da.ZRYS);
+                        $(".zz").html(da.ZZ);
+                        $(".ybqktw").html(da.YBQKTW);
+                        $(".ybqkml").html(da.YBQKML);
+                        $(".ybqkhxpl").html(da.YBQKHXPL);
+                        $(".ybqksg").html(da.YBQKSG);
+                        $(".ybqkxy").html(da.YBQKXY);
+                        $(".ybqktz").html(da.YBQKTZ);
+                        $(".ybqkyw").html(da.YBQKYW);
+                        $(".ybqktzzs").html(da.YBQKTZZS);
+                        $(".ybqklnrjkztzwpg").html(da.YBQKLNRJKZTZWPG);
+                        $(".ybqklnrzlnlzwpg").html(da.YBQKLNRZLNLZWPG);
+                        $(".ybqklnrrzgn").html(da.YBQKLNRRZGN);
+                        $(".ybqklnrqgzt").html(da.YBQKLNRQGZT);
+                        $(".shfstydl").html(da.SHFSTYDL);
+                        $(".shfsysxg").html(da.SHFSYSXG);
+                        $(".shfsxyqk").html(da.SHFSXYQK);
+                        $(".shfsyjqk").html(da.SHFSYJQK);
+                        $(".shfszybwhysjcs").html(da.SHFSZYBWHYSJCS);
+                        $(".zqgnkq").html(da.ZQGNKQ);
+                        $(".zqgnsl").html(da.ZQGNSL);
+                        $(".zqgntl").html(da.ZQGNTL);
+                        $(".zqgnydgn").html(da.ZQGNYDGN);
+                        $(".ctyd").html(da.CTYD);
+                        $(".ctpf").html(da.CTPF);
+                        $(".ctgm").html(da.CTGM);
+                        $(".ctlbj").html(da.CTLBJ);
+                        $(".ctf").html(da.CTF);
+                        $(".ctxz").html(da.CTXZ);
+                        $(".ctfb").html(da.CTFB);
+                        $(".ctxzsz").html(da.CTXZSZ);
+                        $(".ctzbdmbd").html(da.CTZBDMBD);
+                        $(".ctgmzz").html(da.CTGMZZ);
+                        $(".ctrx").html(da.CTRX);
+                        $(".ctfk").html(da.CTFK);
+                        $(".ctqt").html(da.CTQT);
+                        $(".fzjcxcg").html(da.FZJCXCG);
+                        $(".fzjclcg").html(da.FZJCLCG);
+                        $(".fzjckfxt").html(da.FZJCKFXT);
+                        $(".fzjcxdt").html(da.FZJCXDT);
+                        $(".fzjclwldb").html(da.FZJCLWLDB);
+                        $(".fzjcdbqx").html(da.FZJCDBQX);
+                        $(".fzjcthxhdb").html(da.FZJCTHXHDB);
+                        $(".fzjcyxgybmky").html(da.FZJCYXGYBMKY);
+                        $(".fzjcggn").html(da.FZJCGGN);
+                        $(".fzjcsgn").html(da.FZJCSGN);
+                        $(".fzjcxz").html(da.FZJCXZ);
+                        $(".fzjcxbxxp").html(da.FZJCXBXXP);
+                        $(".fzjcbc").html(da.FZJCBC);
+                        $(".fzjcgjtp").html(da.FZJCGJTP);
+                        $(".fzjcqt").html(da.FZJCQT);
+                        $(".zytzbs").html(da.ZYTZBS);
+                        $(".xcwtnxgjb").html(da.XCWTNXGJB);
+                        $(".xcwtszjb").html(da.XCWTSZJB);
+                        $(".xcwtxzjb").html(da.XCWTXZJB);
+                        $(".xcwtxgjb").html(da.XCWTXGJB);
+                        $(".xcwtybjb").html(da.XCWTYBJB);
+                        $(".xcwtsjxtjb").html(da.XCWTSJXTJB);
+                        $(".xcwtqtxtjb").html(da.XCWTQTXTJB);
+                        $(".zyzlqkzys").html(da.ZYZLQKZYS);
+                        $(".zyzlqkjtbcs").html(da.ZYZLQKJTBCS);
+                        $(".zyyyqk").html(da.ZYYYQK);
+                        $(".fmyghyfjz").html(da.FMYGHYFJZ);
+                        $(".jkpj").html(da.JKPJ);
+                        $(".jkzd").html(da.JKZD);
+                        $(".wxyskz").html(da.WXYSKZ);
+                    }else{
+                        $(".container").html('<div style="margin-top:10%;color:#555;text-align:center;font-size:14px;">暂无数据！</div>')
+                    }
+                },
+                error: function(){
+                    $(".container").html('<div style="margin-top:10%;color:#555;text-align:center;font-size:14px;">数据加载失败！</div>')
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

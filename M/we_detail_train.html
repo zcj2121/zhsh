@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>用工培训</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        div.content div.title {
+            margin: 10px;
+        }
+        div.content div.title h4 {
+            font-size: 16px;
+            color: #333333;
+            text-align: center;
+            font-weight: normal;
+            line-height: 20px;
+            word-break: break-all;
+        }
+        div.content div.title p {
+            font-size: 12px;
+            color: #333333;
+            margin-top: 10px;
+            text-align: center;
+        }
+        div.content div.video {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <a class="out" href="index.html"><span class="right">首页</span></a>
+    </div>-->
+    <div class="content">
+        <div class="title"></div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var newid = window.location.search.split("=",2);
+        $.ajax({
+            url: cfg.host + 'Video/get',
+            type: 'get',
+            data: {
+                Id: newid[1]
+            },
+            success:function(data) {
+                var imgUrl = cfg.imgUrl;
+                var str = data.SrcHtml;
+                var pattern = "width=...";
+                str = str.replace(new RegExp(pattern), "");
+                if(data.SrcHtml==null){
+                    $("div.content").append("<div class='title'><h4>"+data.Name+"</h4></div>" +
+                            "<div class='video'>" +
+                            "<video style='width: 100%;' src='"+imgUrl+data.FileInfoPath+"' controls='controls'>您的设备不支持播放该视频</video>" +
+                            "<div style='margin-top: 15px;'>"+ data.Remark+"</div>"+
+                            "</div>");
+                }else{
+                    $("div.content").append("<div class='title'><h4>"+data.Name+"</h4></div>" +
+                            "<div class='video' style='text-align:center'>" + str +
+                            "<div style='margin-top: 15px;text-align: left;text-indent: 2rem;'>"+ data.Remark+"</div>"+
+                            "</div>");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

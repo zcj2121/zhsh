@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" href="{{'#/dicSubAdd/'}}{{MainId}}" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-plus"></i>
+                新增
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th class="text-center"><input type="checkbox" ng-model="checked" /></th>
+                <th>名称</th>
+                <th>描述</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td class="text-center"><input type="checkbox" ng-checked="checked" ng-disabled="{{!item.Statu==0}}" /> </td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Description}}</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-sm btn-default" ng-show="item.IsDel==false" href="{{'#/dicSubEdit/'+item.Id}}">修改</a>                   
+                        <a class="btn btn-sm btn-default bs-btn-alert" data-url="{{cfg.host +'dic/DelSub/'+ item.Id}}" data-msg="确认{{item.IsDel|check:['启用','禁用']}}么?">{{item.IsDel|check:['启用','禁用']}}</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pager count="{{data.Count}}" index="{{query.index}}" action="go(index,size)"></pager>

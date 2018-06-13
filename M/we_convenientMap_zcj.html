@@ -1,0 +1,2050 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css" rel="stylesheet" type="text/css"
+	/>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=4GLXHMc6X098CWkrOYycL3bRrsAaFHQo"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+	<title>黑龙江方正县智慧生活微门户</title>
+	<link rel="stylesheet" href="Content/we_base.css">
+	<style>
+		@media only screen and (min-width:320px) {
+			body {
+				font-size: 11.5px!important
+			}
+			.viewport {
+				max-width: 320px
+			}
+		}
+
+		@media only screen and (min-width:360px) {
+			body {
+				font-size: 12.5px!important
+			}
+			.viewport {
+				max-width: 360px
+			}
+		}
+
+		@media only screen and (min-width:480px) {
+			body {
+				font-size: 16px!important
+			}
+			.viewport {
+				max-width: 480px
+			}
+		}
+
+		body {
+			background: #f0f0f0;
+			font-size: 16px;
+		}
+
+		ul li {
+			list-style: none;
+		}
+
+		a,
+		a:hover,
+		a:visited,
+		a:link,
+		a:active {
+			text-decoration: none;
+			color: #555
+		}
+
+		a:hover {
+
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		a:active {
+
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
+
+		a {
+			outline: none;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
+
+		input {
+			outline: none
+		}
+
+		.container {
+			width: 100vw;
+			height: 100vh;
+		}
+
+		header {
+			padding-top: 0.7em;
+			text-align: center;
+			overflow: hidden;
+			width: 94vw;
+			height: 3em;
+			position: fixed;
+			left: 3%;
+			z-index: 1;
+			border-radius: 0.2em;
+		}
+
+		header input.inp {
+			float: left;
+			vertical-align: top;
+			padding-left: 5px;
+			width: 70%;
+			min-width: 130px;
+			height: 2.5em;
+			color: #000000;
+			box-sizing: border-box;
+			border: 1px solid #bfbfbf;
+			border-radius: 0.2em 0 0 0.2em;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			font-size: 14px;
+			margin-left: 5%;
+		}
+
+		header .button {
+			float: left;
+			width: 20%;
+			height: 2.5em;
+			background-color: #ffffff;
+			border: 1px solid #bfbfbf;
+			border-left: none;
+			vertical-align: top;
+			color: #000000;
+			border-radius: 0 0.2em 0.2em 0;
+			box-sizing: border-box;
+			font-size: 14px;
+			line-height: 2.3em;
+		}
+
+		section {
+			height: 100vh;
+			width: 100vw;
+		}
+
+		.con-search {
+			height: 40vw;
+		}
+
+		.con-left {
+			position: fixed;
+			left: 5%;
+			top: 15%;
+			z-index: 3;
+			width: 35px;
+			background: #fff;
+			border-radius: 3px;
+			/*border:1px solid #eaeaea;*/
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+			display: none;
+		}
+
+		.con-left .run-sub {
+			text-align: center;
+			color: #e1e1e1;
+		}
+		/*.con-left li {
+			margin-bottom: 16%;
+		}
+
+		.con-left li:first-child {
+			border-radius: 0.2em 0.2em 0 0;
+		}
+
+		.con-left li:last-child {
+			border-radius: 0 0 0.2em 0.2em;
+		}*/
+
+		.con-left li .hotel {
+			border-bottom: none;
+			padding: 7% 4%;
+			width: 92%;
+			height: 10%;
+			line-height: 17px;
+			text-align: center;
+			font-size: 1em;
+			overflow: hidden;
+			background: rgba(255, 255, 255, .8);
+			border-bottom: 1px solid #eee;
+			/*box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);*/
+		}
+
+		.con-left li .hotel img {
+			width: 70%;
+			padding-top: 14%;
+		}
+
+		.con-left li:last-child .hotel {
+			border-bottom: none;
+			/*border-radius: 0 0 0.2em 0.2em;*/
+			/*border-bottom: 1px solid rgb(236, 236, 236)*/
+		}
+		/*.con-left li:first-child .hotel {
+			border-radius: 0.2em 0.2em 0 0;
+		}*/
+
+		.con-right {
+			position: fixed;
+			right: 5%;
+			top: 15%;
+			z-index: 3;
+			width: 35px;
+		}
+
+		.con-right li {
+			margin-bottom: 16%;
+		}
+
+		.con-right li .hotel {
+			border-bottom: none;
+			padding: 4%;
+			width: 92%;
+			height: 10%;
+			line-height: 16px;
+			text-align: center;
+			font-size: 1em;
+			overflow: hidden;
+			background: rgba(255, 255, 255, .8);
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+		}
+
+		.con-right li .hotel img {
+			width: 70%;
+			padding-top: 14%;
+		}
+
+		.con-right li:last-child .hotel {
+			border-radius: 0.2em;
+			border-bottom: 1px solid rgb(236, 236, 236)
+		}
+
+		#results #divResultTANGRAM__w div:last-child {
+			display: none;
+		}
+
+		.anchorBL {
+			display: none;
+		}
+
+		.BMap_noprint.anchorBL {
+			display: block;
+			bottom: 20px !important;
+			left: 5% !important;
+		}
+
+		.BMap_scaleCtrl.BMap_noprint.anchorBL {
+			display: none;
+		}
+
+		.BMap_stdMpCtrl.BMap_stdMpType4.BMap_noprint.anchorTR {
+			top: 75vh !important;
+			right: 5% !important;
+		}
+		/*.BMap_noprint.anchorTR{
+			top:15vh !important;
+			 right:3% !important;
+		}*/
+
+		#tcBtn {
+			right: 5% !important;
+			bottom: 20px !important;
+			border: none;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+			border-radius: 2px;
+			width: 34px;
+			height: 34px;
+			text-align: center;
+			background-position: 3px 3px;
+		}
+
+		header .desearch {
+			width: 96%;
+			text-align: center;
+			margin: 0 auto;
+			background: #fff;
+			line-height: 2.5em;
+			color: #aaa;
+			border: 1px solid #f0f0f0;
+			border-radius: 2px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+		}
+		/*遮罩view*/
+
+		.search-view {
+			position: fixed;
+			top: 0;
+			left: 100%;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+
+		.search-view .view-top {
+			padding: 2%;
+			margin-top: 0.5em;
+			padding-bottom: 0.7em;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+		}
+
+		.search-view .view-top .search-black {
+			width: 5%;
+			display: inline-block;
+			color: rgba(0, 0, 0, .5);
+		}
+
+		.search-view .view-top #searchInput {
+			padding: 4px 8px;
+			width: 73%;
+			line-height: 21px;
+			-webkit-user-select: text;
+			border: 1px solid rgba(0, 0, 0, .2);
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+		}
+
+		#searchBtn {
+			border: 1px solid rgba(0, 0, 0, .2);
+			padding: 4px;
+			border-radius: 3px;
+			line-height: 21px;
+			font-size: 14px;
+			text-align: center;
+			width: 10%;
+			float: right;
+		}
+
+		#results {
+			overflow-y: scroll;
+			height: 90%;
+		}
+
+		#results>div {
+			padding: 2%;
+			border: none !important;
+			padding-right: 1%;
+		}
+
+		#results>div a {
+			display: none !important;
+		}
+
+		#searchBank {
+			height: 70px;
+			width: 100%;
+			display: none;
+			overflow-x: scroll;
+			overflow: hidden;
+			position: absolute;
+			bottom: 0px;
+			background: #fff;
+		}
+		/*#searchBank a{
+			display: none;
+		}
+		#searchBank div{
+			background: #fff;
+		}
+		#searchBank ol li{
+			float: left;
+		}*/
+		/*#searchBank ol li>span{
+			display: none
+		}*/
+		/*遮罩 公交列表*/
+
+		.bus-view {
+			position: fixed;
+			top: 0;
+			left: 100%;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+
+		.bus-view .view-title {
+			padding: 2%;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+			overflow: hidden;
+		}
+
+		.bus-view .view-title a,
+		.bus-view .view-title .span {
+			display: block;
+			float: left;
+		}
+
+		.bus-view .view-con {
+			padding: 2%;
+			height: 100%;
+			overflow: scroll;
+		}
+
+		.bus-view .con-top-title {
+			border-bottom: 1px solid #66CCFF;
+			margin: 2% 0;
+			margin-top: 3%;
+			color: #fff;
+		}
+
+		.bus-view .con-top-title span {
+			background: #66CCFF;
+			font-size: 1.1em;
+			padding: 0 6px;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+		}
+
+		.bus-view .con-top-title.con-top-titletwo {
+			border-bottom: 1px solid #CC99CC;
+		}
+
+		.bus-view .con-top-title.con-top-titletwo span {
+			background: #CC99CC;
+		}
+
+		.bus-view .view-con ul {
+			padding: 0 2% 2% 2%;
+		}
+
+		.bus-view .view-con ul li {
+			overflow: hidden;
+			padding: 1% 0;
+			border-bottom: 1px solid #eee;
+			font-size: 0.8em;
+		}
+
+		.con-ul-first {
+			background: #09c;
+			display: inline-block;
+			width: 16px;
+			line-height: 16px;
+			text-align: center;
+			border-radius: 50%;
+			color: #fff;
+			margin-right: 3px;
+		}
+
+		.con-ul-end {
+			background: #FF99CC;
+			display: inline-block;
+			width: 16px;
+			line-height: 16px;
+			text-align: center;
+			border-radius: 50%;
+			color: #fff;
+			margin-left: 4%;
+			margin-right: 3px;
+		}
+
+		.con-ul-right {
+			margin-left: 4px;
+			font-size: 1.2em;
+		}
+
+		.con-ul-left {
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+
+		.bus-view .con-time {
+			line-height: 2.0em;
+		}
+
+		.bus-view .view-con ul li:last-child {
+			border: none;
+		}
+
+		.bus-view .view-con ul:last-child {
+			padding-bottom: 16%;
+		}
+
+		.bus-view .view-con a {
+			overflow: hidden;
+		}
+
+		.bus-viewlist {
+			position: fixed;
+			top: 0;
+			left: 100%;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+
+		.bus-viewlist .viewlist-title {
+			padding: 2%;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+			overflow: hidden;
+		}
+
+		.bus-viewlist .viewlist-title a,
+		.bus-viewlist .viewlist-title .span {
+			display: block;
+			float: left;
+		}
+
+		.con-viewlist {
+			padding: 2%;
+			font-size: 0.8em;
+			text-align: center;
+			overflow: scroll;
+			height: 90%;
+		}
+
+		.con-viewlist .viewlist-top {
+			margin-top: 2%;
+			padding-bottom: 3%;
+			border-bottom: 1px solid #eee;
+		}
+
+		.viewlist-ul ul li {
+			text-align: left;
+			line-height: 3em;
+			border-bottom: 1px solid #eee;
+			margin: 0 2%
+		}
+
+
+		.car-viewlist {
+			position: fixed;
+			top: 0;
+			left: 100%;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+
+		.car-viewlist .viewlist-title {
+			padding: 2%;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+			overflow: hidden;
+		}
+
+		.car-viewlist .viewlist-title a,
+		.car-viewlist .viewlist-title .span {
+			display: block;
+			float: left;
+		}
+
+		.car-viewlist .view-con ul li:last-child {
+			border: none;
+		}
+
+		.car-viewlist .view-con ul:last-child {
+			padding-bottom: 16%;
+		}
+
+		.car-viewlist .view-con {
+			overflow-y: scroll;
+			height: 100%;
+		}
+
+		.car-viewlist .view-con ul {
+			padding-bottom: 16%;
+		}
+
+		.car-viewlist .view-con a {
+			overflow: hidden;
+		}
+
+		.car-viewlist .con-ul-first {
+			background: #09c;
+			display: inline-block;
+			width: 18px;
+			line-height: 18px;
+			text-align: center;
+			border-radius: 50%;
+			color: #fff;
+			margin-right: 3px;
+		}
+
+		.car-viewlist .con-ul-end {
+			background: #FF99CC;
+			display: inline-block;
+			width: 18px;
+			line-height: 18px;
+			text-align: center;
+			border-radius: 50%;
+			color: #fff;
+			margin-left: 0% !important;
+			margin-right: 3px;
+		}
+
+		.car-viewlist .con-time-cen {
+			margin: 0 4%;
+		}
+
+		.car-viewlist .con-time {
+			text-align: center;
+			font-size: 1.1em;
+		}
+
+		.car-viewlist .con-time.con-time-title {
+			font-size: 0.9em;
+		}
+
+		.car-viewlist .con-time-pai {
+			padding-left: 4%;
+		}
+
+		.car-viewlist .con-con-ul li {
+			border-bottom: 1px solid #eee;
+			margin: 3% 2%;
+			padding-bottom: 3%;
+		}
+
+		#results a.results-list div {
+			overflow: hidden;
+			margin: 0 1%;
+			margin-top: 2.5%;
+			font-size: 0.7em;
+		}
+
+		#results a.results-list span {
+			display: block;
+			float: left;
+			height: 40px;
+			min-width: 34px;
+		}
+
+		#results a.results-list span .tops-title {
+			color: #00c;
+			font-weight: 600;
+		}
+
+		#results a.results-list span.results-list-left {
+			text-align: center;
+		}
+
+		#results a.results-list span.results-list-left img {
+			margin-top: 5px;
+		}
+
+		#results a.results-list span p {
+			line-height: 1.5em;
+		}
+
+		#results a.results-list span p span {
+			font-weight: 600;
+		}
+
+		.con-lebottom {
+			position: fixed;
+			left: 5%;
+			bottom: 15%;
+			z-index: 3;
+			width: 35px;
+		}
+
+		.con-lebottom .hotel {
+			border-bottom: none;
+			padding: 4%;
+			width: 92%;
+			height: 10%;
+			line-height: 16px;
+			text-align: center;
+			font-size: 1em;
+			overflow: hidden;
+			background: rgba(255, 255, 255, .8);
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
+			border-radius: 0.2em;
+		}
+		/*驾车导航*/
+
+		.nav-viewlist {
+			position: fixed;
+			top: 0;
+			left: 100%;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+			overflow-y: scroll;
+		}
+
+		.nav-viewlist .navtrans-view a {
+			display: none;
+		}
+
+		.nav-viewlist .viewlist-title {
+			padding: 2%;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+			overflow: hidden;
+		}
+
+		.nav-viewlist .viewlist-title a,
+		.nav-viewlist .viewlist-title .span {
+			display: block;
+			float: left;
+		}
+
+		.nav-viewlist .view-content ul li:last-child {
+			border: none;
+		}
+
+		.nav-viewlist .view-content {
+			padding: 2% 0;
+		}
+
+		.nav-viewlist .view-content ul:last-child {
+			padding-bottom: 16%;
+		}
+
+		.nav-viewlist .view-content ul {
+			padding-bottom: 16%;
+		}
+
+		.nav-viewlist .view-content a {
+			overflow: hidden;
+		}
+
+		.nav-viewlist .con-ul-first {
+			background: #09c;
+			display: inline-block;
+			width: 18px;
+			line-height: 18px;
+			text-align: center;
+			border-radius: 50%;
+			color: #fff;
+			margin-right: 3px;
+		}
+
+		.nav-viewlist .con-ul-end {
+			background: #FF99CC;
+			display: inline-block;
+			width: 18px;
+			line-height: 18px;
+			text-align: center;
+			border-radius: 50%;
+			color: #fff;
+			margin-left: 0% !important;
+			margin-right: 3px;
+		}
+
+		.nav-viewlist .con-time-cen {
+			margin: 0 4%;
+		}
+
+		.nav-viewlist .con-time {
+			text-align: center;
+			font-size: 1.1em;
+		}
+
+		.nav-viewlist .con-time.con-time-title {
+			font-size: 0.9em;
+		}
+
+		.nav-viewlist .con-time-pai {
+			padding-left: 4%;
+		}
+
+		.nav-viewlist .con-con-ul li {
+			border-bottom: 1px solid #eee;
+			margin: 3% 2%;
+			padding-bottom: 3%;
+		}
+
+
+		.nav-viewlist .view-content input {
+			padding: 4px 8px;
+			width: 50%;
+			line-height: 21px;
+			-webkit-user-select: text;
+			border: 1px solid rgba(0, 0, 0, .2);
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+		}
+
+		.nav-viewlist .view-content .view-to {
+			margin-bottom: 6px;
+			text-align: center;
+			font-size: 0.9em;
+		}
+
+		.nav-viewlist .view-bott {
+			margin-bottom: 2%;
+			text-align: center;
+			font-size: 0.9em;
+		}
+
+		.nav-viewlist .view-content a.de-nav {
+			margin-left: 2%;
+			padding: 4px 8px;
+			border: 1px solid rgba(0, 0, 0, .2);
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+			line-height: 21px;
+			-webkit-user-select: text;
+			color: #000;
+		}
+
+		.nav-viewlist .view-content a.rat-nav {
+			margin-left: 2%;
+			padding: 4px 8px;
+			border: 1px solid rgba(0, 0, 0, .2);
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+			line-height: 21px;
+			-webkit-user-select: text;
+			color: #000;
+		}
+
+		.nav-viewlist #navulList {
+			border-top: 1px solid rgba(0, 0, 0, .3)
+		}
+		/*驾车起点导航*/
+
+		.star-viewlist {
+			position: fixed;
+			top: 0;
+			left: 100%;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+
+		.star-viewlist .viewlist-title {
+			padding: 2%;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+			overflow: hidden;
+		}
+
+		.star-viewlist .viewlist-title #starInput {
+			padding: 4px 8px;
+			width: 73%;
+			line-height: 21px;
+			-webkit-user-select: text;
+			border: 1px solid rgba(0, 0, 0, .2);
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+		}
+
+		.star-viewlist .view-content {
+			height: 100%;
+			overflow: scroll;
+		}
+
+		.star-viewlist .view-content #starulList {
+			padding-bottom: 100px;
+		}
+
+		.bef-viewlist .view-content {
+			height: 100%;
+			overflow: scroll;
+		}
+
+		.bef-viewlist .view-content #befulList {
+			padding-bottom: 100px;
+		}
+
+		.star-viewlist #starBtn {
+			border: 1px solid rgba(0, 0, 0, .2);
+			padding: 4px;
+			border-radius: 3px;
+			line-height: 21px;
+			font-size: 14px;
+			text-align: center;
+			width: 10%;
+			float: right;
+		}
+
+		.star-viewlist .con-con-ul li {
+			border-bottom: 1px solid #eee;
+			margin: 3% 2%;
+			padding-bottom: 3%;
+			overflow: hidden;
+			font-size: 0.8em;
+		}
+
+		.star-viewlist .con-con-ul li a {
+			overflow: hidden;
+			display: block;
+		}
+
+		#starulList a.results-list span.results-list-left {
+			display: block;
+			float: left;
+			height: 40px;
+			width: 12%
+		}
+
+		#starulList a.results-list span.results-list-bef {
+			display: block;
+			float: left;
+			width: 88%;
+			overflow: scroll;
+		}
+
+		#starulList a.results-list span .tops-title {
+			color: #00c;
+			font-weight: 600;
+		}
+
+		#starulList a.results-list span.results-list-left {
+			text-align: center;
+		}
+
+		#starulList a.results-list span.results-list-left img {
+			margin-top: 5px;
+		}
+
+		#starulList a.results-list span p {
+			line-height: 1.5em;
+		}
+
+		#starulList a.results-list span p span {
+			font-weight: 600;
+		}
+		/*驾车起点导航*/
+		/*驾车终点导航*/
+
+		.bef-viewlist {
+			position: fixed;
+			top: 0;
+			left: 100%;
+			z-index: 10;
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+
+		.bef-viewlist .viewlist-title {
+			padding: 2%;
+			text-align: center;
+			border-bottom: 1px solid rgba(0, 0, 0, .3);
+			overflow: hidden;
+		}
+
+		.bef-viewlist .viewlist-title #befInput {
+			padding: 4px 8px;
+			width: 73%;
+			line-height: 21px;
+			-webkit-user-select: text;
+			border: 1px solid rgba(0, 0, 0, .2);
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+		}
+
+		.bef-viewlist #befBtn {
+			border: 1px solid rgba(0, 0, 0, .2);
+			padding: 4px;
+			border-radius: 3px;
+			line-height: 21px;
+			font-size: 14px;
+			text-align: center;
+			width: 10%;
+			float: right;
+		}
+
+		.bef-viewlist .con-con-ul li {
+			border-bottom: 1px solid #eee;
+			margin: 3% 2%;
+			padding-bottom: 3%;
+			overflow: hidden;
+			font-size: 0.8em;
+		}
+
+		.bef-viewlist .con-con-ul li a {
+			overflow: hidden;
+			display: block;
+		}
+
+		#befulList a.results-list span.results-list-left {
+			display: block;
+			float: left;
+			height: 40px;
+			width: 12%;
+		}
+
+		#befulList a.results-list span.results-list-bef {
+			display: block;
+			float: left;
+			width: 88%;
+			overflow: hidden;
+		}
+
+		#befulList a.results-list span .tops-title {
+			color: #00c;
+			font-weight: 600;
+		}
+
+		#befulList a.results-list span.results-list-left {
+			text-align: center;
+		}
+
+		#befulList a.results-list span.results-list-left img {
+			margin-top: 5px;
+		}
+
+		#befulList a.results-list span p {
+			line-height: 1.5em;
+		}
+
+		#befulList a.results-list span p span {
+			font-weight: 600;
+		}
+
+		.bgactive {
+			background: #09c !important;
+		}
+
+		.bgactive a {
+			color: #fff !important;
+		}
+
+		#leftList {
+			height: 200px;
+			overflow: scroll;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<div class="desearch">请输入需要搜索的内容</div>
+		</header>
+		<div class="con-left">
+			<div class="run-sub">︿</div>
+			<ul id="leftList">
+			</ul>
+			<div class="run-sub">﹀</div>
+		</div>
+		<div class="con-right">
+			<ul>
+				<li>
+					<a href="###" id="rightBus">
+						<div class="hotel">
+							<div>公交路线</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--<div class="con-lebottom">
+			<a href="###" id="carNav">-->
+		<!--<a href="we_convenientMap_dir.html">-->
+		<!--<div class="hotel">
+					<div>驾车导航</div>
+				</div>
+			</a>
+		</div>-->
+		<section id="allmap"></section>
+		<div id="searchBank"></div>
+		<!--搜索遮罩-->
+		<div class="search-view">
+			<div class="view-top">
+				<a class="search-black">〈</a>
+				<input class="inp" type="text" size="100" value="" id="searchInput" placeholder="请输入需要搜索的内容">
+				<a class="button" id="searchBtn" type="submit">搜索</a>
+			</div>
+			<div id="results">
+				<!--<a class="results-list" href="###">
+					<div>
+						<span class="results-list-left"><img src="Images/map/newred.png" alt=""></span>
+						<span>
+							<p class="tops-title">方正三中</p>
+							<p><span>地址：</span>方正第三中学</p>
+						</span>
+					</div>
+				</a>-->
+			</div>
+		</div>
+		<!--搜索遮罩-->
+		<!--公交遮罩-->
+		<div class="bus-view">
+			<div class="view-title">
+				<a class="bus-back">〈</a><span>公交列表</span>
+			</div>
+			<div class="view-con">
+				<div class="con-top-title"><span>城市公交</span></div>
+				<ul class="con-con-ul" id="cityBus">
+					<!--<li>
+						<a href="">
+							<div><span class="con-ul-left">一路公交</span><span class="con-ul-right">(方正县 ⇌ 方正县政府)</span></div>
+							<div class="con-time"><span class="con-ul-first">首</span>09:00<span class="con-ul-end">末</span>09:00</div>
+						</a>
+					</li>-->
+				</ul>
+				<!--<div class="con-top-title con-top-titletwo"><span>城乡公交</span></div>-->
+				<!--<ul class="con-con-ul" id="conBus">-->
+				<!--<li>
+						<a href="">
+							<div><span class="con-ul-left">一路公交</span><span class="con-ul-right">(方正县 ⇌ 方正县政府)</span></div>
+							<div class="con-time"><span class="con-ul-first">首</span>09:00<span class="con-ul-end">末</span>09:00</div>
+						</a>
+					</li>-->
+				<!--</ul>-->
+			</div>
+		</div>
+		<div class="bus-viewlist">
+			<div class="viewlist-title">
+				<a class="viewlist-back">〈</a><span class="viewlist-name"></span>
+			</div>
+			<div class="con-viewlist">
+				<div class="viewlist-top">
+					<a href="###" class="viewlist-backmap">
+						<div><span class="con-ul-right">(<span class="viewlist-fir"></span> ⇌ <span class="viewlist-bef"></span>)</span>
+						</div>
+						<div class="con-time"><span class="con-ul-first">首</span><span class="viewlist-fir-time"></span><span class="con-ul-end">末</span><span class="viewlist-bef-time"></span></div>
+					</a>
+				</div>
+				<div class="viewlist-ul">
+					<ul class="viewlist-list">
+						<!--<li>方正县宾馆</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--公交遮罩-->
+		<!--汽车、高铁等遮罩-->
+		<div class="car-viewlist">
+			<div class="viewlist-title">
+				<a class="viewlist-carback">〈</a><span class="viewlist-carname"></span>
+			</div>
+			<div class="view-con">
+				<ul class="con-con-ul" id="carulList">
+					<!--<li>
+						<div class="con-time"><span class="con-ul-first">始</span>方正县<span class="con-time-cen">→</span><span class="con-ul-end">终</span>方正县政府</div>
+						<div class="con-time con-time-title"><span class="">发车时间：</span>09:00<span class="con-time-pai">车牌号：</span>黑J12345</div>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<!--汽车、高铁等遮罩-->
+
+		<!--导航遮罩-->
+		<div class="nav-viewlist">
+			<div class="viewlist-title">
+				<a class="viewlist-navback">〈</a><span>驾车导航</span>
+			</div>
+			<div class="view-content">
+				<div class="view-to">
+					<span style="color:#09c;font-weight: 600;">起点：</span><a href="###" id="starNav"><input type="text" id="starnavVal" disabled="disabled"></a>
+					<a href="###" class="de-nav">普通导航</a>
+				</div>
+				<div class="view-bott">
+					<span style="color:#FF99CC;font-weight: 600;">终点：</span><a href="###" id="befNav"><input type="text" id="befnavVal" disabled="disabled"></a>
+					<a class="rat-nav" href="###">拖拽导航</a>
+				</div>
+				<ul class="con-con-ul" id="navulList">
+					<!--<li>
+						<div class="con-time"><span class="con-ul-first">始</span>方正县<span class="con-time-cen">→</span><span class="con-ul-end">终</span>方正县政府</div>
+						<div class="con-time con-time-title"><span class="">发车时间：</span>09:00<span class="con-time-pai">车牌号：</span>黑J12345</div>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<!--导航遮罩-->
+		<!--导航起点遮罩-->
+		<div class="star-viewlist">
+			<div class="viewlist-title">
+				<a class="navstar-black">〈</a>
+				<input class="inp" type="text" size="100" value="" id="starInput" placeholder="请输入起点">
+				<a class="button" id="starBtn" type="submit">搜索</a>
+			</div>
+			<div class="view-content">
+				<ul class="con-con-ul" id="starulList">
+					<!--<li>
+						<div class="con-time"><span class="con-ul-first">始</span>方正县<span class="con-time-cen">→</span><span class="con-ul-end">终</span>方正县政府</div>
+						<div class="con-time con-time-title"><span class="">发车时间：</span>09:00<span class="con-time-pai">车牌号：</span>黑J12345</div>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<!--导航起点遮罩-->
+		<!--导航终点遮罩-->
+		<div class="bef-viewlist">
+			<div class="viewlist-title">
+				<a class="navbef-black">〈</a>
+				<input class="inp" type="text" size="100" value="" id="befInput" placeholder="请输入终点">
+				<a class="button" id="befBtn" type="submit">搜索</a>
+			</div>
+			<div class="view-content">
+				<ul class="con-con-ul" id="befulList">
+					<!--<li>
+						<div class="con-time"><span class="con-ul-first">始</span>方正县<span class="con-time-cen">→</span><span class="con-ul-end">终</span>方正县政府</div>
+						<div class="con-time con-time-title"><span class="">发车时间：</span>09:00<span class="con-time-pai">车牌号：</span>黑J12345</div>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<!--导航终点遮罩-->
+	</div>
+	<script src="lgs/jquery-1.9.1.js"></script>
+	<script src="lgs/we_common.js"></script>
+	<script>
+
+	$(function(){
+			var pintInit;
+			var map = new BMap.Map("allmap");
+			map.setCurrentCity("方正县"); // 设置地图显示的城市 此项是必须设置的
+			// map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
+			map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+			//ScaleControl：比例尺控件，默认位于地图左下方，显示地图的比例关系。
+			map.addControl(new BMap.ScaleControl());
+			var gc = new BMap.Geocoder();
+			var top_left_navigation = new BMap.NavigationControl({
+				anchor: BMAP_ANCHOR_TOP_RIGHT,
+				offset: new BMap.Size(5, 35)
+			}); //左上角，添加默认缩放平移控件
+			map.addControl(top_left_navigation);
+			var point = new BMap.Point(128.84219, 45.84401);
+			//初始化地图，设置中心点坐标和地图级别
+			map.centerAndZoom(point, 18);
+			var marker = new BMap.Marker(point);   
+			marker.enableDragging();
+
+			// var geolocation = new BMap.Geolocation();
+			// geolocation.getCurrentPosition(function(r){
+			// 	if(this.getStatus() == BMAP_STATUS_SUCCESS){
+			// 	//根据point对象创建标记遮挡物，并添加到地图中
+			// 	var myIcons = new BMap.Icon("Images/map/mapades.png", new BMap.Size(14, 14));  
+			// 	marker = new BMap.Marker(r.point,{icon:myIcons});
+			// 	map.addOverlay(marker);
+			// 	//将地图中心设置为获得的当前位置
+			// 	map.panTo(r.point)
+			// 	}else {
+			// 		point = new BMap.Point(128.84219, 45.84401);
+			// 		var marker = new BMap.Marker(point);   
+			// 		marker.enableDragging();
+			// 	}
+			// },{enableHighAccuracy: true});	
+			var geolocationControl = new BMap.GeolocationControl({showAddressBar:true,enableAutoLocation:true});//左下角 定位
+			map.addControl(geolocationControl);
+			
+			$("#allmap").delegate("div.BMap_noprint.anchorBL .BMap_geolocationIcon","click",function(){}) //点击定位事件
+			 function myfun (){
+				 $('div.BMap_noprint.anchorBL .BMap_geolocationIcon').trigger("click");  //自动执行点击 定位事件
+			 };
+			 window.onload=myfun;
+
+			geolocationControl.addEventListener("locationSuccess",function(e){    //获取 定位成功后 的坐标
+				pintInit = e.point;  
+			});
+
+			//路况信息
+			var ctrl = new BMapLib.TrafficControl({
+				showPanel: false //是否显示路况提示面板
+			}); 
+			map.addControl(ctrl);
+			ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_RIGHT); 
+			
+			//请求地图左侧列表
+			$.ajax({
+				url: cfg.host + 'dic/getsub',
+				type: 'get',
+				data: {
+					code:'MapType'
+				},
+				success:function(data) {
+					if(data){
+						$(".con-left").css("display","block")
+						for(var i =0;i<data.length;i++){
+							if(data[i].Name!="公交站点"){
+								$("#leftList").append(
+									'<li>'+
+										'<a href="###" id="'+data[i].Id+'">'+
+											'<div class="hotel">'+
+												'<div>'+data[i].Name+'</div>'+
+											'</div>'+
+										'</a>'+
+									'</li>'
+								);
+							};
+						};
+					};			
+				},
+				error : function() {
+					alert("加载失败,请重试!")
+				}
+				
+			});
+			
+			 
+			 
+			//点击左侧列表 请求点数据
+			$("#leftList").delegate("a","click",function(){
+				var pintlng, pintlat;
+				if(pintInit){
+					pintlng = pintInit.lng;
+					pintlat = pintInit.lat;
+				}else{
+					pintlng = 128.84219;
+					pintlat = 45.84401;
+				}
+				// pintInit
+				$(this).parent().addClass("bgactive").siblings().removeClass("bgactive");
+				var ccc = $(this).children().children().text();
+				map.clearOverlays();  //清除地图上所有标注
+				if(ccc!="汽车客运"){
+					point = new BMap.Point(pintlng, pintlat);
+					map.centerAndZoom(point, 18);
+					var marker = new BMap.Marker(point);   
+					marker.enableDragging();
+				}else{
+					point = new BMap.Point(pintlng, pintlat);
+					map.centerAndZoom(point, 15);
+					var marker = new BMap.Marker(point);   
+					marker.enableDragging();
+				};
+				
+				
+				var id = this.id;
+				$.ajax({
+					url: cfg.host + 'Map/GetMap',
+					type: 'get',
+					data: {
+						TypeId:id
+					},
+					success:function(data) {
+						if(data){
+							var data_info = [];
+							for(var i =0;i<data.length;i++){
+								data_info.push([parseFloat(data[i].Yaxis),parseFloat(data[i].Xaxis)]);
+							};
+							// var data_info = [[128.845172, 45.840066],
+							// 	[128.834536, 45.844486],
+							// 	[128.846825, 45.847449],[128.839711, 45.841673]
+							// ];
+							var opts = {
+								width : 100,     // 信息窗口宽度
+								height: 120,     // 信息窗口高度
+								title : ""  // 信息窗口标题
+							};
+							var myIcon0 = new BMap.Icon(
+								"Images/map/newgreen.png",
+									new BMap.Size(20,20));
+							var myIcon1 = new BMap.Icon(
+								"Images/map/newred.png",
+									new BMap.Size(25,25));
+							var myIcon2 = new BMap.Icon(
+								"Images/map/newyellow.png",
+									new BMap.Size(25,25));
+							for(var i=0;i<data_info.length;i++){
+								var cverX = data_info[i][0]-point.lng;
+								var cverY = data_info[i][1]-point.lat;
+								function initFun(){
+									var markerGreen = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+									var content
+									if(data[i].TypeName=="汽车客运"){
+										content = '<div style="margin:0;font-size:10px;color:#333;line-height:20px;">' +
+											'<div style="font-size:14px;color:#333;font-weight:900;">'+data[i].Name+'</div>'+
+											'<div><label style="color:#666;font-weight:600">地址：</label>'+data[i].Address+'</div>'+
+											'<div><label style="color:#666;font-weight:600">标签：</label>'+data[i].MainBusiness+'</div>'+
+											'<div><label style="color:#666;font-weight:600">营业时间：</label>'+data[i].BusinessTime+'</div>'+
+											'<div><label style="color:#666;font-weight:600">联系电话：</label>'+data[i].Phone+'</div>'+
+											'<div><button onclick="alertLook('+data[i].Id+')" class="mpBtn" id="abc'+data[i].Id+'" style="color:#09c;">查看时刻表»</button></div>'+
+										'</div>';//内容
+									}else{
+										content = '<div style="margin:0;font-size:10px;color:#333;line-height:20px;">' +
+											'<div style="font-size:14px;color:#333;font-weight:900;">'+data[i].Name+'</div>'+
+											'<div><label style="color:#666;font-weight:600">地址：</label>'+data[i].Address+'</div>'+
+											'<div><label style="color:#666;font-weight:600">标签：</label>'+data[i].MainBusiness+'</div>'+
+											'<div><label style="color:#666;font-weight:600">营业时间：</label>'+data[i].BusinessTime+'</div>'+
+											'<div><label style="color:#666;font-weight:600">联系电话：</label>'+data[i].Phone+'</div>'+
+										'</div>';//内容
+									};
+									
+									map.addOverlay(markerGreen);               // 将标注添加到地图中
+									addClickHandler(content,markerGreen);
+								};
+								if(ccc!="汽车客运"){
+									if((cverX>-0.0016&&cverX<0.0016)&&(cverY>-0.0016&&cverY<0.0016)){
+										initFun();
+									}
+								}else{
+									initFun();
+								}	
+							};
+							map.addEventListener("dragend", function(){
+								if($("#leftList li.bgactive").length==1){
+									map.clearOverlays();  //清除地图上所有标注 
+									point = map.getCenter(); 
+									for(var i=0;i<data_info.length;i++){									
+										function initderFun(){
+											var markerGreen = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+											var content
+											if(data[i].TypeName=="汽车客运"){
+												content = '<div style="margin:0;font-size:10px;color:#333;line-height:20px;">' +
+													'<div style="font-size:14px;color:#333;font-weight:900;">'+data[i].Name+'</div>'+
+													'<div><label style="color:#666;font-weight:600">地址：</label>'+data[i].Address+'</div>'+
+													'<div><label style="color:#666;font-weight:600">标签：</label>'+data[i].MainBusiness+'</div>'+
+													'<div><label style="color:#666;font-weight:600">营业时间：</label>'+data[i].BusinessTime+'</div>'+
+													'<div><label style="color:#666;font-weight:600">联系电话：</label>'+data[i].Phone+'</div>'+
+													'<div><button onclick="alertLook('+data[i].Id+')" class="mpBtn" id="abc'+data[i].Id+'" style="color:#09c;">查看时刻表»</button></div>'+
+												'</div>';//内容
+											}else{
+												content = '<div style="margin:0;font-size:10px;color:#333;line-height:20px;">' +
+													'<div style="font-size:14px;color:#333;font-weight:900;">'+data[i].Name+'</div>'+
+													'<div><label style="color:#666;font-weight:600">地址：</label>'+data[i].Address+'</div>'+
+													'<div><label style="color:#666;font-weight:600">标签：</label>'+data[i].MainBusiness+'</div>'+
+													'<div><label style="color:#666;font-weight:600">营业时间：</label>'+data[i].BusinessTime+'</div>'+
+													'<div><label style="color:#666;font-weight:600">联系电话：</label>'+data[i].Phone+'</div>'+
+												'</div>';//内容
+											};
+											
+											map.addOverlay(markerGreen);               // 将标注添加到地图中
+											addClickHandler(content,markerGreen);
+										};
+										if(ccc!="汽车客运"){
+											var cverX = data_info[i][0]-point.lng;
+											var cverY = data_info[i][1]-point.lat;
+											if((cverX>-0.0016&&cverX<0.0016)&&(cverY>-0.0016&&cverY<0.0016)){
+												initderFun();
+											};
+										}else{
+											initderFun();
+										};	
+									};
+								};
+							});
+							
+							function addClickHandler(content,marker){
+								marker.addEventListener("click",function(e){
+									openInfo(content,e)}
+								);
+							};
+							function openInfo(content,e){
+								var p = e.target;
+								var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+								var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+								map.openInfoWindow(infoWindow,point); //开启信息窗口
+							};
+							// setTimeout(function(){  
+							// 	var arr = [];
+							// 	for(var i=0;i<data_info.length;i++){
+							// 		var allzhu = new BMap.Point(data_info[i][0],data_info[i][1]);
+							// 		if(data[i].TypeName=="汽车客运"||data[i].TypeName=="政府机构"){
+							// 			map.centerAndZoom(point, 15);
+							// 			var marker = new BMap.Marker(point);   
+							// 			marker.enableDragging();
+							// 			arr.push();
+							// 			   // 回到中心点
+							// 		};
+							// 	}
+							// 	map.setViewport(arr);          //调整到最佳视野  
+							// },500);
+							
+						};			
+					},
+					error : function() {
+						alert("加载失败,请重试!")
+					}
+				});
+				
+			});
+			//三种出行方式
+			var myP1 = new BMap.Point(128.831698, 45.839607);    //起点  
+			var myP2 = new BMap.Point(128.834429, 45.835011);    
+			var myP3 = new BMap.Point(128.844454, 45.837874); 
+			var myP4 = new BMap.Point(128.846933, 45.837448);    
+			var myP5 = new BMap.Point(128.85067, 45.833881);     
+			var myP6 = new BMap.Point(128.85067, 45.833881); 
+			var myP7 = new BMap.Point(128.862743, 45.82946);      
+			var myP8 = new BMap.Point(128.858719, 45.835589);     
+			var myP9 = new BMap.Point(128.870073, 45.831419);    //终点  
+			$("#transIt").click(function(){
+				map.clearOverlays();  //清除地图上所有标注
+				var transit = new BMap.WalkingRoute(map, {    //步行WalkingRoute     //驾车DrivingRoute    //公交TransitRoute    
+					renderOptions: {
+						map: map,
+						panel: "r-result",
+						enableDragging : true // 驾车起终点可进行拖拽
+					},  
+				});
+				transit.search(myP1,myP9);
+			});
+			//自定义公交路线  折线+标点
+			$("#nowBus").click(function(){
+				var arrs = [[128.834429, 45.835011],[128.85067, 45.833881],[128.858719, 45.835589],[128.870073, 45.831419]]
+				var myIconfir = new BMap.Icon("Images/map/fir.png",new BMap.Size(25,25));//起点标注
+				var myIconbef = new BMap.Icon("Images/map/bef.png",new BMap.Size(25,25));//终点标注
+				var myIconcon = new BMap.Icon("Images/map/buscon.png",new BMap.Size(20,20));//途经点标注
+				var ary = [];
+				for(var i in arrs){
+					ary.push(new BMap.Point(arrs[i][0],arrs[i][1]));
+				};
+				var polyline = new BMap.Polyline(ary, {strokeColor:"#09C", strokeWeight:2, strokeOpacity:0.5});   //创建折线
+				map.addOverlay(polyline);   //增加折线
+				for(var j =1;j<arrs.length-1;j++){ //创建途径标注
+					var biaozhu = new BMap.Marker(new BMap.Point(arrs[j][0],arrs[j][1]),{ 
+						icon:myIconcon
+					});
+					map.addOverlay(biaozhu);
+				};
+				var firbiao = new BMap.Marker(new BMap.Point(arrs[0][0],arrs[0][1]),{ //创建起点标注
+					icon:myIconfir,
+				});
+				var befbiao = new BMap.Marker(new BMap.Point(arrs[arrs.length-1][0],arrs[arrs.length-1][1]),{ //创建终点标注
+					icon:myIconbef,
+				});
+				map.addOverlay(firbiao);//添加起点标注到地图
+				map.addOverlay(befbiao);//添加终点标注到地图
+
+				setTimeout(function(){  //调整到最佳视野
+					var arr = [];
+					for(var i=0;i<arrs.length;i++){
+						var allzhu = new BMap.Point(arrs[i][0],arrs[i][1]);
+						arr.push(allzhu);
+					};
+					map.setViewport(arr);            
+				},500)
+			});
+
+
+			// 驾车途经点
+			$("#workIn").click(function(){
+				map.clearOverlays();  //清除地图上所有标注
+				var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+				driving.search(myP1, myP9,{waypoints:[myP2,myP3,myP4,myP5,myP6,myP7,myP8]});//waypoints表示途经点
+			});
+		
+
+		$("#allmap").delegate(".BMap_geolocationContainer","click",function(){ //点击导航 清除左侧选中和地图
+			map.clearOverlays();  //清除地图上所有标注
+			$("#leftList li").removeClass("bgactive");
+		});
+		// 点击搜索  显示搜索层
+		$(".desearch").click(function(){
+			map.clearOverlays();  //清除地图上所有标注
+			$("#leftList li").removeClass("bgactive");
+			// $("#searchInput").focus();
+			map.addControl(top_left_navigation);
+			var point = new BMap.Point(128.84219, 45.84401);
+			//初始化地图，设置中心点坐标和地图级别
+			map.centerAndZoom(point, 15);
+			var marker = new BMap.Marker(point);   
+			marker.enableDragging();
+			$(".search-view").animate({left:"0px"});
+		});
+		// 智能搜索  在方正县范围内搜索
+		$("#searchBtn").click(function(){
+			var val = document.getElementById("searchInput").value
+			$.ajax({
+				url: cfg.host + 'Map/Query',
+				type: 'post',
+				data: {
+					Index:1,
+					Name:val,
+					Size:5000
+				},
+				success:function(data) {
+					$("#results").empty();
+					map.clearOverlays();  //清除地图上所有标注
+					if(data){
+						var da = data.Data;
+						if(da&&da.length!=0&&da!=null&&da!=""&&da!=[]&&da!=undefined){
+							var data_info = [];
+							for(var i=0;i<da.length;i++){
+								data_info.push([parseFloat(da[i].Yaxis),parseFloat(da[i].Xaxis)]);
+								$("#results").append(
+									'<a class="results-list" onclick="clickUrl('+da[i].Id+')" href="###">'+
+										'<div>'+
+											'<span class="results-list-left"><img src="Images/map/newred.png" alt=""></span>'+
+											'<span>'+
+												'<p class="tops-title">'+da[i].Name+'</p>'+
+												'<p><span>地址：</span>'+da[i].Address+'</p>'+
+											'</span>'+
+										'</div>'+
+									'</a>'
+								);
+							};
+							var opts = {
+								width : 100,     // 信息窗口宽度
+								height: 100,     // 信息窗口高度
+								title : ""  // 信息窗口标题
+							};
+							var myIcon0 = new BMap.Icon(
+								"Images/map/newgreen.png",
+									new BMap.Size(25,25));
+							var myIcon1 = new BMap.Icon(
+								"Images/map/newred.png",
+									new BMap.Size(25,25));
+							var myIcon2 = new BMap.Icon(
+								"Images/map/newyellow.png",
+									new BMap.Size(25,25));
+							for(var i=0;i<data_info.length;i++){
+								var markerGreen = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]),{ 
+									icon:myIcon1,
+								});  // 创建标注
+								var content = '<div style="margin:0;font-size:10px;color:#333;line-height:20px;">' +
+									'<div style="font-size:14px;color:#333;font-weight:900;">'+da[i].Name+'</div>'+
+									'<div><label style="color:#666;font-weight:600">地址：</label>'+da[i].Address+'</div>'+
+									'<div><label style="color:#666;font-weight:600">标签：</label>'+da[i].MainBusiness+'</div>'+
+									'<div><label style="color:#666;font-weight:600">营业时间：</label>'+da[i].BusinessTime+'</div>'+
+									// '<div><button onclick="alertLook('+da[i].Id+')" class="mpBtn" id="abc'+da[i].Id+'" style="color:#09c;">查看时刻表»</button></div>'+
+								'</div>';//内容
+								map.addOverlay(markerGreen);               // 将标注添加到地图中
+								addClickHandler(content,markerGreen);
+								
+							};
+							function addClickHandler(content,marker){
+								marker.addEventListener("click",function(e){
+									openInfo(content,e)}
+								);
+							};
+							function openInfo(content,e){
+								var p = e.target;
+								var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+								var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+								map.openInfoWindow(infoWindow,point); //开启信息窗口
+							};
+							setTimeout(function(){  
+								var arr = [];
+								for(var i=0;i<data_info.length;i++){
+									var allzhu = new BMap.Point(data_info[i][0],data_info[i][1]);
+									arr.push(allzhu);
+								}
+								map.setViewport(arr);          //调整到最佳视野  
+							},500);
+						}else{
+							var local = new BMap.LocalSearch(map, {
+								renderOptions:{
+									map: map,
+									panel: "results",//结果容器id  
+									autoViewport: true,   //自动结果标注  
+									selectFirstResult: false   //指定到第一个目标 
+								},
+								pageCapacity: 100 
+							});
+							var pStart = new BMap.Point(128.259094, 45.645961);
+							var pEnd = new BMap.Point(129.436521, 45.970839);
+							var bs = new BMap.Bounds(pStart,pEnd);   //自己规定范围
+							local.searchInBounds(val, bs);
+						};	
+					}else{
+						var local = new BMap.LocalSearch(map, {
+							renderOptions:{
+								map: map,
+								panel: "results",//结果容器id  
+								autoViewport: true,   //自动结果标注  
+								selectFirstResult: false   //指定到第一个目标 
+							},
+							pageCapacity: 100 
+						});
+						var pStart = new BMap.Point(128.259094, 45.645961);
+						var pEnd = new BMap.Point(129.436521, 45.970839);
+						var bs = new BMap.Bounds(pStart,pEnd);   //自己规定范围
+						local.searchInBounds(val, bs);
+					};			
+				},
+				error : function() {
+					alert("加载失败,请重试!")
+				}
+			});
+			
+		});
+
+		// 点击地图上的导航按钮 显示导航面板
+		$("#carNav").click(function(){
+			map.clearOverlays();  //清除地图上所有标注
+			var point = new BMap.Point(128.84219, 45.84401);
+			//初始化地图，设置中心点坐标和地图级别
+			map.centerAndZoom(point, 18);
+			var marker = new BMap.Marker(point);   
+			marker.enableDragging();
+			$("#leftList li").removeClass("bgactive");
+			$(".nav-viewlist").css("left","0%");
+		});
+		$(".viewlist-navback").click(function(){
+			$(".nav-viewlist").css("left","100%");
+		});
+		
+		//点击导航起点 显示起点搜索
+		$("#starNav").click(function(){
+			$("#starInput").focus();
+			var point = new BMap.Point(128.84219, 45.84401);
+			//初始化地图，设置中心点坐标和地图级别
+			map.centerAndZoom(point, 18);
+			var marker = new BMap.Marker(point);   
+			marker.enableDragging();
+			$(".nav-viewlist").css("left","100%");
+			$(".star-viewlist").css("left","0%")
+		});
+		//点击返回 导航面板
+		$(".navstar-black").click(function(){
+			$(".nav-viewlist").css("left","0%");
+			$(".star-viewlist").css("left","100%")
+		});
+		//点击导航终点 显示终点搜索
+		$("#befNav").click(function(){
+			$("#befInput").focus();
+			var point = new BMap.Point(128.84219, 45.84401);
+			//初始化地图，设置中心点坐标和地图级别
+			map.centerAndZoom(point, 18);
+			var marker = new BMap.Marker(point);   
+			marker.enableDragging();
+			$(".nav-viewlist").css("left","100%");
+			$(".bef-viewlist").css("left","0%")
+		});
+		//点击返回 导航面板
+		$(".navbef-black").click(function(){
+			$(".nav-viewlist").css("left","0%");
+			$(".bef-viewlist").css("left","100%")
+		});
+
+		// 驾车导航起点 智能搜索  在方正县范围内搜索  
+		$("#starBtn").click(function(){
+			$("#starulList").empty();
+			map.clearOverlays();  //清除地图上所有标注
+			var valstar = document.getElementById("starInput").value;
+			var options = {
+				onSearchComplete: function(results){
+					// 判断状态是否正确
+					if (local.getStatus() == BMAP_STATUS_SUCCESS){
+						var s = [];
+						for (var i = 0; i < results.getCurrentNumPois(); i ++){
+							var aaa = results.getPoi(i).title;
+							$("#starulList").append(
+								'<li><a class="results-list" onclick="clickStar(this)" id="'+results.getPoi(i).title+'" href="###">'+
+									'<div>'+
+										'<span class="results-list-left"><img src="Images/map/newred.png" alt=""></span>'+
+										'<span class="results-list-bef">'+
+											'<pclass="tops-title">'+results.getPoi(i).title+'</p>'+
+											'<p style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;"><span>地址：</span>'+results.getPoi(i).address+'</p>'+
+										'</span>'+
+									'</div>'+
+								'</a></li>'
+							);
+						}
+					}else{
+						$("#starulList").html('<div style="text-align:center;margin-top:10%;">搜索无结果！</div>')
+					}
+				}
+			};
+			var local = new BMap.LocalSearch(map, options);
+			var pStart = new BMap.Point(128.259094, 45.645961);
+			var pEnd = new BMap.Point(129.436521, 45.970839);
+			var bs = new BMap.Bounds(pStart,pEnd);   //自己规定范围
+			local.searchInBounds(valstar,bs);
+			
+		});
+	
+		// 驾车导航终点 智能搜索  在方正县范围内搜索  
+		$("#befBtn").click(function(){
+			$("#befulList").empty();
+			map.clearOverlays();  //清除地图上所有标注
+			var valstar = document.getElementById("befInput").value;
+			var options = {
+				onSearchComplete: function(results){
+					// 判断状态是否正确
+					if (local.getStatus() == BMAP_STATUS_SUCCESS){
+						var s = [];
+						for (var i = 0; i < results.getCurrentNumPois(); i ++){
+							var aaa = results.getPoi(i).title;
+							$("#befulList").append(
+								'<li><a class="results-list" onclick="clickBef(this)" id="'+results.getPoi(i).title+'" href="###">'+
+									'<div>'+
+										'<span class="results-list-left"><img src="Images/map/newred.png" alt=""></span>'+
+										'<span>'+
+											'<p class="tops-title">'+results.getPoi(i).title+'</p>'+
+											'<p style="text-overflow:ellipsis; white-space:nowrap; overflow:hidden;"><span>地址：</span>'+results.getPoi(i).address+'</p>'+
+										'</span>'+
+									'</div>'+
+								'</a></li>'
+							);
+						}
+					}else{
+						$("#befulList").html('<div style="text-align:center;margin-top:10%;">搜索无结果！</div>')
+					}
+				}
+			};
+			var local = new BMap.LocalSearch(map, options);
+			var pStart = new BMap.Point(128.259094, 45.645961);
+			var pEnd = new BMap.Point(129.436521, 45.970839);
+			var bs = new BMap.Bounds(pStart,pEnd);   //自己规定范围
+			local.searchInBounds(valstar,bs);
+			
+		});
+		
+		//根据起点、终点 驾车导航 导航面板显示数据 
+		$(".de-nav").click(function(){
+			map.clearOverlays();  //清除地图上所有标注
+			var starnavVal = $("#starnavVal").val();
+			var befnavVal  = $("#befnavVal").val();
+			var driving = new BMap.DrivingRoute(map, {renderOptions: {map: map, panel: "navulList", autoViewport: true}});
+			driving.search(starnavVal, befnavVal);
+			$("#navulList").delegate("td","click",function(){
+				$(".nav-viewlist").animate({left:"100%"});
+			});
+					
+		});
+
+		// 拖拽导航
+		$(".rat-nav").click(function(){
+			map.clearOverlays();  //清除地图上所有标注
+			var url = "we_convenientMap_dir.html"; 
+			var starnavVal = $("#starnavVal").val();
+			var befnavVal  = $("#befnavVal").val();
+			var tobrl =  encodeURI(url + "?star=" + starnavVal+"&bef="+befnavVal); 
+			window.location.href = tobrl;
+		})
+
+		//搜索结果  点击搜索结果返回地图
+		$("#results").delegate("li","click",function(){
+			$(".search-view").animate({left:"100%"});
+		});
+		//点击返回地图
+		$(".search-black").click(function(){
+			$(".search-view").animate({left:"100%"});
+		});
+
+		// 快捷搜索银行
+		$("#nowBank").click(function(){
+			var markerArray=new Array();
+			var typeArray=new Array('','－公交站','','－地铁站');
+			var local = new BMap.LocalSearch(map, {
+				renderOptions: {
+					map: map,
+					panel: "searchBank"
+				},
+			});
+			local.searchNearby("银行", point);
+			$("#searchBank").css("display","block");
+			
+		});
+		//调出公交列表面板  请求加载公交列表数据
+		$("#rightBus").click(function(){
+			map.clearOverlays();  //清除地图上所有标注
+			$("#leftList li").removeClass("bgactive");
+			$(".bus-view").animate({left:"0px"});
+			$.ajax({
+				url: cfg.host + 'Bus/GetBusItem',
+				type: 'get',
+				data: {
+				},
+				success:function(data) {
+					$("#cityBus").empty();
+					$("#conBus").empty();
+					var rst = data;
+					for(var i =0;i<rst.length;i++){
+						if(rst[i].Type==1){
+							$("#cityBus").append(
+								'<li>'+
+									'<a href="###" id="'+rst[i].Id+'">'+
+										'<div><span class="con-ul-left">'+rst[i].Name+'</span><span class="con-ul-right">('+rst[i].MapItemInfo[0].MapName+' ⇌ '+rst[i].MapItemInfo[rst[i].MapItemInfo.length-1].MapName+')</span></div>'+
+										'<div class="con-time"><span class="con-ul-first">首</span>'+rst[i].BeginTime+'<span class="con-ul-end">末</span>'+rst[i].EndTime+'</div>'+
+									'</a>'+
+								'</li>'
+							);
+						}else if(rst[i].Type==0){
+							$("#conBus").append(
+								'<li>'+
+									'<a href="###" id="'+rst[i].Id+'">'+
+										'<div><span class="con-ul-left">'+rst[i].Name+'</span><span class="con-ul-right">('+rst[i].MapItemInfo[0].MapName+' ⇌ '+rst[i].MapItemInfo[rst[i].MapItemInfo.length-1].MapName+')</span></div>'+
+										'<div class="con-time"><span class="con-ul-first">首</span>'+rst[i].BeginTime+'<span class="con-ul-end">末</span>'+rst[i].EndTime+'</div>'+
+									'</a>'+
+								'</li>'
+							);
+						};
+					}						
+				},
+				error : function() {
+					alert("加载失败,请重试!")
+				}
+			});
+
+		});
+
+		//点击返回地图
+		$(".bus-back").click(function(){
+			$(".bus-view").animate({left:"100%"});
+		})
+		//点击显示公交线路详情、地图加载公交路线折线和标注
+		$(".view-con").delegate("a","click",function(){
+			map.clearOverlays();  //清除地图上所有标注
+			var id = this.id;
+			$.ajax({
+				url: cfg.host + 'Bus/GetBusMapItem',
+				type: 'get',
+				data: {
+					id:id
+				},
+				success:function(data) {
+					//隐藏公交列表
+					$(".bus-view").animate({left:"100%"});
+					var da = data.BusitemInfo;
+					$(".viewlist-list").empty();
+					$(".viewlist-name").html(data.Name);
+					$(".viewlist-fir").html(da[0].MapName);
+					$(".viewlist-bef").html(da[da.length-1].MapName);
+					$(".viewlist-fir-time").html(data.BeginTime);
+					$(".viewlist-bef-time").html(data.EndTime);
+					for(var i =0;i<da.length;i++){
+						if(da[i].IsCorner==false){
+							$(".viewlist-list").append(
+								'<li>'+da[i].MapName+'</li>'
+							);
+						};
+					};
+					//展开公交线路详情
+					$(".bus-viewlist").animate({left:"0px"});
+
+					//加载地图折线和标注
+					//自定义公交路线  折线+标点
+					if(da!=[]&&da!=null&&da!=''&&da){
+						var arrs = [];
+						var att = [];
+						for(var i =0;i<da.length;i++){
+							arrs.push([parseFloat(da[i].Yaxis),parseFloat(da[i].Xaxis)]);
+						};
+						for(var k =0;k<da.length;k++){
+							if(da[k].IsCorner==true){
+								att.push([parseFloat(da[k].Yaxis),parseFloat(da[k].Xaxis)])
+							};
+						};
+						// var arrs = [[128.834429, 45.835011],[128.85067, 45.833881],[128.858719, 45.835589],[128.870073, 45.831419]]
+						var myIconfir = new BMap.Icon("Images/map/fir.png",new BMap.Size(25,25));//起点标注
+						var myIconbef = new BMap.Icon("Images/map/bef.png",new BMap.Size(25,25));//终点标注
+						var myIconcon = new BMap.Icon("Images/map/buscon.png",new BMap.Size(20,20));//途经点标注
+						var myIcontou = new BMap.Icon("Images/map/toum.png",new BMap.Size(20,20));//途经点标注
+						var ary = [];
+						for(var i in arrs){
+							ary.push(new BMap.Point(arrs[i][0],arrs[i][1]));
+						};
+						var polyline = new BMap.Polyline(ary, {strokeColor:"red", strokeWeight:2, strokeOpacity:0.5});   //创建折线
+						map.addOverlay(polyline);   //增加折线
+						for(var j =1;j<arrs.length-1;j++){ //创建途径标注
+							var biaozhu = new BMap.Marker(new BMap.Point(arrs[j][0],arrs[j][1]),{ 
+								icon:myIconcon
+							});
+							for(var r=0;r<att.length;r++){
+								if(att[r][0]==arrs[j][0]){
+									var biaozhu = new BMap.Marker(new BMap.Point(arrs[j][0],arrs[j][1]),{ 
+										icon:myIcontou
+									});
+								};
+							};
+							map.addOverlay(biaozhu);
+						};
+						var firbiao = new BMap.Marker(new BMap.Point(arrs[0][0],arrs[0][1]),{ //创建起点标注
+							icon:myIconfir,
+						});
+						var befbiao = new BMap.Marker(new BMap.Point(arrs[arrs.length-1][0],arrs[arrs.length-1][1]),{ //创建终点标注
+							icon:myIconbef,
+						});
+						map.addOverlay(firbiao);//添加起点标注到地图
+						map.addOverlay(befbiao);//添加终点标注到地图
+						setTimeout(function(){  //调整到最佳视野
+							var arr = [];
+							for(var i=0;i<arrs.length;i++){
+								var allzhu = new BMap.Point(arrs[i][0],arrs[i][1]);
+								arr.push(allzhu)
+							};
+							map.setViewport(arr);            
+						},1000); 
+					};					
+				},
+				error : function() {
+					alert("加载失败,请重试!")
+				}
+			});
+		});
+		// 点击返回 公交列表
+		$(".viewlist-back").click(function(){
+			$(".bus-viewlist").animate({left:"100%"});
+			$(".bus-view").animate({left:"0px"});
+		});
+		//点击公交名称 返回地图
+		$(".viewlist-backmap").click(function(){
+			$(".bus-viewlist").animate({left:"100%"});
+			$(".bus-view").animate({left:"100%"});
+		});	
+	});
+
+	//点击标注信息框中的 时刻表 显示时刻表信息 
+	function alertLook(e){
+		$(".car-viewlist").animate({left:"0px"});
+		$.ajax({
+			url: cfg.host + 'Map/QueryCar',
+			type: 'post',
+			data: {
+				MapId:e,
+				Index:1,
+                Size:200,
+                Name:null
+			},
+			success:function(data) {
+				$("#carulList").empty();
+				if(data){
+					$(".viewlist-carname").html(data.Name);
+					var da = data.Data.Data;
+					if(da){
+						for(var i=0;i<da.length;i++){
+							$("#carulList").append(
+								'<li>'+
+									'<div class="con-time"><span class="con-ul-first">始</span>'+da[i].Station+'<span class="con-time-cen">→</span><span class="con-ul-end">终</span>'+da[i].Terminus+'</div>'+
+									'<div class="con-time con-time-title"><span class="">发车时间：</span>'+da[i].Time+'<span class="con-time-pai">车牌号：</span>'+da[i].Number+'</div>'+
+								'</li>'
+							);
+						};
+					
+					};
+				};
+			},
+			error : function() {
+				alert("加载失败,请重试!")
+			}
+		});
+	};
+	//点击返回地图
+	$(".viewlist-carback").click(function(){
+		$(".car-viewlist").animate({left:"100%"});
+	});
+
+	function clickUrl(e){
+		$(".search-view").animate({left:"100%"});
+	};
+
+	
+	// 点击选择的导航起点  返回至导航面板
+	function clickStar(e){
+		$("#starnavVal").val(e.id)
+		$(".nav-viewlist").css("left","0%");
+		$(".star-viewlist").css("left","100%");
+	};
+
+	// 点击选择的导航终点  返回至导航面板
+	function clickBef(e){
+		$("#befnavVal").val(e.id)
+		$(".nav-viewlist").css("left","0%");
+		$(".bef-viewlist").css("left","100%");
+	};
+	
+</script>
+</body>
+
+</html>

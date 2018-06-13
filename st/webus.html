@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+        <div class="pull-right">
+            <a class="btn btn-default btn-sm" ng-click="queryFunc()" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-search"></i>
+                查询
+            </a>
+            <a class="btn btn-default btn-sm" ui-sref="webusAdd" style="margin-top:-5px;">
+                <i class="glyphicon glyphicon-plus"></i>
+                新增
+            </a>
+        </div>
+    </div>
+    <div class="panel-body">
+        <form class="form-inline form-horizontal" role="form">
+            <div class="form-group col-sm-4">
+                <label class="control-label col-sm-4 text-left text-nowrap">路线名称</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" ng-model="query.Name"  placeholder="请输入路线名称" />
+                </div>
+            </div>
+            <div class="checkbox col-sm-4">
+                <label class="col-sm-offset-6">
+                    <input type="checkbox" ng-model="query.IsDeleted"> 包括禁用
+                </label>
+            </div>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover table-condensed">
+            <tr>
+                <th class="text-center"><input type="checkbox" ng-model="checked"></th>
+                <th class="text-center">序号</th>
+                <th>线路名称</th>
+                <th>首车时间</th>
+                <th>末车时间</th>
+                <th class="text-center">操作</th>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td class="text-center"><input type="checkbox" ng-checked="checked" ng-disabled="{{!item.Statu==0}}" /> </td>
+                <td class="text-center">{{$index+1}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.BeginTime}}</td>
+                <td>{{item.EndTime}}</td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-sm btn-default" href="{{'#/webusMain/'+item.Id}}">管理</a>	 
+                        <a class="btn btn-sm btn-default" href="{{'#/webusEdit/'+item.Id}}">修改</a>
+                        <a class="btn btn-sm btn-default" href="{{'#/webusDetail/'+item.Id}}">预览</a>
+                        <!--<a class="btn btn-sm btn-default bs-btn-alert" data-msg="确认{{item.IsDeleted|check:['启用','禁用']}}么?" data-url="{{cfg.host +'dic/DelMain/'+ item.Id}}">{{item.IsDeleted|check:['启用','禁用']}}</a>-->
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<pager count="{{data.Count}}" index="{{query.index}}" action="go(index,size)"></pager>

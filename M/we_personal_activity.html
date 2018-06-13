@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  maximum-scale=1.0, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>个人中心</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <style>
+        .head{
+            border-bottom:2px solid #f18530 !important;
+        }
+        ul.content li {
+            border-bottom: 1px solid #cccccc;
+        }
+        ul.content li a {
+            display: block;
+            padding: 10px 20px;
+        }
+        ul.content h4 {
+            font-size: 16px;
+            color: #333333;
+            font-weight: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        ul.content p {
+            font-size: 14px;
+            color: #333333;
+            margin-top: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<div class="head">
+        <span style="float: left;line-height: 45px;color:#f18530;">个人中心</span>
+        <a class="out" href="index.html" style="text-align: right;float: right;"><span class="right">首页</span></a>
+    </div>-->
+    <ul class="content"></ul>
+    <div class="foot list" style="display: none;">
+        正在努力加载...
+    </div>
+    <div class="tips list" style="display: none;">
+        只有这些评论~
+    </div>
+</div>
+<script src="lgs/jquery-1.9.1.js"></script>
+<script src="lgs/we_common.js"></script>
+<script type="text/javascript">
+    var pageSize = 15;  //每页记录数
+    var pageIndex = 1;// 当前页数
+    var hasNextPage = true;  //有无下一页
+    var isLoadingData = false;  //是否加载中
+    function loadListData(){
+        $.ajax({
+            url: cfg.host + 'Comment/GetPerCenter',
+            type: 'post',
+            data: {
+                Index: pageIndex,
+                Size: pageSize,
+                Type: 2
+            },
+            success:function(data) {
+                hideLoadingTips();
+                var currentDataLength = data.Data.length;
+                if(data.PageSize!=undefined){
+                    pageSize = data.PageSize;
+                }
+                pageIndex = pageIndex + 1;
+                for(var i in data.Data){
+                    var da = data.Data[i];
+                    $("ul.content").append("<li><a href='we_detail_activity_wx.html?id="+da.ObjId+"'>" +
+                            "<h4>"+da.Title+"</h4>" +
+                            "<p>我的评论:"+da.Content+"</p>" +
+                            "</a></li>");
+                }
+                if(currentDataLength < pageSize){//如果本次传回来的数据总长度小于pageSize,则不再执行下次请求
+                    hasNextPage = false;
+                }
+            },
+            error : function() {
+                hideLoadingTips();
+                alert("加载失败,请重试!")
+            }
+        });
+    }
+    $(function(){
+        $("div.foot,div.tips").hide();
+        $.ajax({
+            url: cfg.host + 'WeiXin/GetUserInfo',
+            type: 'get',
+            success: function (data) {
+                if (data == null) {
+                    var url = cfg.host + "weixin/Login";
+                    $.get(url)
+                            .then(function(rst) {
+                                location.href = rst;
+                            });
+                }else{
+                    loadListData();
+                    $(document).bind("scroll",function(){
+                        var scrollTop = $(document).scrollTop();
+                        var height = $(document).height()-$(window).height();
+                        if((scrollTop >= (height-30))&&(!isLoadingData)){
+                            if(hasNextPage){
+                                showLoadingTips();
+                                loadListData();
+
+                            }else{
+                                $("div.tips").show();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

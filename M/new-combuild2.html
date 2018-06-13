@@ -1,0 +1,973 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>黑龙江方正县智慧生活微门户</title>
+    <link rel="stylesheet" href="Content/we_base.css">
+    <link href="Content/bootstrap.css" rel="stylesheet">
+    <link href="Content/bootstrap-fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        /*字体*/
+
+        body {
+            font-family: "微软雅黑", "黑体", "heiti";
+            color: #000000;
+        }
+        /*字体*/
+        /*去除默认样式*/
+
+        html,
+        body,
+        input,
+        button,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        textarea,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            outline: 0;
+            padding: 0;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            width: 100%;
+        }
+
+        body {
+            font-size: 1.6rem;
+            width: 100%;
+            height: 100%;
+            background: #f3f3f3;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+
+        div.wap {
+            width: 92%;
+            height: 100%;
+            margin: 4%;
+            padding-bottom: 53px;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:hover {
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:active {
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a {
+            outline: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        .wap ul li {
+            font-size: 1.4rem;
+            display: block;
+            width: 32.66666%;
+            float: left;
+            text-align: center;
+            margin-top: 1%;
+            background: #ffffff;
+            line-height: 3rem;
+        }
+
+        .wap .build-list ul {
+            border-left: 2px solid #59bae1;
+            overflow: hidden;
+            margin: 2%;
+        }
+
+        .wap .build-list ul li:nth-child(3n+2) {
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+
+        .wap .build-list ul li:nth-child(1),
+        .build-list ul li:nth-child(2),
+        .build-list ul li:nth-child(3) {
+            margin-top: 0px;
+        }
+
+        .wap .build-list img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .wap .build-list span {
+            margin-left: 2%;
+            color: #75b9de;
+        }
+
+        .wap .build-list ul.list-two {
+            border-left: 2px solid #96c873;
+            overflow: hidden;
+            margin: 2%;
+        }
+
+        .wap .build-list ul.list-three {
+            border-left: 2px solid #f57363;
+            overflow: hidden;
+            margin: 2%;
+        }
+        .wap .build-list ul.list-four {
+            border-left: 2px solid #f5ce48;
+            overflow: hidden;
+            margin: 2%;
+        }
+        .wap .build-list span.span-com {
+            color: #98c57a;
+        }
+
+        .wap .build-list span.span-sec {
+            color: #f57363;
+        }
+        .wap .build-list span.span-wm {
+            color: #f5ce48;
+        }
+
+        .wap .list-push {
+            overflow: hidden;
+            width: 100%;
+            padding: 2%;
+        }
+
+        .wap .list-push .file-preview {
+            background: #fff;
+        }
+
+        .wap .list-push .bt-next {
+            width: 100%;
+            height: 36px;
+            padding: 6px 0;
+            margin-top: 4%;
+            background: #f18530;
+            color: #fff;
+            font-size: 1.6rem;
+            display: inline-block;
+            margin-bottom: 4%;
+            border: 1px solid #f18530;
+            border-radius: 4px;
+            line-height: 1.42857143;
+            text-align: center;
+        }
+
+        .wap .list-push span.span-title {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .wap div.head {
+            width: 100%;
+            height: 44px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            text-align: right;
+            border-bottom: 1px solid #f18530 !important;
+            overflow: hidden;
+            font-size: 1.6rem;
+            background: #fff;
+        }
+
+        .wap .color-f18530 {
+            color: #f18530;
+        }
+        /*build map*/
+
+        div.wapone {
+            position: fixed;
+            top: 0;
+            left: 100%;
+            width: 92%;
+            height: 100%;
+            margin: 4%;
+            margin-top: 1%;
+            overflow-y: scroll;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+        a:hover{
+
+            -webkit-tap-highlight-color: transparent;
+
+        }
+        a:active{
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+        }
+        a{
+            outline:none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+        .wapone ul li {
+            font-size: 1.4rem;
+            display: block;
+            width: 32.66666%;
+            float: left;
+            text-align: center;
+            margin-top: 1%;
+            background: #ffffff;
+            line-height: 3rem;
+        }
+
+        .wapone .list-push {
+            width: 100%;
+            padding: 2%;
+            overflow: hidden;
+            padding-bottom: 6%;
+        }
+
+        .wapone .list-push .bt-next {
+            width: 48%;
+            margin: 0px 1%;
+            padding: 6px 0;
+            margin-top: 4%;
+            background: #f18530;
+            color: #fff;
+            font-size: 1.6rem;
+            display: inline-block;
+            margin-bottom: 0;
+            border: 1px solid #f18530;
+            border-radius: 4px;
+            line-height: 1.42857143;
+            text-align: center;
+        }
+
+        .wapone .question-list {
+            padding: 2%;
+            overflow: hidden;
+        }
+
+        .wapone .question-list textarea {
+            width: 100%;
+            border: none;
+            resize: none;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            padding: 2%;
+            font-size: 1.6rem;
+        }
+
+        .wapone .question-title {
+            margin-left: 2px;
+            padding: 2.5% 0;
+        }
+
+        .wapone .question-map {
+            width: 100%;
+            height: 260px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+        }
+
+        .wapone .BMap_noprint.anchorBL {
+            height: 32px;
+            position: absolute;
+            z-index: 1200;
+            text-size-adjust: none;
+            bottom: 5px !important;
+            right: auto;
+            top: auto;
+            left: 5px !important;
+        }
+        .wapone .BMap_scaleCtrl.BMap_noprint.anchorBL{
+            display: none;
+        }
+        .wapone div.head {
+            width: 100%;
+            height: 44px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            text-align: right;
+            border-bottom: 1px solid #f18530 !important;
+            overflow: hidden;
+            font-size: 1.6rem;
+            background: #fff;
+        }
+        /*build mg*/
+
+        div.waptwo {
+            width: 100%;
+            padding: 4%;
+            position: fixed;
+            top: 0;
+            left:100%;
+            height: 100%;
+        }
+
+        a:link,
+        a:visited {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .waptwo .build-list {
+            padding: 2%;
+        }
+
+        .waptwo .build-list img {
+            width: 18px;
+            height: 18px;
+            vertical-align: text-bottom;
+        }
+
+        .waptwo .build-list span {
+            margin-left: 2%;
+        }
+
+        .waptwo .list-push {
+            overflow: hidden;
+            width: 100%;
+            padding: 2%;
+            margin-top: 4%;
+            margin-bottom:4%;
+        }
+
+        .waptwo .list-push .file-preview {
+            background: #fff;
+        }
+
+        .waptwo .list-push .bt-next {
+            width: 48%;
+            margin: 0 1%;
+            height: 36px;
+            padding: 6px 0;
+            margin-top: 4%;
+            background: #f18530;
+            color: #fff;
+            font-size: 1.6rem;
+            display: inline-block;
+            margin-bottom: 0;
+            border: 1px solid #f18530;
+            border-radius: 4px;
+            line-height: 1.42857143;
+            text-align: center;
+        }
+
+        .waptwo .list-push span.span-title {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .waptwo .wap-bottom {
+            width: 100%;
+            overflow: hidden;
+            height:36%;
+        }
+
+        .waptwo .wap-bottom input {
+            font-size: 1.4rem;
+            padding: 8px;
+            width: 100%;
+            margin-top: 2%;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+        }
+
+        .waptwo div.head {
+            width: 100%;
+            height: 44px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            text-align: right;
+            border-bottom: 1px solid #f18530 !important;
+            overflow: hidden;
+            font-size: 1.6rem;
+            background: #fff;
+        }
+
+        .waptwo .build-img {
+            height: 65%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+            text-align: center;
+        }
+        @media (min-width: 560px) {
+
+        }
+        .waptwo .build-img img {
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .mapder {
+            font-size: 0.7em;
+            font-size: #333;
+            text-align: center;
+        }
+
+        .list-push-err,
+        .sub-error {
+            font-size: 10px;
+            text-align: center;
+            color: red;
+            line-height: 20px;
+        }
+
+        .sub-srt {
+            height: 20px;
+            color: red;
+            text-align: center;
+        }
+        label{
+            font-weight: 400 !important;
+        }
+        #zhezmMap{
+            position:absolute;
+            background-color:rgba(0,0,0,0.3); 
+            height:260px;
+            width:100%;
+            top: 0px;
+            text-align: center;
+            line-height: 260px;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--<div class="head" >
+        <a class="out" href="index.html" style="text-align: right;float: right;line-height: 44px;"><span class="right">首页</span></a>
+    </div>-->
+    <div class="wap">
+
+        <div class="build-list">
+            <div>
+                <img src="Images/newwe/build1.png" alt=""><span>城建城管</span>
+            </div>
+            <ul class="list-one build-list-ul" id="type1">
+                <!--<li>
+                    <input type="radio" style="display:none;" id="radio1" name="radio"><label id="" for="radio1">设施破坏</label>
+                </li>-->
+            </ul>
+        </div>
+        <div class="build-list">
+            <div>
+                <img src="Images/newwe/build3.png" alt=""><span class="span-com">社会管理</span>
+            </div>
+            <ul class="list-two build-list-ul" id="type2">
+                <!--<li>
+                    <input type="radio" style="display:none;" id="radio1" name="radio"><label id="" for="radio1">管道漏水</label>
+                </li>-->
+            </ul>
+        </div>
+        <div class="build-list">
+            <div>
+                <img src="Images/newwe/build2.png" alt=""><span class="span-sec">安全生产</span>
+            </div>
+            <ul class="list-three build-list-ul" id="type3">
+                <!--<li>
+                    <input type="radio" style="display:none;" id="radio1" name="radio"><label id="" for="radio1">火灾事故</label>
+                </li>-->
+            </ul>
+        </div>
+        <div class="build-list">
+            <div>
+                <img src="Images/newwe/build4.png" alt=""><span class="span-wm">文明方正</span>
+            </div>
+            <ul class="list-four build-list-ul" id="type4">
+                <!--<li>
+                    <input type="radio" style="display:none;" id="radio1" name="radio"><label id="" for="radio1">火灾事故</label>
+                </li>-->
+            </ul>
+        </div>
+        <div class="list-push">
+            <span class="span-title">上传图片</span>
+            <form enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="file-1" type="file" multiple class="file" accept="image/*" capture="camera" data-overwrite-initial="false">
+                </div>
+            </form>
+            <a href="###" id="nextMap" class="bt-next">下一步</a>
+            <div class="errornext" style="font-size:10px; text-align:center; color:red;line-height:20px;display:none;">请选择上报类型</div>
+        </div>
+    </div>
+    <div class="wapone">
+        <div class="question-list">
+            <div class="question-title">事件描述</div>
+            <textarea name="" id="quCon" rows="2" placeholder="请填写事件描述"></textarea>
+            <div class="question-title">地址描述</div>
+            <textarea name="" id="adCon" rows="2" placeholder="请填写地址描述"></textarea>
+            <div class="question-title">地图定位</div>
+            <div style="position:relative">
+                <div class="question-map" id="allmap">
+                </div>
+                <div id="zhezmMap">
+                    <img src="Images/map/logingter.gif" alt="">
+                </div>
+            </div>
+            
+            <div class="mapder">
+                地址：<span class="addert"></span>
+            </div>
+            <span class="xer" style="display:none;"></span><span class="yer" style="display:none;"></span>
+        </div>
+        <div class="list-push">
+            <a href="###" id="lastTest" class="bt-next">上一步</a><a href="###" id="nextMg" class="bt-next">下一步</a>
+            <div class="list-push-err"><span class="errorone"></span><span class="errortwo"></span></div>
+        </div>
+    </div>
+    <div class="waptwo">
+        <div class="build-img">
+            <img src="Images/newwe/mg-bg.png" alt="">
+        </div>
+        <div class="wap-bottom">
+            <div class="build-list">
+                <div>
+                    <img src="Images/newwe/phone.png" alt=""><span>联系电话</span>
+                </div>
+                <div>
+                    <input type="text" class="phones" placeholder="请留下您的联系电话">
+                </div>
+            </div>
+            <div class="list-push">
+                <div class="sub-srt">
+                </div>
+                <a href="###" id="lastMap" type="" class="bt-next">上一步</a><a href="###" id="btSub" class="bt-next">提交</a>
+                <div class="sub-error">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="foot">
+        <ul>
+            <a href="index.html">
+                <li class="index active">首页</li>
+            </a>
+            <a href="we_search_wx.html">
+                <li class="search">查询</li>
+            </a>
+            <a href="we_personal_wx.html">
+                <li class="personal">我的</li>
+            </a>
+        </ul>
+    </div>-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=4GLXHMc6X098CWkrOYycL3bRrsAaFHQo"></script>
+    <script src="lgs/jquery-1.9.1.js"></script>
+    <script src="lgs/fileinput.js" type="text/javascript"></script>
+    <script src="lgs/zh.js"></script>
+    <script src="lgs/bootstrap.js" type="text/javascript"></script>
+    <script src="lgs/we_common.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+    <script>
+    $(function(){
+        $(".file-drop-zone-title").text("图片");
+        //请求城管上报分类数据
+        $.ajax({
+            url: cfg.host + 'dic/getsub',
+            type: 'get',
+            data: {
+                code:'CityManageType'
+            },
+            success:function(data) {
+                if(data){
+                    for(var i =0;i<data.length;i++){
+                        $(".list-one").append(
+                            '<li>'+
+                                '<input type="radio" value="'+data[i].Name+'" style="display:none;" id="city'+data[i].Id+'" name="radio"><label for="city'+data[i].Id+'">'+data[i].Name+'</label>'+
+                            '</li>'
+                        );
+                    };
+                };			
+            },
+            error : function() {
+                alert("加载失败,请重试!")
+            }
+        });
+        //请求城管上报分类数据
+
+        //请求社管上报分类数据
+        $.ajax({
+            url: cfg.host + 'dic/getsub',
+            type: 'get',
+            data: {
+                code:'SocietyManageType'
+            },
+            success:function(data) {
+                if(data){
+                    for(var i =0;i<data.length;i++){
+                        $(".list-two").append(
+                            '<li>'+
+                                '<input type="radio" value="'+data[i].Name+'" style="display:none;" id="she'+data[i].Id+'" name="radio"><label for="she'+data[i].Id+'">'+data[i].Name+'</label>'+
+                            '</li>'
+                        );
+                    };
+                };			
+            },
+            error : function() {
+                alert("加载失败,请重试!")
+            }
+        });
+        //请求社管上报分类数据
+
+        //请求安全上报分类数据
+        $.ajax({
+            url: cfg.host + 'dic/getsub',
+            type: 'get',
+            data: {
+                code:'SecurityManageType'
+            },
+            success:function(data) {
+                if(data){
+                    for(var i =0;i<data.length;i++){
+                        $(".list-three").append(
+                            '<li>'+
+                                '<input type="radio" value="'+data[i].Name+'" style="display:none;" id="info'+data[i].Id+'" name="radio"><label for="info'+data[i].Id+'">'+data[i].Name+'</label>'+
+                            '</li>'
+                        );
+                    };
+                };			
+            },
+            error : function() {
+                alert("加载失败,请重试!")
+            }
+        });
+        //请求安全上报分类数据
+
+        //请求文明方正分类数据
+        $.ajax({
+            url: cfg.host + 'dic/getsub',
+            type: 'get',
+            data: {
+                code:'CivilizationType'
+            },
+            success:function(data) {
+                if(data){
+                    for(var i =0;i<data.length;i++){
+                        $(".list-four").append(
+                            '<li>'+
+                                '<input type="radio" value="'+data[i].Name+'" style="display:none;" id="info'+data[i].Id+'" name="radio"><label for="info'+data[i].Id+'">'+data[i].Name+'</label>'+
+                            '</li>'
+                        );
+                    };
+                };			
+            },
+            error : function() {
+                alert("加载失败,请重试!")
+            }
+        });
+        
+
+        //三个步骤之间的跳转
+        $("#nextMap").click(function(){
+            if($('input:radio:checked').val()){
+                $(".wap").css("display","none");
+                $(".wapone").css("left","0%");
+                $(".errornext").css("display","none")
+                // 地图功能
+                var map = new BMap.Map("allmap");
+                map.setCurrentCity("方正县");
+                map.enableScrollWheelZoom(true);
+                map.addControl(new BMap.ScaleControl());
+                var gc = new BMap.Geocoder();
+                var top_left_navigation = new BMap.NavigationControl({
+                    anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+                    offset: new BMap.Size(5, 5)
+                }); 
+                map.addControl(top_left_navigation);
+                var point = new BMap.Point(128.84219, 45.84401);
+                map.centerAndZoom(point, 16);	
+                var geolocation = new BMap.Geolocation();
+                var ccc;
+                geolocation.getCurrentPosition(function(r){
+                    if(this.getStatus() == BMAP_STATUS_SUCCESS){
+                    //根据point对象创建标记遮挡物，并添加到地图中
+                    var myIcons = new BMap.Icon("Images/map/mapades.png", new BMap.Size(14, 14));  
+                    marker = new BMap.Marker(r.point,{icon:myIcons});
+                    map.addOverlay(marker);
+                    gc.getLocation(r.point, function(rs) {
+                        $(".addert").html(rs.address) 
+                        console.log(rs.point)
+                        $(".xer").html(rs.point.lat);
+                        $(".yer").html(rs.point.lng);
+                    });
+                    var center = map.getCenter(); 
+                    
+                    //将地图中心设置为获得的当前位置
+                    map.panTo(r.point)
+                    map.centerAndZoom(r.point,18);
+                    $("#zhezmMap").css("display","none")
+                    }
+                },{enableHighAccuracy: true});	
+                // var marker = new BMap.Marker(point);  
+                // map.addOverlay(marker);  
+                // map.addEventListener("dragend", function(e){ 
+                //     map.clearOverlays();
+                //     gc.getLocation(e.point, function(rs) {
+                //         $(".addert").html(rs.address) 
+                //     });
+                //     var center = map.getCenter();   
+                //     point = new BMap.Point(center.lng, center.lat);
+                //     var marker = new BMap.Marker(point);   
+                //     map.addOverlay(marker);
+                //     $(".xer").html(center.lat);
+                //     $(".yer").html(center.lng);
+                // }); 
+                var geolocationControl = new BMap.GeolocationControl({showAddressBar:true,enableAutoLocation:true});//左下角 定位
+                map.addControl(geolocationControl);
+                // 地图功能
+            }else{
+                $(".errornext").css("display","block")
+            }
+        });
+        $("#lastTest").click(function(){
+            $(".wap").css("display","block")
+            $(".wapone").css("left","100%")
+        });
+        $("#nextMg").click(function(){
+            var quCon = $("#quCon").val();
+            var adCon = $("#adCon").val();
+            if(!quCon){
+                $(".errorone").html("请输入问题！");
+            }else{
+                $(".errorone").html("");
+            };
+            if(!adCon){
+                $(".errortwo").html("请输入地址！");
+            }else{
+                $(".errortwo").html("");
+            };
+            if(quCon&&adCon){
+                $(".wap").css("display","none")
+                $(".wapone").css("left","100%")
+                $(".waptwo").css("left","0%")
+                $("body").css("background","#fff")
+            };
+        });
+        $("#lastMap").click(function(){
+            $(".wap").css("display","none")
+            $(".wapone").css("left","0%")
+            $(".waptwo").css("left","100%")
+            $("body").css("background","#f3f3f3")
+
+        });
+        //三个步骤之间的跳转
+
+        // 上报管理类型选择 radio互斥
+        $(".build-list-ul").on("click","input:radio",function(){
+            $(this).siblings('label').addClass("color-f18530").parent().siblings().children("label").removeClass("color-f18530");
+            $(this).parents(".build-list").siblings(".build-list").find("label").removeClass("color-f18530");
+        });
+        // 上报管理类型选择 radio互斥
+        
+        // 默认设置坐标和地址 页面中
+        // $(".xer").html(45.84401);
+        // $(".yer").html(128.84219);
+        $(".addert").html("黑龙江省哈尔滨市方正县");
+        // 默认设置坐标和地址 页面中
+
+    });
+
+    //上传图片功能
+    $("#file-1").fileinput({
+        language: 'zh',
+        uploadUrl: '/ImgUpCompressHandler.ashx',
+        allowedFileExtensions : ['jpg', 'png','JPG'],
+        overwriteInitial: false,
+        maxFileSize: 0,
+        maxFilesNum: 10,
+        uploadAsync: false,
+        allowedFileTypes: ['image'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    var rst;
+    $("#file-1").on('filebatchuploadsuccess', function (evt, data) {
+        rst = data.response;
+    });
+    //上传图片功能
+
+    // 最终提交
+    $("#btSub").click(function(){
+        var ids = $('input:radio:checked').parents(".build-list-ul")[0].id;
+        var phonez = $(".phones").val();
+        var reg = /^1(3|4|5|7|8)\d{9}$/;        
+        if(reg.test(phonez)===true){
+            if(ids=="type1"){
+                $.ajax({
+                    url: cfg.host + 'CityManage/Create',
+                    type: 'post',
+                    data: {
+                        Title:$('input:radio:checked').val(),
+                        Phone:$(".phones").val(),
+                        Content:$("#quCon").val(),
+                        Address:$("#adCon").val(),
+                        Place:$(".addert").html(),
+                        X_Value:$(".xer").html()-0.0076618496,
+                        Y_Value:$(".yer").html()-0.0133615819,
+                        FileIds:rst
+                    },
+                    success:function(data) {
+                        $(".sub-srt").html('提交成功！');
+                        window.setTimeout(function(){
+                            window.location.reload();
+                        },1500);
+                    },
+                    error : function() {
+                        $(".sub-srt").html('提交失败！');
+                    }
+                });
+            }else if(ids=="type2"){
+                $.ajax({
+                    url: cfg.host + 'SocietyManage/Add',
+                    type: 'post',
+                    data: {
+                        Title:$('input:radio:checked').val(),
+                        Phone:$(".phones").val(),
+                        Content:$("#quCon").val(),
+                        Address:$("#adCon").val(),
+                        xValue:$(".xer").html()-0.0076618496,
+                        yValue:$(".yer").html()-0.0133615819,
+                        FileIds:rst
+                    },
+                    success:function(data) {
+                        $(".sub-srt").html('提交成功！');
+                        window.setTimeout(function(){
+                            window.location.reload();
+                        },1500);
+                    },
+                    error : function() {
+                        $(".sub-srt").html('提交失败！');
+                    }
+                });
+            }else if(ids=="type3"){
+                $.ajax({
+                    url: cfg.host + 'CityManage/Create',
+                    type: 'post',
+                    data: {
+                        Title:$('input:radio:checked').val(),
+                        Phone:$(".phones").val(),
+                        Content:'【安监事件】'+ $("#quCon").val(),
+                        Address:$("#adCon").val(),
+                        Place:$(".addert").html(),
+                        X_Value:$(".xer").html()-0.0076618496,
+                        Y_Value:$(".yer").html()-0.0133615819,
+                        FileIds:rst
+                    },
+                    success:function(data) {
+                        $(".sub-srt").html('提交成功！');
+                        // window.setTimeout(function(){
+                        //     window.location.reload();
+                        // },1500);
+                    },
+                    error : function() {
+                        $(".sub-srt").html('提交失败！');
+                    }
+                });
+            };
+            
+            $(".sub-error").html("");
+        }else{
+            $(".sub-error").html("请输入正确联系电话！");
+        };
+    })
+    </script>
+</body>
+
+</html>

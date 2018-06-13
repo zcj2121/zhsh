@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="h4">{{title}}</span>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" name="dForm" method="post" enctype="multipart/form-data" action="../importMapHandler.ashx">
+            <div class="form-group" style="margin: 20px 0;">
+                <label class="col-sm-3 control-label">导入须知</label>
+                <div class="col-sm-6" style="margin-top:6px;font-weight:normal;font-size:14px;line-height: 24px;">
+                    导入前请先选择需要导入的标点分类
+                </div>
+            </div>
+            <div class="form-group" style="margin: 20px 0;">
+                <label class="col-sm-3 control-label">下载模版</label>
+                <div class="col-sm-6" style="margin-top:6px;">
+                    <a href="../upload/方正地图点位导入模板.xlsx" style="text-decoration: underline;margin-top: 6px;">方正地图点位导入模板.xlsx</a>
+                </div>
+            </div>
+            <div class="form-group" style="margin: 20px 0;">
+                <label class="col-sm-3 control-label">标点分类<span style="color:red">*</span></label>
+                <div class="col-sm-6" style="margin-top:6px;">
+                    <select class="form-control" id="typeName" name="type" ng-model="model.TypeId" required>
+                        <option value="">请选择</option>
+                        <option ng-repeat="kind in kinds" value="{{kind.Id}}">{{kind.Name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" style="margin: 20px 0;">
+                <label class="col-sm-3 control-label">标点导入<span style="color:red">*</span></label>
+                <div class="col-sm-6">
+                    <input type="file" class="form-control" name="file" style="padding:3px 12px;">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-3 col-sm-9" style="padding:20px;">
+                    <button type="submit" class="btn btn-success btn-sm" ng-disabled="dForm.$invalid">保存</button>
+                    <a ng-click="back()" class="btn btn-default btn-sm">取消</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

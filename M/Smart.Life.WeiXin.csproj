@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B4640AC4-C6FB-474C-B900-A05A92102513}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smart.Life.WeiXin</RootNamespace>
+    <AssemblyName>Smart.Life.WeiXin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Content\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Content\bootstrap-fileinput\img\loading.gif" />
+    <Content Include="Content\bootstrap-fileinput\themes\fa\theme.js" />
+    <Content Include="Content\bootstrap-fileinput\themes\gly\theme.js" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\mui.min.css" />
+    <Content Include="employee.html" />
+    <Content Include="employee_detail.html" />
+    <Content Include="employee_list.html" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="health_add.html" />
+    <Content Include="health_list.html" />
+    <Content Include="health_login.html" />
+    <Content Include="health_user.html" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\bmfw_head.png" />
+    <Content Include="Images\btn-in.png" />
+    <Content Include="Images\btn-out.png" />
+    <Content Include="Images\btn-xuqiu.png" />
+    <Content Include="Images\btn-zhuanru.png" />
+    <Content Include="Images\btn_1.png" />
+    <Content Include="Images\btn_2.png" />
+    <Content Include="Images\btn_3.png" />
+    <Content Include="Images\btn_4.png" />
+    <Content Include="Images\btn_jiaoyi.png" />
+    <Content Include="Images\btn_jineng.png" />
+    <Content Include="Images\btn_zhuanchu.png" />
+    <Content Include="Images\emplyee.png" />
+    <Content Include="Images\health\health_back.png" />
+    <Content Include="Images\health\health_item.png" />
+    <Content Include="Images\health\icon_idcard.png" />
+    <Content Include="Images\health\icon_logo.png" />
+    <Content Include="Images\health\icon_set.png" />
+    <Content Include="Images\health\line_1.png" />
+    <Content Include="Images\health\line_2.png" />
+    <Content Include="Images\health\line_3.png" />
+    <Content Include="Images\health\line_4.png" />
+    <Content Include="Images\health\line_5.png" />
+    <Content Include="Images\health\line_first.png" />
+    <Content Include="Images\index-bg.jpg" />
+    <Content Include="Images\index-bg.png" />
+    <Content Include="Images\lb_layout_one.jpg" />
+    <Content Include="Images\lb_layout_three.jpg" />
+    <Content Include="Images\lb_layout_two.jpg" />
+    <Content Include="Images\map\1.png" />
+    <Content Include="Images\map\bef.png" />
+    <Content Include="Images\map\beijing.png" />
+    <Content Include="Images\map\bg.jpg" />
+    <Content Include="Images\map\buscon.png" />
+    <Content Include="Images\map\end-marker.png" />
+    <Content Include="Images\map\fir.png" />
+    <Content Include="Images\map\logingter.gif" />
+    <Content Include="Images\map\mapades.png" />
+    <Content Include="Images\map\newgreen.png" />
+    <Content Include="Images\map\newgreens.png" />
+    <Content Include="Images\map\newred.png" />
+    <Content Include="Images\map\newyellow.png" />
+    <Content Include="Images\map\start-marker.png" />
+    <Content Include="Images\map\toum.png" />
+    <Content Include="Images\map\zhi.png" />
+    <Content Include="Images\newgreen.png" />
+    <Content Include="Images\newwe\bianmin.png" />
+    <Content Include="Images\newwe\build1.png" />
+    <Content Include="Images\newwe\build2.png" />
+    <Content Include="Images\newwe\build3.png" />
+    <Content Include="Images\newwe\build4.png" />
+    <Content Include="Images\newwe\ed-bg.png" />
+    <Content Include="Images\newwe\ed-class.png" />
+    <Content Include="Images\newwe\ed-we.png" />
+    <Content Include="Images\newwe\fangzheng.png" />
+    <Content Include="Images\newwe\fenxi.png" />
+    <Content Include="Images\newwe\gong.png" />
+    <Content Include="Images\newwe\gonjian.png" />
+    <Content Include="Images\newwe\juzheng-bg.png" />
+    <Content Include="Images\newwe\mg-bg.png" />
+    <Content Include="Images\newwe\news.png" />
+    <Content Include="Images\newwe\peixun.png" />
+    <Content Include="Images\newwe\pen.png" />
+    <Content Include="Images\newwe\phone.png" />
+    <Content Include="Images\newwe\tongzhi.png" />
+    <Content Include="Images\newwe\user-header.png" />
+    <Content Include="Images\newwe\user-topbg.png" />
+    <Content Include="Images\newwe\xiangmu.png" />
+    <Content Include="Images\newwe\yu.png" />
+    <Content Include="Images\newwe\yun.png" />
+    <Content Include="Images\newwe\zhaoping.png" />
+    <Content Include="Images\newwe\zhengwu.png" />
+    <Content Include="Images\supply.png" />
+    <Content Include="Images\two-pic.jpg" />
+    <Content Include="Images\we\111.png" />
+    <Content Include="Images\we\4444444.png" />
+    <Content Include="Images\we\back_tiankong.png" />
+    <Content Include="Images\we\bannerfz.png" />
+    <Content Include="Images\we\bgbot.png" />
+    <Content Include="Images\we\Citys.png" />
+    <Content Include="Images\we\comment_icon.png" />
+    <Content Include="Images\we\Dang.png" />
+    <Content Include="Images\we\daodeql.png" />
+    <Content Include="Images\we\Fank.png" />
+    <Content Include="Images\we\funvzj.png" />
+    <Content Include="Images\we\Funz.png" />
+    <Content Include="Images\we\headLogo.png" />
+    <Content Include="Images\we\Informs.png" />
+    <Content Include="Images\we\Life.png" />
+    <Content Include="Images\we\meilixc.png" />
+    <Content Include="Images\we\Newss.png" />
+    <Content Include="Images\we\news_icon_01.png" />
+    <Content Include="Images\we\news_icon_02.png" />
+    <Content Include="Images\we\news_icon_03.png" />
+    <Content Include="Images\we\news_icon_04.png" />
+    <Content Include="Images\we\news_icon_05.png" />
+    <Content Include="Images\we\news_icon_06.png" />
+    <Content Include="Images\we\news_icon_07.png" />
+    <Content Include="Images\we\news_icon_08.png" />
+    <Content Include="Images\we\news_icon_09.png" />
+    <Content Include="Images\we\news_icon_10.png" />
+    <Content Include="Images\we\Paple.png" />
+    <Content Include="Images\we\train_back_one.png" />
+    <Content Include="Images\we\train_top_.png" />
+    <Content Include="Images\we\wanzaifz.png" />
+    <Content Include="Images\we\wenmbob.png" />
+    <Content Include="Images\we\we_bg_yonggong.png" />
+    <Content Include="Images\we\Work.png" />
+    <Content Include="index123.html" />
+    <Content Include="loading.html" />
+    <Content Include="new-buildlist-detail.html" />
+    <Content Include="new-buildlist.html" />
+    <Content Include="new-combuild-map.html" />
+    <Content Include="new-combuild-mg.html" />
+    <Content Include="new-combuild.html" />
+    <Content Include="new-education.html" />
+    <Content Include="new-healthDetail.html" />
+    <Content Include="new-highway.html" />
+    <Content Include="new-index.html" />
+    <Content Include="new-majorProject-detail.html" />
+    <Content Include="new-majorProject-list.html" />
+    <Content Include="new-majorProject.html" />
+    <Content Include="new-matrix-list.Detail.html" />
+    <Content Include="new-matrix-list.html" />
+    <Content Include="new-matrix.html" />
+    <Content Include="new-user.html" />
+    <Content Include="new_activity_zcj_wm.html" />
+    <Content Include="new_activity_zcj_wmdetail.html" />
+    <Content Include="new_wm.html" />
+    <Content Include="new_wm_detail.html" />
+    <Content Include="lgs\bootstrap.js" />
+    <Content Include="lgs\bootstrap.min.js" />
+    <Content Include="lgs\fileinput.js" />
+    <Content Include="lgs\fileinput.min.js" />
+    <Content Include="lgs\iscroll.js" />
+    <Content Include="lgs\jquery-1.9.1.min.map" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\mui-icons-extra.ttf" />
+    <Content Include="fonts\mui.ttf" />
+    <None Include="Properties\PublishProfiles\方正环境168.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <Content Include="lgs\mui.min.js" />
+    <Content Include="supply.html" />
+    <Content Include="supply_list.html" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\base.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\swiper.css" />
+    <Content Include="Content\we_base.css" />
+    <Content Include="Images\we\404.png" />
+    <Content Include="Images\we\accident.jpg" />
+    <Content Include="Images\we\activity.png" />
+    <Content Include="Images\we\activity_de.png" />
+    <Content Include="Images\we\activity_huodong.jpg" />
+    <Content Include="Images\we\activity_xuanchuan.jpg" />
+    <Content Include="Images\we\banner1.png" />
+    <Content Include="Images\we\banner2.png" />
+    <Content Include="Images\we\banner3.png" />
+    <Content Include="Images\we\blue_index.png" />
+    <Content Include="Images\we\blue_personal.png" />
+    <Content Include="Images\we\blue_search.png" />
+    <Content Include="Images\we\city.png" />
+    <Content Include="Images\we\city_right.png" />
+    <Content Include="Images\we\city_right_green.png" />
+    <Content Include="Images\we\city_right_red.png" />
+    <Content Include="Images\we\city_top.png" />
+    <Content Include="Images\we\click.png" />
+    <Content Include="Images\we\comingmore.png" />
+    <Content Include="Images\we\constructor.png" />
+    <Content Include="Images\we\constructor_contain.png" />
+    <Content Include="Images\we\dami1.png" />
+    <Content Include="Images\we\employer.png" />
+    <Content Include="Images\we\erweima.png" />
+    <Content Include="Images\we\foot_index.png" />
+    <Content Include="Images\we\foot_personal.png" />
+    <Content Include="Images\we\foot_search.png" />
+    <Content Include="Images\we\gray_activity.png" />
+    <Content Include="Images\we\gray_inform.png" />
+    <Content Include="Images\we\gray_news.png" />
+    <Content Include="Images\we\gray_service.png" />
+    <Content Include="Images\we\gray_train.png" />
+    <Content Include="Images\we\gray_view.png" />
+    <Content Include="Images\we\guanzhu.png" />
+    <Content Include="Images\we\inform.png" />
+    <Content Include="Images\we\jiantou_right.png" />
+    <Content Include="Images\we\kanglian3.png" />
+    <Content Include="Images\we\live.png" />
+    <Content Include="Images\we\login1.png" />
+    <Content Include="Images\we\login2.png" />
+    <Content Include="Images\we\login3.png" />
+    <Content Include="Images\we\login_back.png" />
+    <Content Include="Images\we\management.png" />
+    <Content Include="Images\we\news.png" />
+    <Content Include="Images\we\newspic.png" />
+    <Content Include="Images\we\news_list.jpg" />
+    <Content Include="Images\we\per_back.png" />
+    <Content Include="Images\we\play.png" />
+    <Content Include="Images\we\prevent.jpg" />
+    <Content Include="Images\we\return.png" />
+    <Content Include="Images\we\service.png" />
+    <Content Include="Images\we\shangdaohang.png" />
+    <Content Include="Images\we\shuangzishan2.png" />
+    <Content Include="Images\we\subcomplete.png" />
+    <Content Include="Images\we\test.png" />
+    <Content Include="Images\we\testlogo.png" />
+    <Content Include="Images\we\train.png" />
+    <Content Include="Images\we\train_back.png" />
+    <Content Include="Images\we\view.png" />
+    <Content Include="Images\we\wait.png" />
+    <Content Include="Images\we\weather.jpg" />
+    <Content Include="Images\we\wifibg.png" />
+    <Content Include="index.html" />
+    <Content Include="login.html" />
+    <Content Include="login_msg.html" />
+    <Content Include="login_we.html" />
+    <None Include="lgs\jquery-1.9.1.intellisense.js" />
+    <Content Include="lgs\jquery-1.9.1.js" />
+    <Content Include="lgs\jquery-1.9.1.min.js" />
+    <None Include="lgs\jquery.validate-vsdoc.js" />
+    <Content Include="lgs\jquery.validate.js" />
+    <Content Include="lgs\jquery.validate.min.js" />
+    <Content Include="lgs\jquery.validate.unobtrusive.js" />
+    <Content Include="lgs\jquery.validate.unobtrusive.min.js" />
+    <Content Include="lgs\swiper.jquery.js" />
+    <Content Include="lgs\swiper.jquery.min.js" />
+    <Content Include="lgs\swiper.js" />
+    <Content Include="lgs\swiper.min.js" />
+    <Content Include="lgs\we_common.js" />
+    <Content Include="lgs\zepto.min.js" />
+    <Content Include="lgs\zh.js" />
+    <Content Include="transition.html" />
+    <Content Include="we_404_wx.html" />
+    <Content Include="we_activity_wx.html" />
+    <Content Include="we_activity_zcj.html" />
+    <Content Include="we_activity_zcj_dd.html" />
+    <Content Include="we_activity_zcj_dddetail.html" />
+    <Content Include="we_activity_zcj_fz.html" />
+    <Content Include="we_activity_zcj_wm.html" />
+    <Content Include="we_activity_zcj_wm_detail.html" />
+    <Content Include="we_cityservice_hlf.html" />
+    <Content Include="we_city_zcj.html" />
+    <Content Include="we_comingsoon_wx.html" />
+    <Content Include="we_constructor_wx.html" />
+    <Content Include="we_convenientMap_dir.html" />
+    <Content Include="we_convenientMap_zcj.html" />
+    <Content Include="we_declaration_wx.html" />
+    <Content Include="we_detail_activity_wx.html" />
+    <Content Include="we_detail_inform_wx.html" />
+    <Content Include="we_detail_manager.html" />
+    <Content Include="we_detail_news_wx.html" />
+    <Content Include="we_detail_train.html" />
+    <Content Include="we_detail_view.html" />
+    <Content Include="we_erweima_wx.html" />
+    <Content Include="we_if_news.html" />
+    <Content Include="we_illegalquery_hlf.html" />
+    <Content Include="we_index_wx.html" />
+    <Content Include="we_index_wx1.html" />
+    <Content Include="we_inform_wx.html" />
+    <Content Include="we_list_train.html" />
+    <Content Include="we_manager.html" />
+    <Content Include="we_news_list.html" />
+    <Content Include="we_news_wx.html" />
+    <Content Include="we_news_wxdetail.html" />
+    <Content Include="we_personal_activity.html" />
+    <Content Include="we_personal_manager.html" />
+    <Content Include="we_personal_news.html" />
+    <Content Include="we_personal_view.html" />
+    <Content Include="we_personal_wx.html" />
+    <Content Include="we_push.html" />
+    <Content Include="we_search_wx.html" />
+    <Content Include="we_service_wx.html" />
+    <Content Include="we_service_zcj.html" />
+    <Content Include="we_train.html" />
+    <Content Include="we_view_wx.html" />
+    <Content Include="we_wait_wx.html" />
+    <Content Include="we_wifilogin_wx.html" />
+    <Content Include="we_wifilogin_zcj.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10427</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:10427/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
