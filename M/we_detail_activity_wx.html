@@ -237,7 +237,7 @@
                     var imgUrl = cfg.imgUrl;
                     if((data.VideoUrl) != null && (data.VideoUrl) != ''){
                         var strUrl = data.VideoUrl;
-                        var partten = /\/upload/g;
+                        var partten = /\/up/g;
                         if(partten.test(strUrl)){
                             $("div.content").append("<h1>"+data.Title+"</h1><span class='row'>" +
                                     "<p class='author'></p><p class='time'>"+data.PushDay.substr(0,10)+"</p></span>" +

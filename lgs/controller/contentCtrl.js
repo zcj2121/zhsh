@@ -452,9 +452,9 @@
                   else if ($scope.model.Type == 3) {
                       $scope.model.TypeName = '推广文章';
                   }
-                  //var strUrl = "/upload/7c1698d0-7aa8-4498-8545-dff19593e9ec.mp4";
+                  //var strUrl = "/up/7c1698d0-7aa8-4498-8545-dff19593e9ec.mp4";
                   var strUrl = $scope.model.VideoUrl;
-                  var partten = /\/upload/g;
+                  var partten = /\/up/g;
                   if(partten.test(strUrl)){
                       $("#videoHtml").append("<video src='"+$scope.model.VideoUrl+"' controls='controls' style='width: 500px;'>您的浏览器由于版本过低,不支持该视频播放。</video>");
                   }else{
